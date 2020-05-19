@@ -2,26 +2,28 @@ import * as React from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import {configureStore} from './src/store'
 import {Provider} from "react-redux";
+import {PersistGate} from "redux-persist/integration/react";
+
+const {store, persistor} = configureStore();
+
+import Book from "./src/components/Book";
 
 const instructions = Platform.select({
   ios: `Press Cmd+R to reload,\nCmd+D or shake for dev menu`,
   android: `Double tap R on your keyboard to reload,\nShake or press menu button for dev menu`,
 });
 
-const {store, persistor} = configureStore();
 
 const App =  () => (
     <Provider store = {store}>
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
+        <PersistGate loading = {null} persistor = {persistor}>
+            <Book title = 'Test1' author='Author1' price='0.99'/>
+        </PersistGate>
     </Provider>
   )
 
 export default App
-
+/*
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -39,4 +41,4 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
-});
+});*/

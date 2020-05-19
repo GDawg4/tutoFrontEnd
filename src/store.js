@@ -5,7 +5,7 @@ import{
     persistReducer
 } from 'redux-persist'
 import {composeWithDevTools} from "redux-devtools-extension";
-import storage from 'redux-persist/lib/storage'
+import {AsyncStorage} from 'react-native'
 
 import reducer from './reducers'
 import saga from './sagas'
@@ -15,7 +15,7 @@ export const configureStore = () => {
     const persistedReducer = persistReducer(
         {
             key:'rootx',
-            storage,
+            storage:AsyncStorage,
             whitelist:['auth']
         },
         reducer

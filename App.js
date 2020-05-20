@@ -4,8 +4,6 @@ import { configureStore } from './src/store'
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 
-const { store, persistor } = configureStore();
-
 import Book from "./src/components/Book";
 import LoginScreen from './src/components/LoginScreen';
 

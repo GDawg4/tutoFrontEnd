@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
-import {configureStore} from './src/store'
-import {Provider} from "react-redux";
-import {PersistGate} from "redux-persist/integration/react";
+import { configureStore } from './src/store'
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 
-const {store, persistor} = configureStore();
+const { store, persistor } = configureStore();
 
 import Book from "./src/components/Book";
+import LoginScreen from './src/components/LoginScreen';
 
 const instructions = Platform.select({
   ios: `Press Cmd+R to reload,\nCmd+D or shake for dev menu`,
@@ -17,12 +18,14 @@ const instructions = Platform.select({
 const App =  () => (
     <Provider store = {store}>
         <PersistGate loading = {null} persistor = {persistor}>
-            <Book title = 'Test1' author='Author1' price='0.99'/>
+            {/* <Book title = 'Test1' author='Author1' price='0.99'/> */}
+            <LoginScreen />
         </PersistGate>
     </Provider>
-  )
+)
 
-export default App
+export default App;
+
 /*
 const styles = StyleSheet.create({
   container: {

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Image, StyleSheet, View, TextInput, KeyboardAvoidingView } from 'react-native';
+import { Image, StyleSheet, View, KeyboardAvoidingView } from 'react-native';
 
 import Button from '../Button';
 import FormTextInput from '../FormTextInput';

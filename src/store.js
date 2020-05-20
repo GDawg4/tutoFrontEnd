@@ -8,13 +8,13 @@ import {composeWithDevTools} from "redux-devtools-extension";
 import {AsyncStorage} from 'react-native'
 
 import reducer from './reducers'
-import saga from './sagas'
+import mainSaga from './sagas'
 
 export const configureStore = () => {
     const sagaMiddleware = createSagaMiddleware();
     const persistedReducer = persistReducer(
         {
-            key:'rootx',
+            key:'root',
             storage:AsyncStorage,
             whitelist:['auth']
         },
@@ -34,7 +34,7 @@ export const configureStore = () => {
 
     const persistor = persistStore(store);
 
-    //sagaMiddleware.run(saga)
+    sagaMiddleware.run(mainSaga)
 
     return{store, persistor}
 

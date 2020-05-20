@@ -9,17 +9,23 @@ const { store, persistor } = configureStore();
 import Book from "./src/components/Book";
 import LoginScreen from './src/components/LoginScreen';
 
+const { store, persistor } = configureStore()
+// import Books from "./src/components/Books";
+// import * as bookActions from './src/actions/books'
+
+// store.dispatch(bookActions.startFetchingBook())
+
 const instructions = Platform.select({
   ios: `Press Cmd+R to reload,\nCmd+D or shake for dev menu`,
   android: `Double tap R on your keyboard to reload,\nShake or press menu button for dev menu`,
 });
-
 
 const App =  () => (
     <Provider store = {store}>
         <PersistGate loading = {null} persistor = {persistor}>
             {/* <Book title = 'Test1' author='Author1' price='0.99'/> */}
             <LoginScreen />
+            {/* <Books/> */}
         </PersistGate>
     </Provider>
 )

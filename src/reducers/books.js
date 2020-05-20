@@ -114,7 +114,6 @@ const error = (state = null, action) => {
 };
 
 
-
 export default combineReducers({
     byId,
     order,
@@ -122,3 +121,9 @@ export default combineReducers({
     isFetching,
     error,
 });
+
+export const getBookByID = (state, id) => state.byId[id];
+export const getBookOrder = (state) => state.order;
+export const getAllBooks = (state) =>state.order.map(id => getBookByID(state, id));
+export const getSelectedBook = (state) => getBookByID(state, state.selected);
+export const getIsFetching = (state) => state.isFetching;

@@ -1,13 +1,15 @@
 import * as React from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Platform, Alert } from 'react-native';
 import { configureStore } from './src/store'
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import { NativeRouter, Link, Route } from 'react-router-native';
 
 import Book from "./src/components/Book";
-import LoginScreen from './src/components/LoginScreen';
+import LoginForm from './src/components/LoginForm';
+import RegistryForm from './src/components/RegistryForm';
 
-const { store, persistor } = configureStore()
+const { store, persistor } = configureStore();
 // import Books from "./src/components/Books";
 // import * as bookActions from './src/actions/books'
 
@@ -21,9 +23,20 @@ const instructions = Platform.select({
 const App =  () => (
     <Provider store = {store}>
         <PersistGate loading = {null} persistor = {persistor}>
-            {/* <Book title = 'Test1' author='Author1' price='0.99'/> */}
-            <LoginScreen />
-            {/* <Books/> */}
+          <NativeRouter>
+              {/* <Book title = 'Test1' author='Author1' price='0.99'/> */}
+              {/* <Books/> */}
+              <Route 
+                exact 
+                path="/" 
+                render={() => <LoginForm onSubmit={values => Alert.alert('Submitted!', JSON.stringify(values))}/>} 
+              />
+              <Route 
+                exact 
+                path="/registry" 
+                render={() => <RegistryForm onSubmit={values => Alert.alert('Submitted!', JSON.stringify(values))} />} 
+              />
+          </NativeRouter>
         </PersistGate>
     </Provider>
 )

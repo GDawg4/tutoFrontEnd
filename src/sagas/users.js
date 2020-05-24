@@ -30,11 +30,11 @@ function* addUser(action) {
             const { user } = yield response.json();
             yield put(actions.completeAddingUser(omit(user, 'password')));
         } else {
-            const { non_field_errors } = yield response.json();
-            yield put(actions.failAddingUser(non_field_errors[0]));
+            const result = yield response.json();
+            yield put(actions.failAddingUser(result.email ? 'Ya existe un usuario asociado a este correo electrónico' : 'Conexión fallida, compruebe su conexión a internet'));
         }
     } catch (error) {
-        yield put(actions.failAddingUser('Falló la conexión con el API'));
+        yield put(actions.failAddingUser(error.toString()));
     }
 }
   

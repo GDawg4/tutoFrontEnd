@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
-import { StyleSheet, KeyboardAvoidingView, View, Text, ActivityIndicator } from 'react-native';
+import { StyleSheet, KeyboardAvoidingView, View, Text, ActivityIndicator, Alert, Image } from 'react-native';
 import { Link } from 'react-router-native';
+import { AntDesign } from '@expo/vector-icons';
 
 import Button from '../Button';
 import FormTextInput from '../FormTextInput';
@@ -58,7 +59,32 @@ const validate = values => {
 
 const RegistryForm = props => {
 
-    const { submitting, handleSubmit, isAdding } = props;
+    const { submitting, handleSubmit, isAdding, addingError, clearError, success } = props;
+
+    if(success){
+        return(
+            <View style={styles.successMessage}>
+                <AntDesign name="checkcircle" size={64} color={'#428AF8'} style={{marginBottom: 64}}/>
+                <Text>Cuenta creada con exito</Text>
+                <Link to="/"><Text style={{color: '#428AF8'}}>Haz clic aquí para iniciar sesión</Text></Link>
+            </View>
+        )
+    }
+    
+    if(addingError !== null) {
+        clearError()
+        Alert.alert(
+            'Signup Error', 
+            addingError, 
+            [
+                {
+                    text: 'Ok',
+                    style: 'cancel'
+                }                
+            ]
+        )
+    }
+    
 
     return(
         <KeyboardAvoidingView style={isAdding ? [styles.container, styles.authenticating] : styles.container} behavior="padding">
@@ -175,7 +201,18 @@ const styles = StyleSheet.create({
 	},
 	authenticating: {
 		opacity: 0.5,
-	}
+    },
+    successMessage: {
+        flex: 1, 
+        justifyContent: 'center', 
+        alignItems: 'center',
+    },
+    logo: {
+		flex: 1,
+		width: "100%",
+		resizeMode: "contain",
+		alignSelf: "center"
+	},
 });
 
 
@@ -187,6 +224,12 @@ export default reduxForm({
 (connect(
     state => ({
         isAdding: selectors.getIsAdding(state),
+        addingError: selectors.getAddingError(state),
+        success: selectors.isSuccessful(state),
     }),
-    undefined
+    dispatch => ({
+        clearError(){
+            dispatch(userActions.clearUserError())
+        },
+    })
 )(RegistryForm));

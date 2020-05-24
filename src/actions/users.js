@@ -25,3 +25,11 @@ export const failAddingUser = error => ({
         error,
     },
 });
+
+export const clearUserError = () => ({
+    type: types.USER_ERROR_CLEARED,
+})
+
+export const clearUserAddedSuccess = () => ({
+    type: types.USER_CREATED_SUCCESS_CLEARED,
+})

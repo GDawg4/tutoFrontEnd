@@ -98,6 +98,9 @@ const success = (state = null, action) => {
         case types.USER_ADD_STARTED: {
             return false;
         }
+        case types.USER_CREATED_SUCCESS_CLEARED: {
+            return false;
+        }
         default:{
             return state;
         }
@@ -114,7 +117,10 @@ const addingError = (state = null, action) => {
     	}
     	case types.USER_ADD_FAILED: {
       		return action.payload.error;
-    	}
+        }
+        case types.USER_ERROR_CLEARED: {
+            return null;
+        }
 	    default: {
       		return state;
     	}

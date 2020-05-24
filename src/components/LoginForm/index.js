@@ -8,6 +8,7 @@ import Button from '../Button';
 import FormTextInput from '../FormTextInput';
 
 import * as authActions from '../../actions/auth';
+import * as userActions from '../../actions/users';
 import * as selectors from '../../reducers';
 
 import imageLogo from '../../assets/logo3.png';
@@ -25,12 +26,16 @@ const required = value => value !== undefined ? undefined : 'Required';
 
 const LoginForm = props => {
 	
-	const { submitting, handleSubmit, isAuthenticated, isAuthenticating, authenticationFailed } = props;
+	const { submitting, handleSubmit, isAuthenticated, isAuthenticating, authenticationFailed, success, clearSuccess } = props;
 	
 	if (isAuthenticated) {
 		return(
 			<Redirect to="/app"/>
 		)
+	}
+
+	if(success) { 
+		clearSuccess()
 	}
 		
 	if (authenticationFailed && !ALERT.shown) {
@@ -129,7 +134,12 @@ export default reduxForm({
 	state => ({
 		isAuthenticated: selectors.isAuthenticated(state),
 		isAuthenticating: selectors.getIsAuthenticating(state),
-		authenticationFailed: selectors.getAuthenticatingError(state) !== null
+		authenticationFailed: selectors.getAuthenticatingError(state) !== null,
+		success: selectors.isSuccessful(state),
 	}),
-	undefined,
+	dispatch => ({
+		clearSuccess(){
+            dispatch(userActions.clearUserAddedSuccess())
+        },
+	}),
 )(LoginForm));

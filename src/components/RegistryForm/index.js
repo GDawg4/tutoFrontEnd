@@ -1,11 +1,12 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
-import { StyleSheet, KeyboardAvoidingView, View, Text } from 'react-native';
+import { StyleSheet, KeyboardAvoidingView, View, Text, Alert } from 'react-native';
 import { Link } from 'react-router-native';
 
 import Button from '../Button';
 import FormTextInput from '../FormTextInput';
 
+const onSubmit = values => Alert.alert('Submitted!', JSON.stringify(values));
 
 const validate = values => {
     const errors = {};
@@ -43,7 +44,7 @@ const validate = values => {
 
 const RegistryForm = props => {
 
-    const { submitting } = props;
+    const { submitting, handleSubmit } = props;
 
     return(
         <KeyboardAvoidingView style={styles.container} behavior="padding">
@@ -88,7 +89,7 @@ const RegistryForm = props => {
                 placeholder={'Confirm Password'}
                 returnKeyType='done'
             />
-            <Button onPress={props.handleSubmit} label={'Sign Up'} disabled={submitting} />
+            <Button onPress={handleSubmit} label={'Sign Up'} disabled={submitting} />
             <View style={styles.bottomText}>
                 <Text style={styles.styledText}>¿Ya tienes una cuenta? </Text>
                 <Link to="/" underlayColor="#f0f4f7" style={styles.navItem}><Text style={styles.linkText}>Inicia sesión</Text></Link>
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         color: '#428AF8',
         fontSize: 24,
-        marginBottom: 24,
+        marginBottom: '30%',
         textAlign: 'center',
     },
     form: {
@@ -118,7 +119,7 @@ const styles = StyleSheet.create({
         width: "80%",
     },
     navItem: {
-        marginBottom: 16,
+        marginBottom: 0,
     },
     linkText: {
         color: '#428AF8',
@@ -135,5 +136,6 @@ const styles = StyleSheet.create({
 
 export default reduxForm({
     form: 'signUp',
-    validate
+    validate,
+    onSubmit,
 })(RegistryForm);

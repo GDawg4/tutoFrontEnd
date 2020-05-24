@@ -1,18 +1,25 @@
 import * as types from '../types/auth';
 
-export const startLogin = (username, password) => ({
+export const startLogin = (email, password) => ({
     type: types.AUTHENTICATION_STARTED,
-payload: { username, password },
+    payload: { 
+        email, 
+        password,
+    },
 });
 
 export const completeLogin = token => ({
     type: types.AUTHENTICATION_COMPLETED,
-    payload: { token },
+    payload: { 
+        token,
+    },
 });
 
 export const failLogin = error => ({
     type: types.AUTHENTICATION_FAILED,
-    payload: { error },
+    payload: { 
+        error,
+    },
 });
 
 export const logout = () => ({
@@ -21,14 +28,21 @@ export const logout = () => ({
 
 export const startTokenRefresh = () => ({
     type: types.TOKEN_REFRESH_STARTED,
+    payload: {
+        token,
+    }
 });
 
 export const completeTokenRefresh = newToken => ({
     type: types.TOKEN_REFRESH_COMPLETED,
-    payload: { newToken },
+    payload: { 
+        newToken,
+    },
 });
 
 export const failTokenRefresh = error => ({
     type: types.TOKEN_REFRESH_FAILED,
-    payload: { error },
+    payload: { 
+        error,
+    },
 });

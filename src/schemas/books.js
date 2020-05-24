@@ -10,8 +10,8 @@ const authorSchema = new schema.Entity(
 
 export const bookSchema = new schema.Entity(
     'book',{
-        author:authorSchema,
-        publisher:publisherSchema
+        author: authorSchema,
+        publisher: publisherSchema
     }
 );
 

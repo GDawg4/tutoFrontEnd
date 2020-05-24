@@ -14,6 +14,9 @@ const BottomTabs = () => (
             initialRouteName="Home"
             tabBarOptions={{
                 activeTintColor: '#428AF8',
+                labelStyle: {
+                    marginTop: -8,
+                }
             }}
         >
             <Tab.Screen 

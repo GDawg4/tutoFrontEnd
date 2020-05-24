@@ -1,5 +1,5 @@
 import React from 'react';
-import { createStackNavigator, HeaderTitle } from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import Home from '../Home';
 import HomeDetails from '../HomeDetails';

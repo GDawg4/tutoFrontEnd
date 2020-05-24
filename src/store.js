@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import{ persistStore, persistReducer } from 'redux-persist';
+import { persistStore, persistReducer } from 'redux-persist';
 import { composeWithDevTools } from "redux-devtools-extension";
 import { AsyncStorage } from 'react-native';
 import { reducer as form } from 'redux-form';

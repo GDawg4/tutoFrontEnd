@@ -1,15 +1,36 @@
-import {StyleSheet} from "react-native";
+import { StyleSheet } from "react-native";
 
-const width = 50;
+const width = 40;
+
 const styles = StyleSheet.create({
-    bookContainer:{
-        backgroundColor:'#E6E8E6',
-        height: 300,
-        width:`${width}%`,
-        justifyContent:'center',
-        alignContent:'center',
-        marginLeft: `${50-width/2}%`,
-        borderRadius:50
+    bookContainer: {
+        height: 200,
+        width: `${width}%`,
+        borderRadius: 16,
+    },
+    cover: {
+        width: '100%',
+        height: '80%',
+        borderRadius: 16,
+    },
+    bookInfo: {
+        flex: 1,
+        color: 'black',
+        paddingLeft: 8,
+        paddingTop: 4,
+        backgroundColor: 'transparent',
+    },
+    title: {
+        fontSize: 14,
+        fontWeight: '500',
+    },
+    author: {
+        fontSize: 14,
+        fontWeight: '400',
+    },
+    extra: {
+        fontSize: 12,
+        opacity: 0.8,
     }
 })
 

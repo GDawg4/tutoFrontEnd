@@ -1,0 +1,37 @@
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { AntDesign } from '@expo/vector-icons';
+
+import HomeStack from '../HomeStack';
+import Search from '../Search';
+
+const Tab = createBottomTabNavigator()
+
+const BottomTabs = () => (
+    <NavigationContainer>
+        <Tab.Navigator
+            initialRouteName="Home"
+            tabBarOptions={{
+                activeTintColor: '#428AF8',
+            }}
+        >
+            <Tab.Screen 
+                name="Home" 
+                component={HomeStack}
+                options={{
+                    tabBarIcon: ({ color }) => <AntDesign name="home" size={24} color={color} />
+                }}
+            />
+            <Tab.Screen 
+                name="Search" 
+                component={Search}
+                options={{
+                    tabBarIcon: ({ color }) => <AntDesign name="search1" size={24} color={color} />
+                }}
+            />
+        </Tab.Navigator>
+    </NavigationContainer>
+)
+
+export default BottomTabs;

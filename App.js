@@ -8,6 +8,7 @@ import { NativeRouter, Link, Route } from 'react-router-native';
 import Book from "./src/components/Book";
 import LoginForm from './src/components/LoginForm';
 import RegistryForm from './src/components/RegistryForm';
+import BottomTabs from './src/components/BottomTabs';
 
 const { store, persistor } = configureStore();
 // import Books from "./src/components/Books";
@@ -26,7 +27,7 @@ const App =  () => (
           <NativeRouter>
               {/* <Book title = 'Test1' author='Author1' price='0.99'/> */}
               {/* <Books/> */}
-              <Route 
+              {/* <Route 
                 exact 
                 path="/" 
                 render={() => <LoginForm onSubmit={values => Alert.alert('Submitted!', JSON.stringify(values))}/>} 
@@ -36,6 +37,12 @@ const App =  () => (
                 path="/registry" 
                 render={() => <RegistryForm onSubmit={values => Alert.alert('Submitted!', JSON.stringify(values))} />} 
               />
+              <Route 
+                exact 
+                path="/app" 
+                component={BottomTabs} 
+              /> */}
+              <BottomTabs />
           </NativeRouter>
         </PersistGate>
     </Provider>

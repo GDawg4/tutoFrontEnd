@@ -37,4 +37,15 @@ export const getUsers = state => userSelectors.getUsers(state.reducer.users);
 export const getIsAdding = state => userSelectors.getIsAdding(state.reducer.users);
 export const getAddingError = state => userSelectors.getAddingError(state.reducer.users);
 export const isSuccessful = state => userSelectors.isSuccessful(state.reducer.users);
-//TODO add selectors
+
+export const getAuthor = (state, id) => authorSelectors.getAuthor(state.reducer.authors, id);
+export const getAuthors = state => authorSelectors.getAuthors(state.reducer.authors);
+export const getIsAdding = state => authorSelectors.getIsAdding(state.reducer.authors);
+export const getAddingError = state => authorSelectors.getAddingError(state.reducer.authors);
+export const isSuccessful = state => authorSelectors.isSuccessful(state.reducer.authors);
+
+export const getTransaction = (state, id) => transactionsSelectors.getTransaction(state.reducer.transactions, id);
+export const getTransactions = state => transactionsSelectors.getTransactions(state.reducer.transactions);
+export const getIsAdding = state => transactionsSelectors.getIsAdding(state.reducer.transactions);
+export const getAddingError = state => transactionsSelectors.getAddingError(state.reducer.transactions);
+export const isSuccessful = state => transactionsSelectors.isSuccessful(state.reducer.transactions);

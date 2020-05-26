@@ -122,8 +122,8 @@ export default combineReducers({
     error,
 });
 
-export const getAuthorByID = (state, id) => state.byId[id];
-export const getAuthorOrder = (state) => state.order;
-export const getAllAuthors = (state) =>state.order.map(id => getAuthorByID(state, id));
-export const getSelectedAuthor = (state) => getAuthorByID(state, state.selected);
-export const getIsFetching = (state) => state.isFetching;
+export const getAuthor = (state, id) => state.byId[id];
+export const getAuthors = state => state.order.map(id => getAuthor(state, id));
+export const getIsAdding = state => state.isAdding;
+export const getAddingError = state => state.addingError;
+export const isSuccessful = state => state.success;

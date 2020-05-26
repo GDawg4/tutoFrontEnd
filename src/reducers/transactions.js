@@ -123,8 +123,8 @@ export default combineReducers({
     error,
 });
 
-export const getTransactionByID = (state, id) => state.byId[id];
-export const getTransactionOrder = (state) => state.order;
-export const getAllTransactions = (state) =>state.order.map(id => getTransactionByID(state, id));
-export const getSelectedTransaction = (state) => getTransactionByID(state, state.selected);
-export const getIsFetching = (state) => state.isFetching;
+export const getTransaction = (state, id) => state.byId[id];
+export const getTransactions = state => state.order.map(id => getTransaction(state, id));
+export const getIsAdding = state => state.isAdding;
+export const getAddingError = state => state.addingError;
+export const isSuccessful = state => state.success;

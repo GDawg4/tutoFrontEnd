@@ -5415,6 +5415,11 @@ nanomatch@^1.2.9:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
+nativerouter@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/nativerouter/-/nativerouter-1.0.0.tgz#bff0d9e774621c78609dfd5fbd50af7c4af9929a"
+  integrity sha1-v/DZ53RiHHhgnf1fvVCvfEr5kpo=
+
 natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"

@@ -5,11 +5,11 @@ import * as actions from '../actions/books'
 import * as types from '../types/books'
 import * as schemas from '../schemas/books'
 
-const BASE_URL = 'http://127.0.0.1:7000/api/v1';
+const BASE_URL = 'http://127.0.0.1:8000/api/v1';
 
 function* fetchBooks(action) {
     try{
-        const respone = yield call(
+        const response = yield call(
             fetch,
             `${BASE_URL}/book/`,
             {
@@ -19,8 +19,8 @@ function* fetchBooks(action) {
                 },
             }
         );
-        if (respone.status === 200){
-            const jsonResult = yield respone.json();
+        if (response.status === 200){
+            const jsonResult = yield response.json();
             const{
                 entities:{book},
                 result
@@ -31,7 +31,7 @@ function* fetchBooks(action) {
             )
 
         }else{
-            const jsonError = yield respone.json();
+            const jsonError = yield response.json();
             console.log(jsonError)
         }
     }catch (error) {

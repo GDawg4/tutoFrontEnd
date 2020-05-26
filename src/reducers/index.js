@@ -3,11 +3,15 @@ import { combineReducers } from "redux";
 import auth, * as authSelectors from './auth';
 import books, * as bookSelectors from './books';
 import users, * as userSelectors from './users';
+import authors, * as authorSelectors from "./authors";
+import transactions, * as transactionsSelectors from "./transactions";
 
 const reducer = combineReducers({
     auth,
     users,
     books,
+    authors,
+    transactions
 })
 
 export default reducer;
@@ -33,3 +37,4 @@ export const getUsers = state => userSelectors.getUsers(state.reducer.users);
 export const getIsAdding = state => userSelectors.getIsAdding(state.reducer.users);
 export const getAddingError = state => userSelectors.getAddingError(state.reducer.users);
 export const isSuccessful = state => userSelectors.isSuccessful(state.reducer.users);
+//TODO add selectors

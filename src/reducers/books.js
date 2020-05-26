@@ -1,5 +1,6 @@
 import {combineReducers} from 'redux'
 import omit from 'lodash/omit';
+import includes from 'lodash/includes'
 
 import * as types from '../types/books';
 
@@ -47,7 +48,7 @@ const byId = (state = {}, action) => {
 const order = (state = [], action) => {
     switch(action.type) {
         case types.BOOK_FETCH_COMPLETED: {
-            return [...state, ...action.payload.order];
+            return [...state, ...action.payload.order.filter(newElement => !includes(state, newElement))];
         }
         case types.BOOK_ADD_STARTED: {
             return [...state, action.payload.id];

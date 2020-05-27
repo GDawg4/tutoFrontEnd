@@ -1,28 +1,26 @@
 import * as types from '../types/cart'
 
-export const addItemToCart = (itemID, currentUser, quantity) => ({
+export const addItemToCart = (book, quantity) => ({
     type: types.CART_ITEM_ADDED,
     payload:{
-        itemID,
-        currentUser,
+        book,
         quantity
     }
 });
 
-export const changeItemInCart = (itemID, currentUser, quantity) => ({
+export const changeItemInCart = (book, currentUser, quantity) => ({
     type: types.CART_ITEM_MODIFIED,
     payload:{
-        itemID,
+        book,
+        quantity,
         currentUser,
-        quantity
     }
 })
 
-export const removeItemFromCart = (itemID, currentUser) => ({
+export const removeItemFromCart = (book) => ({
     type: types.CART_ITEM_REMOVED,
     payload:{
-        itemID,
-        currentUser
+        book
     }
 });
 

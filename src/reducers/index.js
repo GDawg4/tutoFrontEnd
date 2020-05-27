@@ -1,17 +1,20 @@
 import { combineReducers } from "redux";
+import includes from "lodash/includes";
 
 import auth, * as authSelectors from './auth';
 import books, * as bookSelectors from './books';
 import users, * as userSelectors from './users';
 import authors, * as authorSelectors from "./authors";
 import transactions, * as transactionsSelectors from "./transactions";
+import cart, * as cartSelectors from './cart'
 
 const reducer = combineReducers({
     auth,
     users,
     books,
     authors,
-    transactions
+    transactions,
+    cart
 })
 
 export default reducer;
@@ -49,3 +52,6 @@ export const getTransactions = state => transactionsSelectors.getTransactions(st
 export const getIsAdding = state => transactionsSelectors.getIsAdding(state.reducer.transactions);
 export const getAddingError = state => transactionsSelectors.getAddingError(state.reducer.transactions);
 export const isSuccessful = state => transactionsSelectors.isSuccessful(state.reducer.transactions);
+
+export const getCart = state => cartSelectors.getCart(state.reducer.cart);
+export const getIsBookInCart = (state, book) => cartSelectors.isBookInCart(state.reducer.cart, book);

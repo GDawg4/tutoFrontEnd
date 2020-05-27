@@ -1,11 +1,11 @@
 import { StyleSheet } from "react-native";
 
-const width = 40;
+const width = 100;
 
 const styles = StyleSheet.create({
     bookContainer: {
         height: 200,
-        width: `${width}%`,
+        width: '100%',
         borderRadius: 16,
     },
     cover: {
@@ -31,6 +31,9 @@ const styles = StyleSheet.create({
     extra: {
         fontSize: 12,
         opacity: 0.8,
+    },
+    scrollView:{
+        width:'100%'
     }
 })
 

@@ -1,18 +1,19 @@
 import { combineReducers } from "redux";
-import includes from "lodash/includes";
 
 import auth, * as authSelectors from './auth';
 import books, * as bookSelectors from './books';
 import users, * as userSelectors from './users';
 import authors, * as authorSelectors from "./authors";
+import tags, * as tagSelectors from './tags';
 import transactions, * as transactionsSelectors from "./transactions";
-import cart, * as cartSelectors from './cart'
+import cart, * as cartSelectors from './cart';
 
 const reducer = combineReducers({
     auth,
     users,
     books,
     authors,
+    tags,
     transactions,
     cart
 })
@@ -37,15 +38,21 @@ export const isAuthenticated = state => getAuthToken(state) != null;
 
 export const getUser = (state, id) => userSelectors.getUser(state.reducer.users, id);
 export const getUsers = state => userSelectors.getUsers(state.reducer.users);
-export const getIsAdding = state => userSelectors.getIsAdding(state.reducer.users);
+export const getIsAddingUser = state => userSelectors.getIsAdding(state.reducer.users);
 export const getAddingErrorUser = state => userSelectors.getAddingError(state.reducer.users);
 export const isSuccessfulUser = state => userSelectors.isSuccessful(state.reducer.users);
 
 export const getAuthor = (state, id) => authorSelectors.getAuthor(state.reducer.authors, id);
 export const getAuthors = state => authorSelectors.getAuthors(state.reducer.authors);
-export const getIsAddingAuthor = state => authorSelectors.getIsAdding(state.reducer.authors);
-export const getAddingErrorAuthor = state => authorSelectors.getAddingError(state.reducer.authors);
-export const isSuccessfulAuthor = state => authorSelectors.isSuccessful(state.reducer.authors);
+export const getIsAdding = state => authorSelectors.getIsAdding(state.reducer.authors);
+export const getAddingError = state => authorSelectors.getAddingError(state.reducer.authors);
+export const isSuccessful = state => authorSelectors.isSuccessful(state.reducer.authors);
+export const selectedAutor = state => authorSelectors.selectedAuthor(state.reducer.authors);
+
+export const getTag = (state, id) => tagSelectors.getTag(state.reducer.tags, id);
+export const getTags = state => tagSelectors.getTags(state.reducer.tags);
+export const selectedTag = state => tagSelectors.selectedTag(state.reducer.tags);
+export const isFetchingTags = state => tagSelectors.getIsFetching(state.reducer.tags);
 
 export const getTransaction = (state, id) => transactionsSelectors.getTransaction(state.reducer.transactions, id);
 export const getTransactions = state => transactionsSelectors.getTransactions(state.reducer.transactions);

@@ -6,22 +6,20 @@ import styles from "./styles";
 import * as selectors from '../../reducers'
 import * as bookActions from '../../actions/books'
 
-const Book = ({ book, press, author, navigation }) => (
+const Book = ({ book, press, navigation }) => (
     <View style={styles.bookContainer}>
         <TouchableOpacity onPress={press} style={styles.scrollView}>
-            <View className='book-info'>
-                <Image source={require('../../assets/logo.jpg')} style={styles.cover}/>
-                <View style={styles.bookInfo}>
-                    <Text style={styles.title}>
-                        {book.title}
-                    </Text>
-                    <Text style={styles.author}>
-                        {author.name}
-                    </Text>
-                    <Text style={styles.extra}>
-                        {`$${book.price}`}
-                    </Text>
-                </View>
+            <Image source={require('../../assets/cover.jpg')} style={styles.cover}/>
+            <View style={styles.bookInfo}>
+                <Text numberOfLines={2} style={styles.title}>
+                    {book.title}
+                </Text>
+                <Text style={styles.author}>
+                    {book.author}
+                </Text>
+                <Text style={styles.extra}>
+                    {`Q${book.price}`}
+                </Text>
             </View>
         </TouchableOpacity>
     </View>
@@ -29,11 +27,11 @@ const Book = ({ book, press, author, navigation }) => (
 
 export default connect(
     (state, {book}) => ({
-        author:selectors.getAuthor(state, book.author)
+        author: selectors.getAuthor(state, book.author)
     }),
     (dispatch, {book, navigation}) => ({
         press(){
-            dispatch(bookActions.selectBook(book))
+            dispatch(bookActions.selectBook(book.id))
             navigation.navigate('HomeDetails')
         }
     })

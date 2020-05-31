@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
-import { StyleSheet, KeyboardAvoidingView, View, Text, ActivityIndicator, Alert, Image } from 'react-native';
+import { StyleSheet, KeyboardAvoidingView, View, Text, ActivityIndicator, Alert } from 'react-native';
 import { Link } from 'react-router-native';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -72,6 +72,7 @@ const RegistryForm = props => {
     }
     
     if(addingError !== null) {
+        console.log("ADD ERROR:", addingError);
         clearError()
         Alert.alert(
             'Signup Error', 
@@ -172,7 +173,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         color: '#428AF8',
         fontSize: 24,
-        marginBottom: '20%',
+        marginBottom: '10%',
         textAlign: 'center',
     },
     form: {
@@ -223,9 +224,9 @@ export default reduxForm({
 })
 (connect(
     state => ({
-        isAdding: selectors.getIsAdding(state),
-        addingError: selectors.getAddingError(state),
-        success: selectors.isSuccessful(state),
+        isAdding: selectors.getIsAddingUser(state),
+        addingError: selectors.getAddingErrorUser(state),
+        success: selectors.isSuccessfulUser(state),
     }),
     dispatch => ({
         clearError(){

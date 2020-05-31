@@ -69,7 +69,7 @@ const order = (state = [], action) => {
 const selected = (state = null, action) => {
     switch (action.type) {
         case types.BOOK_SELECTED: {
-            return payload.book
+            return action.payload.id
         }
         case types.BOOK_DESELECTED: {
             return null

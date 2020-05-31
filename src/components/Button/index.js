@@ -2,8 +2,8 @@ import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 
-const Button = ({ label, onPress, disabled }) => (
-    <TouchableOpacity style={[styles.container, disabled ? styles.containerDisabled : styles.containerEnabled]} onPress={onPress} disabled={disabled}>
+const Button = ({ label, onPress, disabled, remove = false }) => (
+    <TouchableOpacity style={[styles.container, disabled ? styles.containerDisabled : styles.containerEnabled, remove ? styles.remove : '']} onPress={onPress} disabled={disabled}>
         <Text style={styles.text}>{label}</Text>
     </TouchableOpacity>
 )
@@ -30,7 +30,10 @@ const styles = StyleSheet.create({
 	    color: '#FFFFFF',
 	    textAlign: "center",
 	    height: 24
-  	}
+	},
+	remove: {
+		backgroundColor: '#F55E64'
+	}
 });
 
 export default Button;

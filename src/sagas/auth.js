@@ -5,19 +5,17 @@ import {
     select,
 } from 'redux-saga/effects';
   
+import * as constants from '../resources/constants';
 import * as actions from '../actions/auth';
 import * as types from '../types/auth';
 import * as selectors from '../reducers';
-  
-  
-const API_BASE_URL = 'http://192.168.1.8:8000/api/v1';
   
   
 function* login(action) {
     try {
         const response = yield call(
             fetch,
-            `${API_BASE_URL}/token-auth/`,
+            `${constants.API_BASE_URL_WEB}/token-auth/`,
             {
                 method: 'POST',
                 body: JSON.stringify(action.payload),
@@ -35,7 +33,7 @@ function* login(action) {
             yield put(actions.failLogin(non_field_errors[0]));
         }
     } catch (error) {
-        yield put(actions.failLogin('Falló horrible la conexión mano'));
+        yield put(actions.failLogin('Error en el login. Compruebe su conexión a internet.'));
     }
 }
   
@@ -54,7 +52,7 @@ function* refreshToken(action) {
         try {
             const response = yield call(
                 fetch,
-                `${API_BASE_URL}/token-refresh/`,
+                `${constants.API_BASE_URL_WEB}/token-refresh/`,
                 {
                     method: 'POST',
                     body: JSON.stringify(action.payload),

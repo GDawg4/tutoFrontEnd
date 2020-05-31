@@ -1,18 +1,26 @@
-import {call, takeEvery, put, race, all, delay, select} from 'redux-saga/effects'
-import {normalize} from 'normalizr'
+import {
+    call, 
+    takeEvery, 
+    put, 
+    race, 
+    all, 
+    delay, 
+    select
+} from 'redux-saga/effects';
+import { normalize } from 'normalizr';
 
-import * as constants from '../resources/constants'
-import * as authorActions from '../actions/authors'
-import * as types from '../types/authors'
-import * as schemas from '../schemas/authors'
-import * as selectors from '../reducers'
+import * as constants from '../resources/constants';
+import * as authorActions from '../actions/authors';
+import * as types from '../types/authors';
+import * as schemas from '../schemas/authors';
+import * as selectors from '../reducers';
 
 
 function* fetchAuthors(action) {
     try{
         const response = yield call(
             fetch,
-            `${constants.API_BASE_URL_ANDROID}/author/`,
+            `${constants.API_BASE_URL_WEB}/author/`,
             {
                 method:'GET',
                 headers:{
@@ -27,18 +35,15 @@ function* fetchAuthors(action) {
                 entities:{author},
                 result
             } = normalize(jsonResult, schemas.authorListSchema);
-            console.log(normalize(jsonResult, schemas.authorListSchema), 'author')
-            console.log('lol1')
             yield put(
                 authorActions.completeFetchingAuthor(author, result)
             )
-
-        }else{
+        } else{
             const jsonError = yield response.json();
-            console.log(jsonError)
+            authorActions.failFetchingAuthor(jsonError);
         }
     }catch (error) {
-        console.log(error)
+        console.log(error.message)
     }
 }
 

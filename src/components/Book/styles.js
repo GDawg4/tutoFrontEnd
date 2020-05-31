@@ -4,21 +4,25 @@ const width = 100;
 
 const styles = StyleSheet.create({
     bookContainer: {
-        height: 200,
-        width: '100%',
+        height: 300,
+        width: 150,
         borderRadius: 16,
+        flex: 1,
+        marginRight: 16,
+        maxWidth: 150,
     },
     cover: {
         width: '100%',
-        height: '80%',
+        height: '85%',
         borderRadius: 16,
+        resizeMode: 'contain'
     },
     bookInfo: {
         flex: 1,
         color: 'black',
+        height: '100%',
         paddingLeft: 8,
-        paddingTop: 4,
-        backgroundColor: 'transparent',
+        paddingTop: 4
     },
     title: {
         fontSize: 14,
@@ -33,7 +37,7 @@ const styles = StyleSheet.create({
         opacity: 0.8,
     },
     scrollView:{
-        width:'100%'
+        width:'100%',
     }
 })
 

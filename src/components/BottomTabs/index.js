@@ -4,7 +4,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AntDesign } from '@expo/vector-icons';
 
 import HomeStack from '../HomeStack';
-import Search from '../Search';
+import SearchStack from '../SearchStack';
+import Cart from '../Cart';
 
 const Tab = createBottomTabNavigator()
 
@@ -28,9 +29,16 @@ const BottomTabs = () => (
             />
             <Tab.Screen 
                 name="Search" 
-                component={Search}
+                component={SearchStack}
                 options={{
                     tabBarIcon: ({ color }) => <AntDesign name="search1" size={24} color={color} />
+                }}
+            />
+            <Tab.Screen
+                name="Cart"
+                component={Cart}
+                options={{
+                    tabBarIcon: ({ color }) => <AntDesign name="shoppingcart" size={24} color={color} />
                 }}
             />
         </Tab.Navigator>

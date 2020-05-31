@@ -1,17 +1,24 @@
-import {call, takeEvery, put, race, all, delay, select} from 'redux-saga/effects'
-import {normalize} from 'normalizr'
+import { 
+    call, 
+    takeEvery, 
+    put, 
+    race, 
+    all, 
+    delay, 
+    select
+} from 'redux-saga/effects';
+import {normalize} from 'normalizr';
 
-import * as actions from '../actions/books'
-import * as types from '../types/books'
-import * as schemas from '../schemas/books'
-
-const BASE_URL = 'http://127.0.0.1:8000/api/v1';
+import * as constants from '../resources/constants';
+import * as actions from '../actions/books';
+import * as types from '../types/books';
+import * as schemas from '../schemas/books';
 
 function* fetchBooks(action) {
     try{
         const response = yield call(
             fetch,
-            `${BASE_URL}/book/`,
+            `${constants.API_BASE_URL_WEB}/book/`,
             {
                 method:'GET',
                 headers:{
@@ -22,7 +29,7 @@ function* fetchBooks(action) {
         if (response.status === 200){
             const jsonResult = yield response.json();
             const{
-                entities:{book},
+                entities: { book },
                 result
             } = normalize(jsonResult, schemas.bookListSchema);
 

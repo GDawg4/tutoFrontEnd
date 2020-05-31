@@ -1,24 +1,18 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Home from '../Home';
-import HomeDetails from '../HomeDetails';
+import Search from '../Search';
 import TagPage from '../TagPage';
 
 const Stack = createStackNavigator();
 
-const HomeStack = () => (
+const SearchStack = () => (
     <Stack.Navigator>
         <Stack.Screen 
-            name="Home" 
-            component={Home}
-        />
-        <Stack.Screen 
-            name="HomeDetails" 
-            component={HomeDetails} 
+            name="Search" 
+            component={Search}
             options={{
-                headerBackTitle: 'Back',
-                headerTitle: null
+                headerShown: false
             }}
         />
         <Stack.Screen
@@ -32,4 +26,4 @@ const HomeStack = () => (
     </Stack.Navigator>
 )
 
-export default HomeStack;
+export default SearchStack;

@@ -27,10 +27,10 @@ const byId = (state = {}, action) => {
             return newState;
         }
         case types.AUTHOR_ADD_COMPLETED: {
-            const { oldId, petOwner } = action.payload;
+            const { oldId, author } = action.payload;
             const newState = omit(state, oldId);
-            newState[petOwner.id] = {
-                ...petOwner,
+            newState[author.id] = {
+                ...author,
                 isConfirmed: true,
             };
             return newState;
@@ -53,8 +53,8 @@ const order = (state = [], action) => {
             return [...state, action.payload.id];
         }
         case types.AUTHOR_ADD_COMPLETED: {
-            const { oldId, petOwner } = action.payload;
-            return state.map(id => id === oldId ? petOwner.id : id);
+            const { oldId, author } = action.payload;
+            return state.map(id => id === oldId ? author.id : id);
         }
         case types.AUTHOR_REMOVE_STARTED: {
             return state.filter(id => id !== action.payload.id);
@@ -68,7 +68,7 @@ const order = (state = [], action) => {
 const selected = (state = null, action) => {
     switch (action.type) {
         case types.AUTHOR_SELECTED: {
-            return payload.author
+            return action.payload.id
         }
         case types.AUTHOR_DESELECTED: {
             return null
@@ -127,3 +127,4 @@ export const getAuthors = state => state.order.map(id => getAuthor(state, id));
 export const getIsAdding = state => state.isAdding;
 export const getAddingError = state => state.addingError;
 export const isSuccessful = state => state.success;
+export const selectedAuthor = state => getAuthor(state, state.selected)

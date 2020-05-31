@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '85%',
         borderRadius: 16,
-        resizeMode: 'contain'
+        resizeMode: 'stretch'
     },
     bookInfo: {
         flex: 1,

@@ -11,7 +11,7 @@ const HomeDetails = ({ navigation, selectedBook, hasBookInCart, addToCart, remov
     return (
         <View style={styles.container}>
             <View style={styles.topContainer}>
-                <Image source={require('../../assets/cover.jpg')} style={styles.bookImage}/>
+                <Image source={{uri: selectedBook.cover_pic}} style={styles.bookImage}/>
                 <View style={styles.bookInfo}>
                     <Text style={styles.title}>{selectedBook.title}</Text>
                     <Text style={styles.author}>{selectedBook.author}</Text>

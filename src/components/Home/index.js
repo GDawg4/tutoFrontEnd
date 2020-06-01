@@ -3,7 +3,6 @@ import { View, ScrollView, Text, StyleSheet, RefreshControl } from 'react-native
 import { connect } from 'react-redux';
 
 import Book from '../Book';
-import Button from '../Button';
 import TagList from '../TagList';
 
 import * as selectors from '../../reducers';

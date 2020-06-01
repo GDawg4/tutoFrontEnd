@@ -44,7 +44,7 @@ const LoginForm = props => {
 	}
 		
 	return (
-		<KeyboardAvoidingView style={isAuthenticating ? [styles.container, styles.authenticating] : styles.container} behavior="padding">
+		<KeyboardAvoidingView style={isAuthenticating ? [styles.container, styles.authenticating] : styles.container} behavior={Platform.OS == "ios" ? "padding" : "height"}>
 			<View style={styles.form}>
 				<Image source={imageLogo} style={styles.logo} />
 					<Field

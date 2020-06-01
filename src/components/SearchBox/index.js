@@ -22,7 +22,7 @@ const SearchBox = props => {
 			{
 				meta.dirty
 				? 
-					<AntDesign style={styles.clearIcon} name="closecircleo" size={20} color={'#BEBEBE'} onPress={() => handlePress()}/>
+					<AntDesign style={styles.clearIcon} name="closecircleo" size={20} color={'#F55E64'} onPress={() => handlePress()}/>
 				:
 					null
 			}

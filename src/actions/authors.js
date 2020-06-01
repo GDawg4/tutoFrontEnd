@@ -63,3 +63,20 @@ export const selectAuthor = (id) => ({
 export const deselectAuthor = () => ({
     type: types.AUTHOR_DESELECTED
 });
+
+export const startFetchingAuthorBooks = () => ({
+    type: types.AUTHOR_BOOKS_FETCH_STARTED,
+});
+export const completeFetchingAuthorBooks = (entities, order) => ({
+    type: types.AUTHOR_BOOKS_FETCH_COMPLETED,
+    payload: {
+        entities,
+        order,
+    },
+});
+export const failFetchingAuthorBooks = error => ({
+    type: types.AUTHOR_BOOKS_FETCH_FAILED,
+    payload: {
+        error,
+    },
+});

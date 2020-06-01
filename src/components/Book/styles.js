@@ -36,9 +36,9 @@ const styles = StyleSheet.create({
         fontSize: 12,
         opacity: 0.8,
     },
-    scrollView:{
+    scrollView: {
         width:'100%',
     }
 })
 
-export default styles
+export default styles;

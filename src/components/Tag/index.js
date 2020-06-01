@@ -17,7 +17,7 @@ const Tag = ({ vertical = false, info, handleOnPress }) => (
 
 const styles = StyleSheet.create({
     tagcontainer: {
-        width: 175,
+        width: 150,
         height: 125,
         borderRadius: 16,
         backgroundColor: utils.getRandomColor(),

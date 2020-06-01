@@ -7,14 +7,14 @@ import Button from '../Button';
 import * as selectors from '../../reducers';
 import * as cartActions from '../../actions/cart';
 
-const HomeDetails = ({ navigation, selectedBook, hasBookInCart, addToCart, removeFromCart }) => {
+const HomeDetails = ({ navigation, selectedBook, author, hasBookInCart, addToCart, removeFromCart }) => {
     return (
         <View style={styles.container}>
             <View style={styles.topContainer}>
                 <Image source={{uri: selectedBook.cover_pic}} style={styles.bookImage}/>
                 <View style={styles.bookInfo}>
                     <Text style={styles.title}>{selectedBook.title}</Text>
-                    <Text style={styles.author}>{selectedBook.author}</Text>
+                    <Text style={styles.author}>{author.name}</Text>
                     <Text style={styles.price}>{`Q${selectedBook.price}`}</Text>
                     <View style={styles.middleContainer}>
                         {!hasBookInCart ? <Button style={[styles.cartButton, styles.add]} label='Add to cart' onPress={() => addToCart()}/>:
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
         width: 150,
         justifyContent: 'center',
         borderRadius: 8,
-        resizeMode: 'contain'
+        resizeMode: 'stretch'
     },
     author: {
         fontSize: 14,
@@ -111,7 +111,8 @@ const styles = StyleSheet.create({
 export default connect(
     state => ({
         selectedBook: selectors.getSelectedBook(state),
-        hasBookInCart: selectors.getIsBookInCart(state, selectors.getSelectedBook(state))
+        hasBookInCart: selectors.getIsBookInCart(state, selectors.getSelectedBook(state)),
+        author: selectors.getAuthor(state, selectors.getSelectedBook(state).author) !== undefined ? selectors.getAuthor(state, selectors.getSelectedBook(state).author) : {name: 'N/A'},
     }),
     dispatch => ({
         addToCart(selectedBook){
@@ -124,6 +125,7 @@ export default connect(
     (stateProps, dispatchProps) => ({
         selectedBook: stateProps.selectedBook,
         hasBookInCart: stateProps.hasBookInCart,
+        author: stateProps.author,
         back: dispatchProps.back,
         addToCart(){
             dispatchProps.addToCart(stateProps.selectedBook)

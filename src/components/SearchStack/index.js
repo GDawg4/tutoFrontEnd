@@ -3,6 +3,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Search from '../Search';
 import TagPage from '../TagPage';
+import HomeDetails from '../HomeDetails';
+import AuthorDetails from '../AuthorDetails';
 
 const Stack = createStackNavigator();
 
@@ -13,6 +15,22 @@ const SearchStack = () => (
             component={Search}
             options={{
                 headerShown: false
+            }}
+        />
+        <Stack.Screen 
+            name="HomeDetails" 
+            component={HomeDetails} 
+            options={{
+                headerBackTitle: 'Back',
+                headerTitle: null
+            }}
+        />
+        <Stack.Screen 
+            name="AuthorDetails" 
+            component={AuthorDetails} 
+            options={{
+                headerBackTitle: 'Back',
+                headerTitle: null
             }}
         />
         <Stack.Screen

@@ -9,7 +9,7 @@ import * as utils from '../../resources/utils';
 const Tag = ({ vertical = false, info, handleOnPress }) => (
     <TouchableOpacity onPress={() => handleOnPress()}>
         <View style={[styles.tagcontainer, vertical ? styles.verticalTag : null]} >
-            <Text style={styles.title}>{info}</Text>
+            <Text style={styles.title}>{info.title}</Text>
         </View>
     </TouchableOpacity>
     

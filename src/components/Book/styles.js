@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
         flex: 1,
         marginRight: 16,
         maxWidth: 150,
+        minWidth: 150
     },
     cover: {
         width: '100%',

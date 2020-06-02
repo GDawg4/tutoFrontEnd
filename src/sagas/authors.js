@@ -21,7 +21,7 @@ function* fetchAuthors(action) {
     try{
         const response = yield call(
             fetch,
-            `${constants.API_BASE_URL_WEB}/author/`,
+            `${constants.API_BASE_URL_ANDROID}/author/`,
             {
                 method:'GET',
                 headers:{

@@ -7,6 +7,8 @@ import authors, * as authorSelectors from "./authors";
 import tags, * as tagSelectors from './tags';
 import transactions, * as transactionsSelectors from "./transactions";
 import cart, * as cartSelectors from './cart';
+import reviews, * as reviewSelectors from './reviews'
+import analysis, * as analysisSelectors from './analysis'
 
 const reducer = combineReducers({
     auth,
@@ -15,12 +17,14 @@ const reducer = combineReducers({
     authors,
     tags,
     transactions,
-    cart
+    cart,
+    reviews,
+    analysis
 })
 
 export default reducer;
 
-export const getBookByID = (state) => bookSelectors.getBookByID(state.reducer.books);
+export const getBookByID = (state, id) => bookSelectors.getBookByID(state.reducer.books, id);
 export const getBookOrder = (state) => bookSelectors.getBookOrder(state.reducer.books);
 export const getAllBooks = (state) => bookSelectors.getAllBooks(state.reducer.books);
 export const getSelectedBook = (state) => bookSelectors.getSelectedBook(state.reducer.books);
@@ -63,3 +67,6 @@ export const isSuccessfulTransaction = state => transactionsSelectors.isSuccessf
 
 export const getCart = state => cartSelectors.getCart(state.reducer.cart);
 export const getIsBookInCart = (state, book) => cartSelectors.isBookInCart(state.reducer.cart, book);
+
+export const getReview = (state, id) => reviewSelectors.getReviewByID(state.reducer.reviews, id)
+export const getAllReviews = (state) => reviewSelectors.getAllReviews(state.reducer.reviews)

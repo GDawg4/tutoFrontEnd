@@ -47,7 +47,8 @@ export const getAuthors = state => authorSelectors.getAuthors(state.reducer.auth
 export const getIsAdding = state => authorSelectors.getIsAdding(state.reducer.authors);
 export const getAddingError = state => authorSelectors.getAddingError(state.reducer.authors);
 export const isSuccessful = state => authorSelectors.isSuccessful(state.reducer.authors);
-export const selectedAutor = state => authorSelectors.selectedAuthor(state.reducer.authors);
+export const selectedAuthor = state => authorSelectors.selectedAuthor(state.reducer.authors);
+export const getAuthorBooks = state => authorSelectors.getAuthorBooks(state.reducer.authors);
 
 export const getTag = (state, id) => tagSelectors.getTag(state.reducer.tags, id);
 export const getTags = state => tagSelectors.getTags(state.reducer.tags);

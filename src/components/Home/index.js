@@ -69,7 +69,7 @@ export default connect(
     state => ({
         allBooks: selectors.getAllBooks(state),
         allTags: selectors.getTags(state),
-        isFetching: selectors.getIsFetchingBooks(state)
+        isFetching: selectors.getIsFetchingBooks(state),
     }),
     dispatch => ({
         onLoad(){

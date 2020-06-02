@@ -13,6 +13,7 @@ import * as constants from '../resources/constants';
 import * as authorActions from '../actions/authors';
 import * as types from '../types/authors';
 import * as schemas from '../schemas/authors';
+import * as bookSchemas from '../schemas/books';
 import * as selectors from '../reducers';
 
 
@@ -53,3 +54,37 @@ export function* watchAuthorsFetch() {
         fetchAuthors
     )
 }
+
+function* fetchAuthorBooks(action) {
+    try{
+        const author_pk = yield select(selectors.selectedAuthor)
+        const response = yield call(
+            fetch,
+            `${constants.API_BASE_URL_WEB}/author/${author_pk.id}/books/`,
+            {
+                method:'GET',
+                headers:{
+                    'Authorization':`${yield select(selectors.getAuthToken)}`,
+                    'Content-Type':'application/json'
+                },
+            }
+        );
+        if (response.status === 200){
+            const jsonResult = yield response.json();
+            const { entities: { book }, result } = normalize(jsonResult, bookSchemas.bookListSchema)
+            yield put(authorActions.completeFetchingAuthorBooks(book, result))
+        } else{
+            const jsonError = yield response.json();
+            yield put(authorActions.failFetchingAuthorBooks(jsonError));
+        }
+    } catch (error) {
+        console.log(error.message)
+    }
+};
+
+export function* watchAuthorBooksFetch() {
+    yield takeEvery(
+        types.AUTHOR_BOOKS_FETCH_STARTED,
+        fetchAuthorBooks
+    )
+};

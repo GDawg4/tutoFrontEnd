@@ -1,4 +1,4 @@
-import {combineReducers} from 'redux'
+import { combineReducers } from 'redux'
 import omit from 'lodash/omit';
 
 import * as types from '../types/authors';
@@ -113,6 +113,26 @@ const error = (state = null, action) => {
     }
 };
 
+const authorBooks = (state = [], action) => {
+    switch (action.type) {
+        case types.AUTHOR_BOOKS_FETCH_COMPLETED: {
+            const { entities, order } = action.payload;
+            const newState = [];
+            order.forEach(id => 
+                newState.push({
+                    ...entities[id],
+                    isConfirmed: true,
+                })
+            )
+
+            return newState;
+        }
+        default: {
+            return state;
+        }
+    }
+}
+
 
 export default combineReducers({
     byId,
@@ -120,6 +140,7 @@ export default combineReducers({
     selected,
     isFetching,
     error,
+    authorBooks
 });
 
 export const getAuthor = (state, id) => state.byId[id];
@@ -127,4 +148,5 @@ export const getAuthors = state => state.order.map(id => getAuthor(state, id));
 export const getIsAdding = state => state.isAdding;
 export const getAddingError = state => state.addingError;
 export const isSuccessful = state => state.success;
-export const selectedAuthor = state => getAuthor(state, state.selected)
+export const selectedAuthor = state => getAuthor(state, state.selected);
+export const getAuthorBooks = state => state.authorBooks;

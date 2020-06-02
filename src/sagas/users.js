@@ -7,6 +7,7 @@ import omit from 'lodash/omit';
   
 import * as actions from '../actions/users';
 import * as types from '../types/users';
+import * as constants from '../resources/constants'
   
   
 const API_BASE_URL = 'http://192.168.1.8:8000/api/v1';
@@ -16,7 +17,7 @@ function* addUser(action) {
     try {
         const response = yield call(
             fetch,
-            `${API_BASE_URL}/reader/`,
+            `${API_BASE_URL_ANDROID}/reader/`,
             {
                 method: 'POST',
                 body: JSON.stringify(action.payload),

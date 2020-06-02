@@ -16,7 +16,7 @@ const Book = ({ book, author, press, navigation, urlComplete=true }) => (
                     {book.title}
                 </Text>
                 <Text style={styles.author}>
-                    {author.name}
+                    {/*{author.name}*/}
                 </Text>
                 <Text style={styles.extra}>
                     {`Q${book.price}`}

@@ -15,7 +15,7 @@ function* login(action) {
     try {
         const response = yield call(
             fetch,
-            `${constants.API_BASE_URL_WEB}/token-auth/`,
+            `${constants.API_BASE_URL_ANDROID}/token-auth/`,
             {
                 method: 'POST',
                 body: JSON.stringify(action.payload),

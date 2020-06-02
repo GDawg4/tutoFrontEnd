@@ -20,7 +20,7 @@ function* fetchTags(action) {
     try {
         const response = yield call(
             fetch,
-            `${constants.API_BASE_URL_WEB}/tag/`,
+            `${constants.API_BASE_URL_ANDROID}/tag/`,
             {
                 method:'GET',
                 headers:{

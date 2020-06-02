@@ -1,12 +1,26 @@
 import React from 'react';
 import { Text, View } from 'react-native';
+import {connect} from 'react-redux'
 
-const Cart = () => {
+import Button from "../Button";
+import BookCart from "../BookCart";
+import * as selectors from '../../reducers'
+
+const Cart = ({booksInCart}) => {
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Cart!</Text>
+            {booksInCart.length === 0 ? <Text>No has agregado libros a tu carro</Text>:
+                booksInCart.map(book=><BookCart book={book}/>)
+            }
+            <Button label={'Checkout'} disabled={false}/>
         </View>
     );
 }
 
-export default Cart;
+export default connect(
+    state => ({
+        booksInCart:selectors.getCart(state).map(book => selectors.getBookByID(state,book))
+    }),
+    undefined
+)
+(Cart);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -6,8 +6,11 @@ import Button from '../Button';
 
 import * as selectors from '../../reducers';
 import * as cartActions from '../../actions/cart';
+import * as reviewActions from '../../actions/reviews'
+import Book from "../Book";
 
-const HomeDetails = ({ navigation, selectedBook, author, hasBookInCart, addToCart, removeFromCart }) => {
+const HomeDetails = ({ navigation, selectedBook, author, hasBookInCart, addToCart, removeFromCart, allBooks, addReview, addAnalysis, fetchTheseReviews }) => {
+    useEffect(fetchTheseReviews, [])
     return (
         <View style={styles.container}>
             <View style={styles.topContainer}>
@@ -26,7 +29,27 @@ const HomeDetails = ({ navigation, selectedBook, author, hasBookInCart, addToCar
             <ScrollView style={styles.bottomContainer}>
                 <Text style={styles.header}>Description</Text>
                 <Text style={styles.parragraph}>Harry Potter crece en la casa de sus tíos, los Dursley, quienes le ocultan su verdadera historia familiar; al cumplir Harry once años de edad, empiezan a llegarle cartas de remitente desconocido, que van aumentando en número a medida que sus tíos no dejan que las abra. Las mismas traen la noticia de que el niño ha sido admitido en el Colegio Hogwarts de Magia y Hechicería, ya que, al igual que sus padres, tiene poderes mágicos. {'\n\n'}Se descubre entonces que los Potter no murieron en un accidente de coche como se le había dicho a Harry, sino que habían sido asesinados en la noche de Halloween por un hechicero tenebroso conocido como lord Voldemort, quien había aterrorizado a la comunidad mágica británica años atrás. Sin embargo, algo ocurrió esa noche: Voldemort consiguió matar al matrimonio Potter pero no pudo asesinar al bebé, perdió su cuerpo y le dejó al niño una cicatriz permanente en forma de rayo en su frente. {'\n\n'}Rubeus Hagrid aparece para llevarse a Harry una noche, cuando los Dursley intentan impedir que parta rumbo al colegio. Más tarde, el hombre ayuda a Harry a comprar sus materiales escolares en el callejón Diagon y allí éste descubre que es famoso entre los magos por haber sobrevivido al intento de homicidio. Posteriormente, el muchacho toma el tren que lo lleva a Hogwarts y allí conoce a Ron Weasley, un chico pelirrojo hijo de magos, y a Hermione Granger, una jovencita de origen muggle con altas aspiraciones académicas. Los tres se hacen amigos y más tarde, durante su año escolar, se ven envueltos en una serie de episodios relacionados con un objeto escondido en las profundidades del edificio: la piedra filosofal, un artefacto con el poder de transmutar los metales en oro y producir el elixir de la vida eterna. Diferentes hechos les hacen suponer que uno de sus profesores, Severus Snape, desea conseguir la piedra para entregársela a Voldemort, con quien el docente estaría confabulado. </Text>
+                <Text style={styles.header}>Others by this author</Text>
+                <ScrollView horizontal={true} style={styles.horizontalScroll}>
+                    {
+                        allBooks.filter(book => book.author === selectedBook.author).length === 0
+                            ?
+                            <Text style={styles.infoMessage}>This author does not have more books</Text>
+                            :
+                            allBooks.filter(book => book.author === selectedBook.author && book.title !== selectedBook.title).map(book =>
+                                <Book key={book.id} book={book} navigation={navigation}/>
+                            )
+                    }
+                </ScrollView>
+                <View>
+                    <Text style={styles.header}>Have you read the book?</Text>
+                    <Button style={styles.half} label='Add review' onPress={() => addReview()}/>
+                    <Button style={styles.half} label='Add analysis' onPress={() => addAnalysis()}/>
+                </View>
                 <Text style={styles.header}>About the author</Text>
+                <ScrollView horizontal={true} style={styles.horizontalScroll}>
+                    {}
+                </ScrollView>
             </ScrollView>
         </View>
     );
@@ -105,7 +128,12 @@ const styles = StyleSheet.create({
     },
     add: {
         color: '#428AF8'
-    }
+    },
+    horizontalScroll: {
+        paddingLeft: 16,
+        flex: 1,
+        flexWrap: 'wrap'
+    },
 })
 
 export default connect(
@@ -113,25 +141,47 @@ export default connect(
         selectedBook: selectors.getSelectedBook(state),
         hasBookInCart: selectors.getIsBookInCart(state, selectors.getSelectedBook(state)),
         author: selectors.getAuthor(state, selectors.getSelectedBook(state).author) !== undefined ? selectors.getAuthor(state, selectors.getSelectedBook(state).author) : {name: 'N/A'},
+        allBooks:selectors.getAllBooks(state),
+        allReviews:selectors.getAllReviews(state)
     }),
-    dispatch => ({
+    (dispatch, {navigation}) => ({
         addToCart(selectedBook){
             dispatch(cartActions.addItemToCart(selectedBook, 1))
         },
         removeFromCart(selectedBook){
             dispatch(cartActions.removeItemFromCart(selectedBook))
         },
+        addReview(){
+            navigation.navigate('WriteReview')
+        },
+        addAnalysis(){
+            navigation.navigate('WriteAnalysis')
+        },
+        fetchTheseReviews(book){
+            dispatch(reviewActions.startFetchingReviewForBook(book))
+        }
     }),
     (stateProps, dispatchProps) => ({
         selectedBook: stateProps.selectedBook,
         hasBookInCart: stateProps.hasBookInCart,
         author: stateProps.author,
         back: dispatchProps.back,
+        allBooks:stateProps.allBooks,
+        allReviews:stateProps.allReviews,
         addToCart(){
             dispatchProps.addToCart(stateProps.selectedBook)
         },
         removeFromCart(){
             dispatchProps.removeFromCart(stateProps.selectedBook)
+        },
+        addReview(){
+            dispatchProps.addReview()
+        },
+        addAnalysis(){
+            dispatchProps.addAnalysis()
+        },
+        fetchTheseReviews(){
+            dispatchProps.fetchTheseReviews(stateProps.selectedBook.id)
         }
     })
 )(HomeDetails);

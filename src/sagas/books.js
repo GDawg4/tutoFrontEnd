@@ -18,7 +18,7 @@ function* fetchBooks(action) {
     try{
         const response = yield call(
             fetch,
-            `${constants.API_BASE_URL_WEB}/book/`,
+            `${constants.API_BASE_URL_ANDROID}/book/`,
             {
                 method:'GET',
                 headers:{

@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 	    marginBottom: 20,
 	    paddingVertical: 12,
 	    borderRadius: 4,
-	    borderWidth: StyleSheet.hairlineWidth,
+	    borderWidth: 2,
 	    borderColor: "rgba(255,255,255,0.7)"
   	},
   	containerDisabled: {

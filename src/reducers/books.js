@@ -28,10 +28,10 @@ const byId = (state = {}, action) => {
             return newState;
         }
         case types.BOOK_ADD_COMPLETED: {
-            const { oldId, petOwner } = action.payload;
+            const { oldId, book } = action.payload;
             const newState = omit(state, oldId);
-            newState[petOwner.id] = {
-                ...petOwner,
+            newState[book.id] = {
+                ...book,
                 isConfirmed: true,
             };
             return newState;
@@ -54,8 +54,8 @@ const order = (state = [], action) => {
             return [...state, action.payload.id];
         }
         case types.BOOK_ADD_COMPLETED: {
-            const { oldId, petOwner } = action.payload;
-            return state.map(id => id === oldId ? petOwner.id : id);
+            const { oldId, book } = action.payload;
+            return state.map(id => id === oldId ? book.id : id);
         }
         case types.BOOK_REMOVE_STARTED: {
             return state.filter(id => id !== action.payload.id);

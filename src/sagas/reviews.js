@@ -97,7 +97,7 @@ function* fetchReviewForBook(action){
             }
         }
     }catch (error) {
-        console.log(error)
+        console.log(error.message)
     }
 }
 
@@ -114,8 +114,7 @@ function* addReview(action) {
 
         if (isAuth) {
             const token = yield select(selectors.getAuthToken);
-            const userId = yield select(selectors.getAuthUserId);
-
+            const userName = yield select(selectors.getAuthUsername);
             const response = yield call(
                 fetch,
                 `${constants.API_BASE_URL_ANDROID}/review/`,
@@ -123,7 +122,7 @@ function* addReview(action) {
                     method: 'POST',
                     body: JSON.stringify({
                         ...action.payload,
-                        'reviewer': userId
+                        'reviewer':userName
                     }),
                     headers:{
                         'Content-Type': 'application/json',
@@ -134,6 +133,7 @@ function* addReview(action) {
 
             if (response.status === 201) {
                 const jsonResult = yield response.json();
+                console.log(jsonResult)
                 yield put(
                     actions.completeAddingReview(
                         action.payload.id,
@@ -155,4 +155,38 @@ export function* watchAddReview() {
         types.REVIEW_ADD_STARTED,
         addReview,
     );
+}
+
+function* removeReview(action) {
+    try{
+        const isAuth = yield select(selectors.isAuthenticated)
+        if(isAuth){
+            const token = yield select(selectors.getAuthToken)
+            const response = yield call(
+                fetch,
+                `${constants.API_BASE_URL_ANDROID}/note/${action.payload.id}/`,
+                {
+                    method:'DELETE',
+                    headers:{
+                        'Content-Type': 'application/json',
+                        'Authorization': `JWT ${token}`,
+                    },
+                }
+            )
+            if(response.status === 204){
+                yield put(
+                    actions.completeRemovingReview(action.payload)
+                )
+            }
+        }
+    }catch (error) {
+        console.log(error)
+    }
+}
+
+export function* watchRemoveReview() {
+    yield takeEvery(
+        types.REVIEW_REMOVE_STARTED,
+        removeReview
+    )
 }

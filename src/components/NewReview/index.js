@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { connect } from 'react-redux';
-import { reduxForm, Field, formValueSelector, reset } from 'redux-form';
+import React from 'react'
+import {View, Text, StyleSheet} from 'react-native'
+import {connect} from 'react-redux'
+import {reduxForm, Field, formValueSelector, reset} from 'redux-form';
 
 import TitleBox from "../TitleBox";
 import ReviewBox from "../ReviewBox";

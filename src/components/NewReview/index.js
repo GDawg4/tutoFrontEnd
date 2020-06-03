@@ -2,6 +2,7 @@ import React from 'react'
 import {View, Text, StyleSheet} from 'react-native'
 import {connect} from 'react-redux'
 import {reduxForm, Field, clearFields, formValueSelector, reset} from 'redux-form';
+import { v4 as uuidv4 } from 'uuid';
 
 import * as selectors from '../../reducers'
 import * as reviewActions from '../../actions/reviews'
@@ -121,8 +122,8 @@ export default reduxForm({
         selectedBook:stateProps.selectedBook,
         currentScore:stateProps.currentScore,
         submitReview(){
-            console.log('here')
             dispatchProps.submitReview({
+                'id':uuidv4(),
                 "title": stateProps.currentTitle,
                 "content": stateProps.currentContent,
                 "score": stateProps.currentScore,

@@ -8,7 +8,7 @@ import * as types from '../types/reviews';
 
 const byId = (state = {}, action) => {
     switch(action.type) {
-        case types.REVIEW_FETCH_COMPLETED || types.REVIEW_FOR_BOOK_FETCH_COMPLETED: {
+        case types.REVIEW_FETCH_COMPLETED: {
             const { entities, order } = action.payload;
             const newState = { ...state };
             order.forEach(id => {
@@ -48,7 +48,7 @@ const byId = (state = {}, action) => {
 
 const order = (state = [], action) => {
     switch(action.type) {
-        case types.REVIEW_FETCH_COMPLETED || types.REVIEW_FOR_BOOK_FETCH_COMPLETED: {
+        case types.REVIEW_FETCH_COMPLETED: {
             return [...state, ...action.payload.order.filter(newElement => !includes(state, newElement))];
         }
         case types.REVIEW_ADD_STARTED: {

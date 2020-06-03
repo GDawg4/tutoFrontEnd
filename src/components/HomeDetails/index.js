@@ -8,8 +8,9 @@ import * as selectors from '../../reducers';
 import * as cartActions from '../../actions/cart';
 import * as reviewActions from '../../actions/reviews'
 import Book from "../Book";
+import Review from "../Review";
 
-const HomeDetails = ({ navigation, selectedBook, author, hasBookInCart, addToCart, removeFromCart, allBooks, addReview, addAnalysis, fetchTheseReviews }) => {
+const HomeDetails = ({ navigation, selectedBook, author, hasBookInCart, addToCart, removeFromCart, allBooks, addReview, allReviews, addAnalysis, fetchTheseReviews, ownsBook, notes }) => {
     useEffect(fetchTheseReviews, [])
     return (
         <View style={styles.container}>
@@ -20,7 +21,7 @@ const HomeDetails = ({ navigation, selectedBook, author, hasBookInCart, addToCar
                     <Text style={styles.author}>{author.name}</Text>
                     <Text style={styles.price}>{`Q${selectedBook.price}`}</Text>
                     <View style={styles.middleContainer}>
-                        {!hasBookInCart ? <Button style={[styles.cartButton, styles.add]} label='Add to cart' onPress={() => addToCart()}/>:
+                        {ownsBook ? <Button style={[styles.cartButton, styles.add]} label='See notes' onPress={notes}/>:!hasBookInCart ? <Button style={[styles.cartButton, styles.add]} label='Add to cart' onPress={() => addToCart()}/>:
                             <Button remove={true} style={[styles.cartButton, styles.remove]} label='Remove from cart' onPress={() => removeFromCart()}/>
                         }
                     </View>
@@ -41,15 +42,17 @@ const HomeDetails = ({ navigation, selectedBook, author, hasBookInCart, addToCar
                             )
                     }
                 </ScrollView>
+                <Text style={styles.header}>Check out these reviews</Text>
+                <ScrollView horizontal={true} style={styles.horizontalScroll}>
+                    {allReviews.length === 0 ? <Text>No one has written about this book. Be the first one</Text>:
+                    allReviews.map(review => <Review key={review.id} review={review}/>)}
+                </ScrollView>
                 <View>
                     <Text style={styles.header}>Have you read the book?</Text>
-                    <Button style={styles.half} label='Add review' onPress={() => addReview()}/>
-                    <Button style={styles.half} label='Add analysis' onPress={() => addAnalysis()}/>
+                    <Button label='Add review' onPress={() => addReview()}/>
+                    <Button label='Add analysis' onPress={() => addAnalysis()}/>
                 </View>
                 <Text style={styles.header}>About the author</Text>
-                <ScrollView horizontal={true} style={styles.horizontalScroll}>
-                    {}
-                </ScrollView>
             </ScrollView>
         </View>
     );
@@ -129,6 +132,9 @@ const styles = StyleSheet.create({
     add: {
         color: '#428AF8'
     },
+    notes:{
+        color:'yellow'
+    },
     horizontalScroll: {
         paddingLeft: 16,
         flex: 1,
@@ -146,7 +152,7 @@ export default connect(
     }),
     (dispatch, {navigation}) => ({
         addToCart(selectedBook){
-            dispatch(cartActions.addItemToCart(selectedBook, 1))
+            dispatch(cartActions.addItemToCart(selectedBook))
         },
         removeFromCart(selectedBook){
             dispatch(cartActions.removeItemFromCart(selectedBook))
@@ -159,6 +165,9 @@ export default connect(
         },
         fetchTheseReviews(book){
             dispatch(reviewActions.startFetchingReviewForBook(book))
+        },
+        notes(){
+            navigation.navigate('Notes')
         }
     }),
     (stateProps, dispatchProps) => ({
@@ -168,6 +177,8 @@ export default connect(
         back: dispatchProps.back,
         allBooks:stateProps.allBooks,
         allReviews:stateProps.allReviews,
+        //TODO: Oportunidad para otra saga:
+        ownsBook:false,
         addToCart(){
             dispatchProps.addToCart(stateProps.selectedBook)
         },
@@ -182,6 +193,9 @@ export default connect(
         },
         fetchTheseReviews(){
             dispatchProps.fetchTheseReviews(stateProps.selectedBook.id)
+        },
+        notes(){
+            dispatchProps.notes()
         }
     })
 )(HomeDetails);

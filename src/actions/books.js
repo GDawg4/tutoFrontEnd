@@ -36,23 +36,6 @@ export const failAddingBook = (oldId, error) => ({
     },
 });
 
-export const startRemovingBook = id => ({
-    type: types.BOOK_REMOVE_STARTED,
-    payload: {
-        id,
-    },
-});
-export const completeRemovingBook = () => ({
-    type: types.BOOK_REMOVE_COMPLETED,
-});
-export const failRemovingBook = (id, error) => ({
-    type: types.BOOK_REMOVE_FAILED,
-    payload: {
-        id,
-        error,
-    },
-});
-
 export const selectBook = (id) => ({
     type: types.BOOK_SELECTED,
     payload: {

@@ -9,6 +9,7 @@ import * as selectors from '../../reducers';
 import * as bookActions from '../../actions/books';
 import * as authorActions from '../../actions/authors';
 import * as tagActions from '../../actions/tags';
+import * as cartActions from '../../actions/cart'
 
 const Home = ({ navigation, onLoad, allBooks, allTags, isFetching }) => {
     useEffect(onLoad, [])

@@ -9,6 +9,7 @@ import transactions, * as transactionsSelectors from "./transactions";
 import cart, * as cartSelectors from './cart';
 import reviews, * as reviewSelectors from './reviews'
 import analysis, * as analysisSelectors from './analysis'
+import notes, * as notesSelectors from './notes'
 
 const reducer = combineReducers({
     auth,
@@ -19,6 +20,7 @@ const reducer = combineReducers({
     transactions,
     cart,
     reviews,
+    notes,
     analysis
 })
 
@@ -36,6 +38,7 @@ export const getAuthenticatingError = state => authSelectors.getAuthenticatingEr
 export const getAuthUserId = state => authSelectors.getAuthUserId(state.reducer.auth);
 export const getAuthExpiration = state => authSelectors.getAuthExpiration(state.reducer.auth);
 export const getAuthUsername = state => authSelectors.getAuthUsername(state.reducer.auth);
+export const getAuthUserName = state => authSelectors.getAuthUserName(state.reducer.auth)
 export const getIsRefreshingToken = state => authSelectors.getIsRefreshingToken(state.reducer.auth);
 export const getRefreshingError = state => authSelectors.getRefreshingError(state.reducer.auth);
 export const isAuthenticated = state => getAuthToken(state) != null;
@@ -67,6 +70,14 @@ export const isSuccessfulTransaction = state => transactionsSelectors.isSuccessf
 
 export const getCart = state => cartSelectors.getCart(state.reducer.cart);
 export const getIsBookInCart = (state, book) => cartSelectors.isBookInCart(state.reducer.cart, book);
+export const getIsCheckingUser = state => cartSelectors.getIsCheckingUser(state.reducer.cart)
+export const getUserExists = state => cartSelectors.getUserExists(state.reducer.cart)
 
 export const getReview = (state, id) => reviewSelectors.getReviewByID(state.reducer.reviews, id)
 export const getAllReviews = (state) => reviewSelectors.getAllReviews(state.reducer.reviews)
+
+export const getNoteByID = (state, id) => notesSelectors.getNoteByID(state.reducer.notes, id);
+export const getNoteOrder = (state) => notesSelectors.getNoteOrder(state.reducer.notes);
+export const getAllNotes = (state) => notesSelectors.getAllNotes(state.reducer.notes);
+export const getSelectedNote = (state) => notesSelectors.getSelectedNote(state.reducer.notes);
+export const getIsFetchingNotes = (state) => notesSelectors.getIsFetching(state.reducer.notes);

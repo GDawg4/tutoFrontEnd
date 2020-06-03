@@ -135,7 +135,7 @@ export default reduxForm({
 		isAuthenticated: selectors.isAuthenticated(state),
 		isAuthenticating: selectors.getIsAuthenticating(state),
 		authenticationFailed: selectors.getAuthenticatingError(state) !== null,
-		success: selectors.isSuccessful(state),
+		success: selectors.isSuccessfulUser(state),
 	}),
 	dispatch => ({
 		clearSuccess(){

@@ -13,6 +13,7 @@ const SearchBox = props => {
 				selectionColor={'#428AF8'}
 				placeholderTextColor={'#BEBEBE'}
 				autoCapitalize={'none'}
+				autoCorrect={false}
 				onChangeText={input.onChange}
 				onBlur={input.onBlur}
 				onFocus={input.onFocus}

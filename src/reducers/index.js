@@ -7,8 +7,9 @@ import authors, * as authorSelectors from "./authors";
 import tags, * as tagSelectors from './tags';
 import transactions, * as transactionsSelectors from "./transactions";
 import cart, * as cartSelectors from './cart';
-import reviews, * as reviewSelectors from './reviews'
-import analysis, * as analysisSelectors from './analysis'
+import reviews, * as reviewSelectors from './reviews';
+import analysis, * as analysisSelectors from './analysis';
+import publishers, * as publisherSelectors from './publishers';
 
 const reducer = combineReducers({
     auth,
@@ -19,7 +20,8 @@ const reducer = combineReducers({
     transactions,
     cart,
     reviews,
-    analysis
+    analysis,
+    publishers,
 })
 
 export default reducer;
@@ -36,6 +38,7 @@ export const getAuthenticatingError = state => authSelectors.getAuthenticatingEr
 export const getAuthUserId = state => authSelectors.getAuthUserId(state.reducer.auth);
 export const getAuthExpiration = state => authSelectors.getAuthExpiration(state.reducer.auth);
 export const getAuthUsername = state => authSelectors.getAuthUsername(state.reducer.auth);
+export const isSuccessful = state => authorSelectors.isSuccessful(state.reducer.authors);
 export const getIsRefreshingToken = state => authSelectors.getIsRefreshingToken(state.reducer.auth);
 export const getRefreshingError = state => authSelectors.getRefreshingError(state.reducer.auth);
 export const isAuthenticated = state => getAuthToken(state) != null;
@@ -50,7 +53,6 @@ export const getAuthor = (state, id) => authorSelectors.getAuthor(state.reducer.
 export const getAuthors = state => authorSelectors.getAuthors(state.reducer.authors);
 export const getIsAdding = state => authorSelectors.getIsAdding(state.reducer.authors);
 export const getAddingError = state => authorSelectors.getAddingError(state.reducer.authors);
-export const isSuccessful = state => authorSelectors.isSuccessful(state.reducer.authors);
 export const selectedAuthor = state => authorSelectors.selectedAuthor(state.reducer.authors);
 export const getAuthorBooks = state => authorSelectors.getAuthorBooks(state.reducer.authors);
 
@@ -68,5 +70,11 @@ export const isSuccessfulTransaction = state => transactionsSelectors.isSuccessf
 export const getCart = state => cartSelectors.getCart(state.reducer.cart);
 export const getIsBookInCart = (state, book) => cartSelectors.isBookInCart(state.reducer.cart, book);
 
-export const getReview = (state, id) => reviewSelectors.getReviewByID(state.reducer.reviews, id)
-export const getAllReviews = (state) => reviewSelectors.getAllReviews(state.reducer.reviews)
+export const getReview = (state, id) => reviewSelectors.getReviewByID(state.reducer.reviews, id);
+export const getAllReviews = (state) => reviewSelectors.getAllReviews(state.reducer.reviews);
+
+export const getPublisher = (state, id) => publisherSelectors.getPublisher(state.reducer.publishers, id);
+export const getPublishers = state => publisherSelectors.getPublishers(state.reducer.publishers);
+export const selectedPublisher = state => publisherSelectors.selectedPublisher(state.reducer.publishers, state.selected);
+export const getPublisherBooks = state => publisherSelectors.getPublisherBooks(state.reducer.publishers);
+export const isFetchingPublishers = state => publisherSelectors.isFetching(state.reducer.publishers);

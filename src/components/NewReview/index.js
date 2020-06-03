@@ -1,24 +1,24 @@
-import React from 'react'
-import {View, Text, StyleSheet} from 'react-native'
-import {connect} from 'react-redux'
-import {reduxForm, Field, clearFields, formValueSelector, reset} from 'redux-form';
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
+import { reduxForm, Field, formValueSelector, reset } from 'redux-form';
 
-import * as selectors from '../../reducers'
-import * as reviewActions from '../../actions/reviews'
 import TitleBox from "../TitleBox";
 import ReviewBox from "../ReviewBox";
 import Button from "../Button";
 import SliderBox from "../SliderBox";
-import {sub} from "react-native-reanimated";
 
-const NewReview = ({navigation, selectedBook, submitReview, currentScore})=>(
+import * as selectors from '../../reducers';
+import * as reviewActions from '../../actions/reviews';
+
+
+const NewReview = ({ navigation, selectedBook, submitReview, currentScore })=>(
     <View style={styles.container}>
         <Text style={styles.header}>{selectedBook.title}</Text>
         <Field
             component={TitleBox}
             name={'title'}
             placeholder={'Give your review a title'}
-            multiline={true}
             autoCapitalize='words'
             returnKeyType='done'/>
         <Text style={styles.headerTwo}>What did you think about the book?</Text>
@@ -35,7 +35,9 @@ const NewReview = ({navigation, selectedBook, submitReview, currentScore})=>(
             max={10}
             step={1}
         />
-        <Button remove={false} label={'Submit'} disabled={false} onPress={submitReview}/>
+        <View style={styles.buttonContainer}>
+           <Button remove={false} label={'Submit'} disabled={false} onPress={submitReview}/>
+        </View>
     </View>
 )
 
@@ -87,6 +89,10 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         width: '100%'
     },
+    buttonContainer: {
+        marginTop: 32,
+        width: '90%'
+    },
     infoMessage: {
         alignSelf: 'flex-start',
         color: '#BEBEBE',
@@ -104,10 +110,10 @@ export default reduxForm({
 })
 (connect(
     state => ({
-        selectedBook:selectors.getSelectedBook(state),
-        currentTitle:titleValue(state, 'title'),
-        currentContent:titleValue(state, 'review'),
-        currentScore:titleValue(state, 'rating')
+        selectedBook: selectors.getSelectedBook(state),
+        currentTitle: titleValue(state, 'title'),
+        currentContent: titleValue(state, 'review'),
+        currentScore: titleValue(state, 'rating')
     }),
     dispatch =>({
         submitReview(review){
@@ -118,10 +124,9 @@ export default reduxForm({
         }
     }),
     (stateProps, dispatchProps, {navigation})=>({
-        selectedBook:stateProps.selectedBook,
-        currentScore:stateProps.currentScore,
+        selectedBook: stateProps.selectedBook,
+        currentScore: stateProps.currentScore,
         submitReview(){
-            console.log('here')
             dispatchProps.submitReview({
                 "title": stateProps.currentTitle,
                 "content": stateProps.currentContent,

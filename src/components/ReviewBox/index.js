@@ -11,14 +11,13 @@ const ReviewBox = props => {
                 {...inputProps}
                 selectionColor={'#428AF8'}
                 placeholderTextColor={'#BEBEBE'}
-                autoCapitalize={'none'}
+                autoCapitalize={'sentences'}
                 onChangeText={input.onChange}
                 onBlur={input.onBlur}
                 onFocus={input.onFocus}
                 value={input.value}
                 style={styles.input}
                 multiline = {true}
-                numberOfLines = {10}
             />
         </View>
     );
@@ -30,27 +29,24 @@ const styles = StyleSheet.create({
         height: 500,
         marginBottom: 16,
         paddingLeft: 0,
-        paddingRight: 10,
+        paddingRight: 16,
         paddingTop: 16,
-        overflow:'scroll'
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'left',
+        width: '100%'
     },
     inputContainer: {
         width: '90%',
-        height: '60%',
+        overflow:'scroll',
+        height: 250,
         borderRadius: 8,
         borderWidth: 2,
-        flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
         borderColor: '#BEBEBE',
         paddingLeft: '5%',
         marginBottom: 10
-    },
-    searchIcon: {
-        paddingHorizontal: 10,
-    },
-    clearIcon: {
-        paddingHorizontal: 10,
     },
 });
 

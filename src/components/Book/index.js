@@ -7,7 +7,7 @@ import * as selectors from '../../reducers';
 import * as bookActions from '../../actions/books';
 import * as constants from '../../resources/constants';
 
-const Book = ({ book, author, press, navigation, urlComplete=true }) => (
+const Book = ({ book, press, navigation, urlComplete=true }) => (
     <View style={styles.bookContainer}>
         <TouchableOpacity onPress={press} style={styles.scrollView}>
             <Image source={{uri: urlComplete ? book.cover_pic : constants.MEDIA_BASE_URL+book.cover_pic}} style={styles.cover}/>
@@ -16,7 +16,7 @@ const Book = ({ book, author, press, navigation, urlComplete=true }) => (
                     {book.title}
                 </Text>
                 <Text style={styles.author}>
-                    {/*{author.name}*/}
+                    {book.author}
                 </Text>
                 <Text style={styles.extra}>
                     {`Q${book.price}`}
@@ -27,9 +27,7 @@ const Book = ({ book, author, press, navigation, urlComplete=true }) => (
 );
 
 export default connect(
-    (state, { book }) => ({
-        author: selectors.getAuthor(state, book.author)
-    }),
+    undefined,
     (dispatch, { book, navigation }) => ({
         press(){
             dispatch(bookActions.selectBook(book.id))

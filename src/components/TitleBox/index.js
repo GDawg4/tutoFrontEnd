@@ -41,12 +41,6 @@ const styles = StyleSheet.create({
         paddingLeft: '5%',
         marginBottom: 10
     },
-    searchIcon: {
-        paddingHorizontal: 10,
-    },
-    clearIcon: {
-        paddingHorizontal: 10,
-    },
 });
 
 export default TitleBox

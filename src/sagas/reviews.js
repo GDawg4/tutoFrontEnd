@@ -111,9 +111,11 @@ export function* watchFetchReviewForBook() {
 function* addReview(action) {
     try {
         const isAuth = yield select(selectors.isAuthenticated);
+
         if (isAuth) {
             const token = yield select(selectors.getAuthToken);
             const userId = yield select(selectors.getAuthUserId);
+
             const response = yield call(
                 fetch,
                 `${constants.API_BASE_URL_ANDROID}/review/`,
@@ -121,7 +123,7 @@ function* addReview(action) {
                     method: 'POST',
                     body: JSON.stringify({
                         ...action.payload,
-                        'reviewer':userId
+                        'reviewer': userId
                     }),
                     headers:{
                         'Content-Type': 'application/json',
@@ -139,11 +141,12 @@ function* addReview(action) {
                     ),
                 );
             } else {
-                console.log('nel')
+                const jsonError = yield response.json()
+                yield put(actions.failAddingReview(jsonError))
             }
         }
     } catch (error) {
-        console.log("ERROR", error)
+        console.log("ERROR", error.message)
     }
 }
 

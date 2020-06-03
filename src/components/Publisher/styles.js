@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-    authorContainer: {
+    publisherContainer: {
         height: 200,
         width: 150,
         flex: 1,
@@ -9,13 +9,13 @@ const styles = StyleSheet.create({
         maxWidth: 150,
         alignItems: 'center',
     },
-    authorPic: {
+    publisherPic: {
         height: 150,
         width: 150,
         resizeMode: 'cover',
         borderRadius: 75,
     },
-    auhtorInfo: {
+    publisherInfo: {
         color: 'black',
         height: '100%',
         marginTop: 16
@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: '500',
         textAlign: 'center',
-        paddingTop: 8
     },
 });
 

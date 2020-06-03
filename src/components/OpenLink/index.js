@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
-import { Alert, Button, Linking, StyleSheet, View } from "react-native";
+import { Alert, Button, Linking } from "react-native";
 
-const OpenURLButton = ({ url }) => {
+const OpenLink = ({ url, title }) => {
   const handlePress = useCallback(async () => {
     const supported = await Linking.canOpenURL(url);
 
@@ -12,5 +12,7 @@ const OpenURLButton = ({ url }) => {
     }
   }, [url]);
 
-  return <Button title={children} onPress={handlePress} />;
+  return <Button title={title} onPress={handlePress} />;
 };
+
+export default OpenLink;

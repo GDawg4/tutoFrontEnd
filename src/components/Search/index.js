@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm, formValueSelector, clearFields } from 'redux-form';
 import { Text, View, StyleSheet, ScrollView, RefreshControl } from 'react-native';
@@ -9,14 +9,17 @@ import SearchBox from '../SearchBox';
 import Tag from '../Tag';
 import Book from '../Book';
 import AuthorList from '../AuthorList';
+import PublisherList from '../PublisherList';
 
 import * as selectors from '../../reducers';
 import * as bookActions from '../../actions/books';
 import * as authorActions from '../../actions/authors';
 import * as tagActions from '../../actions/tags';
+import * as publisherActions from '../../actions/publishers';
 
 
-const Search = ({ navigation, filter, allTags, allBooks, allAuthors, handlePress, isFetching, onLoad }) => {
+const Search = ({ navigation, filter, allTags, allBooks, allAuthors, allPubs, handlePress, isFetching, onLoad }) => {
+    useEffect(onLoad, [])
 
     return (
         <View style={styles.container}>
@@ -68,6 +71,7 @@ const Search = ({ navigation, filter, allTags, allBooks, allAuthors, handlePress
                             <Text style={styles.headerTwo}>Authors</Text>
                             <AuthorList authors={allAuthors} filter={filter} navigation={navigation}/>
                             <Text style={styles.headerTwo}>Publishers</Text>
+                            <PublisherList publishers={allPubs} filter={filter} navigation={navigation}/>
                         </View>
                 }
             </ScrollView>
@@ -143,6 +147,7 @@ export default reduxForm({
         allTags: selectors.getTags(state),
         allBooks: selectors.getAllBooks(state),
         allAuthors: selectors.getAuthors(state),
+        allPubs: selectors.getPublishers(state),
         isFetching: selectors.getIsFetchingBooks(state),
     }),
     dispatch => ({
@@ -153,6 +158,7 @@ export default reduxForm({
             dispatch(authorActions.startFetchingAuthor())
             dispatch(bookActions.startFetchingBook())
             dispatch(tagActions.startFetchingTags())
+            dispatch(publisherActions.startFetchingPublisher())
         }
     }),
 )(Search))

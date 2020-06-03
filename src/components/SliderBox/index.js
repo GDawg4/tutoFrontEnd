@@ -1,6 +1,5 @@
 import React from 'react';
 import { Slider, View, StyleSheet } from 'react-native';
-import Button from '../Button';
 
 const SliderBox = props => {
     const { input, meta, handlePress, ...inputProps } = props;

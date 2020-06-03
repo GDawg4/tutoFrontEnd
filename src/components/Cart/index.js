@@ -10,7 +10,7 @@ const Cart = ({booksInCart}) => {
     return (
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             {booksInCart.length === 0 ? <Text>No has agregado libros a tu carro</Text>:
-                booksInCart.map(book=><BookCart book={book}/>)
+                booksInCart.map(book=><BookCart key={book.id} book={book}/>)
             }
             <Button label={'Checkout'} disabled={false}/>
         </View>

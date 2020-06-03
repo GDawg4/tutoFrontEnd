@@ -1,11 +1,12 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-    authorsContainer: {
+    pubsContainer: {
         paddingLeft: 16,
         flex: 1,
         flexWrap: 'wrap',
         width: '100%',
+        marginBottom: 32
     },
     infoMessage: {
         alignSelf: 'flex-start',

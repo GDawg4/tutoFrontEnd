@@ -18,14 +18,18 @@ const NewAnalysis = ({navigation, selectedBook, submitAnalysis, currentScore})=>
             placeholder={'Give your analysis a title'}
             multiline={true}
             autoCapitalize='words'
-            returnKeyType='done'/>
+            returnKeyType='done'
+        />
         <Text style={styles.headerTwo}>What are your thoughts on this book?</Text>
         <Field
             component={ReviewBox}
             name={'analysis'}
             placeholder={'Write your thoughts here'}
-            returnKeyType='done'/>
-        <Button remove={false} label={'Submit'} disabled={false} onPress={()=>submitAnalysis()}/>
+            returnKeyType='done'
+        />
+        <View style={styles.buttonContainer}>
+            <Button label={'Submit'} disabled={false} onPress={()=>submitAnalysis()}/>
+        </View>
     </View>
 )
 
@@ -76,6 +80,10 @@ const styles = StyleSheet.create({
         flex: 1,
         flexWrap: 'wrap',
         width: '100%'
+    },
+    buttonContainer: {
+        marginTop: 32,
+        width: '90%'
     },
     infoMessage: {
         alignSelf: 'flex-start',

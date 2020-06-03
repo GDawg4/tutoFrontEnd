@@ -7,6 +7,7 @@ import { watchTransactionsFetch } from "./transactions";
 import { watchAddUser } from './users';
 import { watchTagsFetch } from './tags';
 import { watchAddReview, watchFetchReview, watchFetchReviewForBook} from "./reviews";
+import { watchPublishersFetch, watchPublisherBooksFetch } from './publishers';
 
 function* mainSaga() {
     yield all([
@@ -19,7 +20,9 @@ function* mainSaga() {
         fork(watchAuthorBooksFetch),
         fork(watchAddReview),
         fork(watchFetchReview),
-        fork(watchFetchReviewForBook)
+        fork(watchFetchReviewForBook),
+        fork(watchPublishersFetch),
+        fork(watchPublisherBooksFetch)
     ])
 }
 

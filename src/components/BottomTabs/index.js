@@ -5,6 +5,7 @@ import { AntDesign } from '@expo/vector-icons';
 
 import HomeStack from '../HomeStack';
 import SearchStack from '../SearchStack';
+import LibraryStack from '../LibraryStack';
 import Cart from '../Cart';
 
 const Tab = createBottomTabNavigator()
@@ -32,6 +33,13 @@ const BottomTabs = () => (
                 component={SearchStack}
                 options={{
                     tabBarIcon: ({ color }) => <AntDesign name="search1" size={24} color={color} />
+                }}
+            />
+            <Tab.Screen 
+                name="Library" 
+                component={LibraryStack}
+                options={{
+                    tabBarIcon: ({ color }) => <AntDesign name="book" size={24} color={color} />
                 }}
             />
             <Tab.Screen

@@ -12,6 +12,7 @@ import * as tagActions from '../../actions/tags';
 
 const Home = ({ navigation, onLoad, allBooks, allTags, isFetching }) => {
     useEffect(onLoad, [])
+
     return (
         <View style={styles.container}>
             <ScrollView 
@@ -26,11 +27,17 @@ const Home = ({ navigation, onLoad, allBooks, allTags, isFetching }) => {
             >
                 <Text style={styles.header}>New Releases</Text>
                 <ScrollView horizontal={true} style={styles.horizontalScroll}>
-                    {allBooks.map(book => <Book key={book.id} book={book} navigation={navigation}/>)}
+                    {
+                        !isFetching && 
+                        allBooks.map(book => <Book key={book.id} book={book} navigation={navigation}/>)
+                    }
                 </ScrollView>
-                <Text style={styles.header}>Fantasy</Text>
+                <Text style={styles.header}>Best Sellers</Text>
                 <ScrollView horizontal={true} style={styles.horizontalScroll}>
-                    {allBooks.map(book => <Book key={book.id} book={book} navigation={navigation}/>)}
+                    {
+                        !isFetching && 
+                        allBooks.map(book => <Book key={book.id} book={book} navigation={navigation}/>)
+                    }
                 </ScrollView>
                 <Text style={styles.header}>Shop by Genre</Text>
                 <TagList allTags={allTags} navigation={navigation}/>

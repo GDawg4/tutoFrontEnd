@@ -31,9 +31,11 @@ function* fetchTags(action) {
         );
         if (response.status === 200){
             const jsonResult = yield response.json();
-            const order = jsonResult.map(tag => tag.title);
+            const order = jsonResult.map(tag => tag.id);
+            const entities = {};
+            jsonResult.map(tag => entities[tag.id] = tag)
             yield put(
-                tagActions.completeFetchingTags(jsonResult, order)
+                tagActions.completeFetchingTags(entities, order)
             )
         } else{
             const jsonError = yield response.json();

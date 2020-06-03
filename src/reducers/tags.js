@@ -90,6 +90,6 @@ export default combineReducers({
 });
 
 export const getTag = (state, id) => state.byId[id];
-export const getTags = state => state.order;
+export const getTags = state => state.order.map(id => getTag(state, id));
 export const selectedTag = state => state.selected;
 export const getIsFetching = state => state.isFetching;

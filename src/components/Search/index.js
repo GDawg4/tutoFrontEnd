@@ -46,7 +46,7 @@ const Search = ({ navigation, filter, allTags, allBooks, allAuthors, handlePress
                             <View style={styles.tagsContainer}>
                                 {
                                     allTags.map(genre => 
-                                        <Tag key={genre} info={genre} vertical={true} navigation={navigation}></Tag>
+                                        <Tag key={genre.id} info={genre} vertical={true} navigation={navigation}></Tag>
                                     )
                                 }
                             </View>
@@ -67,7 +67,7 @@ const Search = ({ navigation, filter, allTags, allBooks, allAuthors, handlePress
                             </ScrollView>
                             <Text style={styles.headerTwo}>Authors</Text>
                             <AuthorList authors={allAuthors} filter={filter} navigation={navigation}/>
-                            <Text style={styles.headerTwo}>Genres</Text>
+                            <Text style={styles.headerTwo}>Publishers</Text>
                         </View>
                 }
             </ScrollView>

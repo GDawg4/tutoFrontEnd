@@ -6,7 +6,7 @@ import Tag from '../Tag';
 
 const TagList = ({ allTags, navigation }) => (
     <ScrollView horizontal={true} style={styles.horizontalScroll}>
-        {allTags.map(tag => <Tag key={tag} info={tag} navigation={navigation}/>)}
+        {allTags.map(tag => <Tag key={tag.id} info={tag} navigation={navigation}/>)}
     </ScrollView>
 );
 

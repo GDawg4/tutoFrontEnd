@@ -115,7 +115,8 @@ function* addReview(action) {
 
         if (isAuth) {
             const token = yield select(selectors.getAuthToken);
-            const userName = yield select(selectors.getAuthUsername);
+            const email = yield select(selectors.getAuthEmail);
+
             const response = yield call(
                 fetch,
                 `${constants.API_BASE_URL_ANDROID}/review/`,
@@ -123,7 +124,7 @@ function* addReview(action) {
                     method: 'POST',
                     body: JSON.stringify({
                         ...action.payload,
-                        'reviewer':userName
+                        'reviewer': email
                     }),
                     headers:{
                         'Content-Type': 'application/json',
@@ -134,7 +135,6 @@ function* addReview(action) {
 
             if (response.status === 201) {
                 const jsonResult = yield response.json();
-                console.log(jsonResult)
                 yield put(
                     actions.completeAddingReview(
                         action.payload.id,
@@ -147,7 +147,7 @@ function* addReview(action) {
             }
         }
     } catch (error) {
-        console.log("ERROR", error.message)
+        console.log("ERROR REVIEW", error.message)
     }
 }
 

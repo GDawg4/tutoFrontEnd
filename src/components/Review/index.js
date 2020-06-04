@@ -7,27 +7,29 @@ import styles from './styles';
 import * as selectors from '../../reducers';
 import * as reviewActions from '../../actions/reviews';
 
-const Review = ({ review, deleteReview }) => (
-    <TouchableOpacity onLongPress={deleteReview}>
-        <View style = {styles.container}>
-            <Text style={styles.text}>{review.reviewer}</Text>
-            <View style={styles.rating}>
-                <AntDesign name={review.score >= 1 ? "star" : "staro"} size={20} color='#F9D71C'/>
-                <AntDesign name={review.score >= 2 ? "star" : "staro"} size={20} color='#F9D71C'/>
-                <AntDesign name={review.score >= 3 ? "star" : "staro"} size={20} color='#F9D71C'/>
-                <AntDesign name={review.score >= 4 ? "star" : "staro"} size={20} color='#F9D71C'/>
-                <AntDesign name={review.score >= 5 ? "star" : "staro"} size={20} color='#F9D71C'/>
-                <AntDesign name={review.score >= 6 ? "star" : "staro"} size={20} color='#F9D71C'/>
-                <AntDesign name={review.score >= 7 ? "star" : "staro"} size={20} color='#F9D71C'/>
-                <AntDesign name={review.score >= 8 ? "star" : "staro"} size={20} color='#F9D71C'/>
-                <AntDesign name={review.score >= 9 ? "star" : "staro"} size={20} color='#F9D71C'/>
+const Review = ({ review, deleteReview }) => {
+    return (
+        <TouchableOpacity onLongPress={deleteReview}>
+            <View style = {styles.container}>
+                <Text style={styles.text}>{review.reviewer}</Text>
+                <View style={styles.rating}>
+                    <AntDesign name={review.score >= 1 ? "star" : "staro"} size={20} color='#F9D71C'/>
+                    <AntDesign name={review.score >= 2 ? "star" : "staro"} size={20} color='#F9D71C'/>
+                    <AntDesign name={review.score >= 3 ? "star" : "staro"} size={20} color='#F9D71C'/>
+                    <AntDesign name={review.score >= 4 ? "star" : "staro"} size={20} color='#F9D71C'/>
+                    <AntDesign name={review.score >= 5 ? "star" : "staro"} size={20} color='#F9D71C'/>
+                    <AntDesign name={review.score >= 6 ? "star" : "staro"} size={20} color='#F9D71C'/>
+                    <AntDesign name={review.score >= 7 ? "star" : "staro"} size={20} color='#F9D71C'/>
+                    <AntDesign name={review.score >= 8 ? "star" : "staro"} size={20} color='#F9D71C'/>
+                    <AntDesign name={review.score >= 9 ? "star" : "staro"} size={20} color='#F9D71C'/>
                 <AntDesign name={review.score >= 10 ? "star" : "staro"} size={20} color='#F9D71C'/>
+                </View>
+                <Text style={styles.title}>{review.title}</Text>
+                <Text style={styles.text}>{review.content}</Text>
             </View>
-            <Text style={styles.title}>{review.title}</Text>
-            <Text style={styles.text}>{review.content}</Text>
-        </View>
-    </TouchableOpacity>
-);
+        </TouchableOpacity>
+    )
+    };
 
 
 export default connect (

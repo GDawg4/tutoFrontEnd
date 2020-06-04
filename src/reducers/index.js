@@ -40,6 +40,7 @@ export const getAuthenticatingError = state => authSelectors.getAuthenticatingEr
 export const getAuthUserId = state => authSelectors.getAuthUserId(state.reducer.auth);
 export const getAuthExpiration = state => authSelectors.getAuthExpiration(state.reducer.auth);
 export const getAuthUsername = state => authSelectors.getAuthUsername(state.reducer.auth);
+export const getAuthEmail = state => authSelectors.getAuthEmail(state.reducer.auth);
 
 export const isSuccessful = state => authorSelectors.isSuccessful(state.reducer.authors);
 export const getAuthUserName = state => authSelectors.getAuthUserName(state.reducer.auth)

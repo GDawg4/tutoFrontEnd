@@ -138,5 +138,6 @@ export const getAuthenticatingError = state => state.authenticatingError;
 export const getAuthUserId = state => state.decoded ? state.decoded.user_id : null;
 export const getAuthExpiration = state => state.decoded ? state.decoded.exp : null;
 export const getAuthUsername = state => state.decoded ? state.decoded.username : null;
+export const getAuthEmail = state => state.decoded ? state.decoded.email : null;
 export const getIsRefreshingToken = state => state.isRefreshing;
 export const getRefreshingError = state => state.refreshingError;

@@ -10,13 +10,18 @@
 2. En la linea de comandos, ejecutar
 ```bash
 $ npm install -g expo-cli
+
+o bien 
+
 $ yarn global add expo-cli
 ```
 3. Navegar al directorio donde se encuentra el proyecto
 4. Ejecutar 
 ```bash
 $ npm install
+
 o bien 
+
 $ yarn install
 ```
 5. Correr la aplicación con 

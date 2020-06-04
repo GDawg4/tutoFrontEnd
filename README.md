@@ -1,7 +1,8 @@
 # Book Store
 
-## Prerequisitos
+## Requisitos
 1. Tener instalado el app Expo en un teléfono
+2. Tener instalado Node JS en la computadora
 
 ## Pasos para iniciar la aplicación
 
@@ -9,16 +10,13 @@
 2. En la linea de comandos, ejecutar
 ```bash
 $ npm install -g expo-cli
-``` o bien 
-```bash
 $ yarn global add expo-cli
 ```
 3. Navegar al directorio donde se encuentra el proyecto
 4. Ejecutar 
 ```bash
 $ npm install
-``` o bien 
-```bash
+o bien 
 $ yarn install
 ```
 5. Correr la aplicación con 

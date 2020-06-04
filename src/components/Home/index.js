@@ -15,7 +15,7 @@ import * as transActions from '../../actions/transactions';
 
 // Pantalla de inicio de la aplicacón
 // Se muestran al usuario los libros más nuevos, más vendidos y la oportunidad de buscar por género
-const Home = ({ navigation, onLoad, allBooks, allTags, isFetching }) => {
+const Home = ({ navigation, onLoad, allBooks, allBooks2, allTags, isFetching }) => {
     useEffect(onLoad, [])
 
     return (
@@ -41,7 +41,7 @@ const Home = ({ navigation, onLoad, allBooks, allTags, isFetching }) => {
                 <ScrollView horizontal={true} style={styles.horizontalScroll}>
                     {
                         !isFetching && 
-                        allBooks.map(book => <Book key={book.id} book={book} navigation={navigation}/>)
+                        allBooks2.map(book => <Book key={book.id} book={book} navigation={navigation}/>)
                     }
                 </ScrollView>
                 <Text style={styles.header}>Shop by Genre</Text>
@@ -53,7 +53,8 @@ const Home = ({ navigation, onLoad, allBooks, allTags, isFetching }) => {
 
 export default connect(
     state => ({
-        allBooks: selectors.getAllBooks(state),
+        allBooks: selectors.getAllBooks(state).sort((a, b) => new Date(b.pub_date) - new Date(a.pub_date)),
+        allBooks2: selectors.getAllBooks(state),
         allTags: selectors.getTags(state),
         isFetching: selectors.getIsFetchingBooks(state),
     }),

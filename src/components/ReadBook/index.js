@@ -14,8 +14,7 @@ const ReadBook = ({ source }) => {
     return (
         <View style={styles.container}>
             <WebView
-                //source={{uri: `http://192.168.1.8:8000${source}`}}
-                source={{uri: 'http://192.168.1.8:8000/media/contents/test1.pdf'}}
+                source={{ uri: Platform.OS === 'ios' ? `http://192.168.1.8:8000${source}` : `http://mozilla.github.io/pdf.js/web/viewer.html?file=http://192.168.1.8:8000${source}`}}
                 onLoad={() => changeLoading(false)}
             />
             {

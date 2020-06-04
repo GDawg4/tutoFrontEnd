@@ -120,7 +120,7 @@ const ownedBooks = (state = [], action) => {
 const readingBook = (state = null, action) => {
     switch(action.type) {
         case types.READ_BOOK: {
-            return action.payload.id
+            return action.payload.book_src;
         }
         default: {
             return state;
@@ -163,4 +163,4 @@ export const getIsAdding = state => state.isAdding;
 export const getAddingError = state => state.addingError;
 export const isSuccessful = state => state.success;
 export const getOwnedBooks = state => state.ownedBooks;
-export const readingBook = state => readingBook;
+export const isReadingBook = state => state.readingBook;

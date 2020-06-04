@@ -55,7 +55,7 @@ function* fetchOwnedBooks(action) {
         const user_pk = yield select(selectors.getAuthUserId)
         const response = yield call(
             fetch,
-            `${constants.API_BASE_URL_ANDROID}/reader/${user_pk}/books-owned`,
+            `${constants.API_BASE_URL_ANDROID}/reader/${user_pk}/owned/`,
             {
                 method:'GET',
                 headers:{

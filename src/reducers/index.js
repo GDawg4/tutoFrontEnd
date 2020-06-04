@@ -80,6 +80,7 @@ export const getIsCheckingUser = state => cartSelectors.getIsCheckingUser(state.
 export const getUserExists = state => cartSelectors.getUserExists(state.reducer.cart);
 export const isAddingCart = state => cartSelectors.isAddingCart(state.reducer.cart);
 export const getUserCheckFailed = state => cartSelectors.getUserCheckFailed(state.reducer.cart);
+export const getIsBuying = state => cartSelectors.getIsBuying(state.reducer.cart);
 
 export const getReview = (state, id) => reviewSelectors.getReviewByID(state.reducer.reviews, id);
 export const getAllReviews = (state) => reviewSelectors.getAllReviews(state.reducer.reviews);

@@ -95,12 +95,30 @@ const userCheckFailed = (state = false, action) => {
     }
 }
 
+const isBuying = (state = false, action) => {
+    switch (action.type) {
+        case types.CART_CHECKOUT_STARTED: {
+            return true;
+        }
+        case types.CART_CHECKOUT_COMPLETED: {
+            return false;
+        }
+        case types.CART_CHECKOUT_REJECTED: {
+            return false;
+        }
+        default: {
+            return state;
+        }
+    }
+}
+
 export default combineReducers({
     cart,
     userExists,
     isCheckingUser,
     isAddingItem,
-    userCheckFailed
+    userCheckFailed,
+    isBuying
 })
 
 export const getCart = state => state.cart;
@@ -109,3 +127,4 @@ export const getUserExists = state => state.userExists;
 export const getIsCheckingUser = state => state.isCheckingUser;
 export const isAddingCart = state => state.isAddingItem;
 export const getUserCheckFailed = state => state.userCheckFailed;
+export const getIsBuying = state => state.isBuying;

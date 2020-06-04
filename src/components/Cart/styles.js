@@ -25,7 +25,19 @@ const styles = StyleSheet.create({
         marginBottom: 32,
         marginTop: 64,
         textAlign: 'center',
-    }
+    },
+    spinner: {
+		position: 'absolute',
+		left: 0,
+		right: 0,
+		top: 0,
+		bottom: 0,
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
+	buying: {
+		opacity: 0.5,
+	}
 });
 
 export default styles;

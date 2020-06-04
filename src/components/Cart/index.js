@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect } from 'react';
-import { Text, View, Alert, ScrollView } from 'react-native';
+import { Text, View, Alert, ScrollView, ActivityIndicator } from 'react-native';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { AntDesign } from '@expo/vector-icons';
@@ -14,7 +14,7 @@ import * as authActions from '../../actions/auth';
 
 // Componente de carrito
 // Se mapean todos los items dentro del cart para renderizar cada elemento por separado
-const Cart = ({ navigation, booksInCart, checkout, clear, onLoad, logOut, loggedOut }) => {
+const Cart = ({ navigation, booksInCart, checkout, clear, onLoad, logOut, loggedOut, isBuying }) => {
     useEffect(onLoad, [])
 
     useLayoutEffect(() => {
@@ -57,7 +57,7 @@ const Cart = ({ navigation, booksInCart, checkout, clear, onLoad, logOut, logged
 	}
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, isBuying ? styles.buying : styles.none]}>
             {
                 booksInCart.length === 0 && (
                     <Text style={styles.infoMessage}>Tu carrito esta vacío...</Text>
@@ -93,6 +93,13 @@ const Cart = ({ navigation, booksInCart, checkout, clear, onLoad, logOut, logged
                     }
                 />
             </View>
+            {
+				isBuying && (
+				    <View style={styles.spinner}>
+						<ActivityIndicator size="large" color="#428AF8" />
+					</View>
+				)
+			}
         </View>
     )
 }
@@ -101,7 +108,8 @@ const Cart = ({ navigation, booksInCart, checkout, clear, onLoad, logOut, logged
 export default connect(
     state => ({
         booksInCart: selectors.getCart(state).map(book => selectors.getBookByID(state,book)),
-        loggedOut: selectors.getAuthToken(state) === null
+        loggedOut: selectors.getAuthToken(state) === null,
+        isBuying: selectors.getIsBuying(state),
     }),
     (dispatch, {navigation}) =>({
         checkout(){

@@ -32,5 +32,4 @@ $ expo start
 
 ## NOTA
 El JavaScript bundle se construye cuando se inicia la aplicación. 
-Dependiendo de la conexión puede tomar más de un intento en comenzar a correr, por lo que en caso no se logre conectar presionar
-la opción Reload JS
+Dependiendo de la conexión puede tomar más de un intento en comenzar a correr, por lo que en caso no se logre conectar presionar la opción Reload JS en la parte inferior de la app.

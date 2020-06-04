@@ -2,7 +2,7 @@ import { fork, all } from 'redux-saga/effects'
 
 import { watchBooksFetch } from './books';
 import { watchAuthorsFetch, watchAuthorBooksFetch } from "./authors";
-import { watchLoginStarted } from './auth';
+import { watchLoginStarted, watchRefreshTokenStarted } from './auth';
 import { watchTransactionsFetch, watchFetchOwnedBooks } from "./transactions";
 import { watchAddUser } from './users';
 import { watchTagsFetch } from './tags';
@@ -36,7 +36,8 @@ function* mainSaga() {
         fork(watchClearCart),
         fork(watchAddToCart),
         fork(watchDeleteFromCart),
-        fork(watchFetchOwnedBooks)
+        fork(watchFetchOwnedBooks),
+        fork(watchRefreshTokenStarted)
     ])
 }
 

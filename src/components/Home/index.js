@@ -11,6 +11,7 @@ import * as bookActions from '../../actions/books';
 import * as authorActions from '../../actions/authors';
 import * as tagActions from '../../actions/tags';
 import * as transActions from '../../actions/transactions';
+import TokenRefresh from "../TokenRefresh";
 
 
 // Pantalla de inicio de la aplicacón
@@ -20,6 +21,7 @@ const Home = ({ navigation, onLoad, allBooks, allTags, isFetching }) => {
 
     return (
         <View style={styles.container}>
+            <TokenRefresh/>
             <ScrollView 
                 style={styles.homeContainer}
                 refreshControl={

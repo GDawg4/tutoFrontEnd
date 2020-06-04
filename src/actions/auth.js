@@ -27,10 +27,7 @@ export const logout = () => ({
 });
 
 export const startTokenRefresh = () => ({
-    type: types.TOKEN_REFRESH_STARTED,
-    payload: {
-        token,
-    }
+    type: types.TOKEN_REFRESH_STARTED
 });
 
 export const completeTokenRefresh = newToken => ({

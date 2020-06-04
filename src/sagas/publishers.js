@@ -57,7 +57,7 @@ function* fetchPublisherBooks(action) {
         const pub_pk = yield select(selectors.selectedPublisher)
         const response = yield call(
             fetch,
-            `${constants.API_BASE_URL_WEB}/publisher/${pub_pk.id}/books/`,
+            `${constants.API_BASE_URL_ANDROID}/publisher/${pub_pk.id}/books/`,
             {
                 method:'GET',
                 headers:{

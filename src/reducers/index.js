@@ -72,7 +72,7 @@ export const getAddingErrorTransaction = state => transactionsSelectors.getAddin
 export const isSuccessfulTransaction = state => transactionsSelectors.isSuccessful(state.reducer.transactions);
 export const isFetchingTrans = state => transactionsSelectors.isFetchingTrans(state.reducer.transactions);
 export const getOwnedBooks = state => transactionsSelectors.getOwnedBooks(state.reducer.transactions);
-export const getReadingBook = state => transactionsSelectors.readingBook(state.reducer.transactions);
+export const getReadingBook = state => transactionsSelectors.isReadingBook(state.reducer.transactions);
 
 export const getCart = state => cartSelectors.getCart(state.reducer.cart);
 export const getIsBookInCart = (state, book) => cartSelectors.isBookInCart(state.reducer.cart, book);

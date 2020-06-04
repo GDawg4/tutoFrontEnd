@@ -163,4 +163,4 @@ export const getIsAdding = state => state.isAdding;
 export const getAddingError = state => state.addingError;
 export const isSuccessful = state => state.success;
 export const getOwnedBooks = state => state.ownedBooks;
-export const readingBook = state => readingBook;
+export const isReadingBook = state => readingBook;

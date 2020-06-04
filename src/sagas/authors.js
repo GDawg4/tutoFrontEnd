@@ -40,6 +40,7 @@ function* fetchAuthors(action) {
                 authorActions.completeFetchingAuthor(author, result)
             )
         } else{
+            console.log('nel1')
             const jsonError = yield response.json();
             authorActions.failFetchingAuthor(jsonError);
         }
@@ -60,7 +61,7 @@ function* fetchAuthorBooks(action) {
         const author_pk = yield select(selectors.selectedAuthor)
         const response = yield call(
             fetch,
-            `${constants.API_BASE_URL_WEB}/author/${author_pk.id}/books/`,
+            `${constants.API_BASE_URL_ANDROID}/author/${author_pk.id}/books/`,
             {
                 method:'GET',
                 headers:{
@@ -74,6 +75,7 @@ function* fetchAuthorBooks(action) {
             const { entities: { book }, result } = normalize(jsonResult, bookSchemas.bookListSchema)
             yield put(authorActions.completeFetchingAuthorBooks(book, result))
         } else{
+            console.log('nel')
             const jsonError = yield response.json();
             yield put(authorActions.failFetchingAuthorBooks(jsonError));
         }

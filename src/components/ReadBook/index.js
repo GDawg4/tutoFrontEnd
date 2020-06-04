@@ -15,7 +15,7 @@ const ReadBook = ({ source }) => {
         <View style={styles.container}>
             <WebView
                 //source={{uri: `http://192.168.1.8:8000${source}`}}
-                source={{uri: 'http://192.168.1.8:8000/media/contents/test1.pdf'}}
+                source={{uri: 'https://docs.google.com/viewerng/viewer?url=http://192.168.1.10:8000/media/contents/test1.pdf'}}
                 onLoad={() => changeLoading(false)}
             />
             {

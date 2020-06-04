@@ -1,10 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 
 import styles from './styles';
+import * as transActions from '../../actions/transactions';
 
-const LibraryItem = ({ book, navigation }) => (
-    <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('ReadBook')}>
+const LibraryItem = ({ book, readBook, navigation }) => (
+    <TouchableOpacity style={styles.container} onPress={() => readBook(book.book_content)}>
         <View style={styles.imageContainer}>
             <Image source={{uri: `http://192.168.1.8:8000${book.cover_pic}`}} style={styles.image}></Image>
         </View>
@@ -16,4 +18,12 @@ const LibraryItem = ({ book, navigation }) => (
 );
 
 
-export default LibraryItem;
+export default connect(
+    undefined, 
+    (dispatch, { navigation }) => ({
+        readBook(source){
+            navigation.navigate('ReadBook')
+            dispatch(transActions.readBook(source))
+        }
+    })
+)(LibraryItem);

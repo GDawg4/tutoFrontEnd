@@ -3,10 +3,11 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container:{
         flex: 1,
-        width: '90%',
         justifyContent: 'center',
         alignItems: 'center',
-        marginHorizontal: '5%'
+    },
+    buttonsContainer: {
+        width: '90%'
     },
     header: {
         alignSelf: 'center',
@@ -16,6 +17,15 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginBottom: 8
     },
+    infoMessage: {
+        alignSelf: 'center',
+        justifyContent: 'center',
+        color: 'grey',
+        fontSize: 24,
+        marginBottom: 32,
+        marginTop: 64,
+        textAlign: 'center',
+    }
 });
 
 export default styles;

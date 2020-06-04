@@ -70,11 +70,16 @@ export const getTransactions = state => transactionsSelectors.getTransactions(st
 export const getIsAddingTransaction = state => transactionsSelectors.getIsAdding(state.reducer.transactions);
 export const getAddingErrorTransaction = state => transactionsSelectors.getAddingError(state.reducer.transactions);
 export const isSuccessfulTransaction = state => transactionsSelectors.isSuccessful(state.reducer.transactions);
+export const isFetchingTrans = state => transactionsSelectors.isFetchingTrans(state.reducer.transactions);
+export const getOwnedBooks = state => transactionsSelectors.getOwnedBooks(state.reducer.transactions);
+export const getReadingBook = state => transactionsSelectors.readingBook(state.reducer.transactions);
 
 export const getCart = state => cartSelectors.getCart(state.reducer.cart);
 export const getIsBookInCart = (state, book) => cartSelectors.isBookInCart(state.reducer.cart, book);
-export const getIsCheckingUser = state => cartSelectors.getIsCheckingUser(state.reducer.cart)
-export const getUserExists = state => cartSelectors.getUserExists(state.reducer.cart)
+export const getIsCheckingUser = state => cartSelectors.getIsCheckingUser(state.reducer.cart);
+export const getUserExists = state => cartSelectors.getUserExists(state.reducer.cart);
+export const isAddingCart = state => cartSelectors.isAddingCart(state.reducer.cart);
+export const getUserCheckFailed = state => cartSelectors.getUserCheckFailed(state.reducer.cart);
 
 export const getReview = (state, id) => reviewSelectors.getReviewByID(state.reducer.reviews, id);
 export const getAllReviews = (state) => reviewSelectors.getAllReviews(state.reducer.reviews);

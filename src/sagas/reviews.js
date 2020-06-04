@@ -18,6 +18,7 @@ import {normalize} from "normalizr";
 function* fetchReview(action){
     try{
         const isAuth = yield select(selectors.isAuthenticated)
+
         if (isAuth){
             const token = yield select(selectors.getAuthToken)
             const response = yield call(
@@ -158,15 +159,15 @@ export function* watchAddReview() {
 }
 
 function* removeReview(action) {
-    try{
+    try {
         const isAuth = yield select(selectors.isAuthenticated)
         if(isAuth){
             const token = yield select(selectors.getAuthToken)
             const response = yield call(
                 fetch,
-                `${constants.API_BASE_URL_ANDROID}/note/${action.payload.id}/`,
+                `${constants.API_BASE_URL_ANDROID}/review/${action.payload.id}/`,
                 {
-                    method:'DELETE',
+                    method: 'DELETE',
                     headers:{
                         'Content-Type': 'application/json',
                         'Authorization': `JWT ${token}`,
@@ -179,7 +180,7 @@ function* removeReview(action) {
                 )
             }
         }
-    }catch (error) {
+    } catch (error) {
         console.log(error)
     }
 }

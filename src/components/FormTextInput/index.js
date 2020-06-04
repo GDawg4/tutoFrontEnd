@@ -1,7 +1,9 @@
 import React, { useRef } from 'react';
 import { TextInput, View, StyleSheet, Text } from 'react-native';
 
+import styles from './styles';
 
+// componente de input custom para el login y registro
 const FormTextInput = props => {
 	const { input, meta, ...inputProps } = props;
 	
@@ -34,27 +36,5 @@ const FormTextInput = props => {
 		</View>
 	);
 }
-	
-const styles = StyleSheet.create({
-	input: {
-		height: 40,
-		borderBottomWidth: StyleSheet.hairlineWidth,
-		marginBottom: 20
-	},
-	inputContainer: {
-		borderColor: 'rgba(0, 0, 0, 0.4)',
-		marginBottom: 10
-	},
-	valid: {
-		borderColor: '#53E69D'
-	},
-	invalid: {
-		borderColor: '#F55E64'
-	},
-	errorText: {
-		height: 28,
-		color: '#F8262F',
-	},
-});
 	
 export default FormTextInput;

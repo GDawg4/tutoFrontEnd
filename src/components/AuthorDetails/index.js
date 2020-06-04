@@ -8,6 +8,9 @@ import styles from './styles';
 import * as selectors from '../../reducers';
 import * as authorActions from '../../actions/authors';
 
+
+// Pantalla donde se muestran los detalles del autor.
+// Nombre, biografía y los libors escritos por el/ella
 const AuthorDetails = ({ selectedAuthor, authorBooks, onLoad, navigation }) => {
     useEffect(onLoad, [])
 

@@ -97,6 +97,37 @@ const isFetching = (state = false, action) => {
     }
 };
 
+const ownedBooks = (state = [], action) => {
+    switch (action.type) {
+        case types.OWN_BOOKS_FETCH_COMPLETED: {
+            const { entities, order } = action.payload;
+            const newState = [];
+            order.forEach(id => 
+                newState.push({
+                    ...entities[id],
+                    isConfirmed: true,
+                })
+            )
+
+            return newState;
+        }
+        default: {
+            return state;
+        }
+    }   
+};
+
+const readingBook = (state = null, action) => {
+    switch(action.type) {
+        case types.READ_BOOK: {
+            return action.payload.id
+        }
+        default: {
+            return state;
+        }
+    }
+};
+
 const error = (state = null, action) => {
     switch(action.type) {
         case types.TRANSACTION_FETCH_FAILED: {
@@ -119,12 +150,17 @@ export default combineReducers({
     byId,
     order,
     selected,
+    ownedBooks,
+    readingBook,
     isFetching,
     error,
 });
 
 export const getTransaction = (state, id) => state.byId[id];
 export const getTransactions = state => state.order.map(id => getTransaction(state, id));
+export const isFetchingTrans = state => state.isFetching;
 export const getIsAdding = state => state.isAdding;
 export const getAddingError = state => state.addingError;
 export const isSuccessful = state => state.success;
+export const getOwnedBooks = state => state.ownedBooks;
+export const readingBook = state => readingBook;

@@ -3,7 +3,7 @@ import transactions from "../reducers/transactions";
 
 export const addItemToCart = (book) => ({
     type: types.CART_ITEM_ADDED,
-    payload:{
+    payload: {
         book
     }
 });
@@ -32,8 +32,8 @@ export const removeItemFromCart = (book) => ({
 });
 
 export const confirmRemoveItemFromCart = (book) => ({
-    type:types.CART_ITEM_REMOVED_CONFIRMED,
-    payload:{
+    type: types.CART_ITEM_REMOVED_CONFIRMED,
+    payload: {
         book
     }
 })
@@ -89,7 +89,7 @@ export const confirmCartUser = () => ({
 })
 
 export const denyCartUser = () => ({
-    type:types.CART_USER_DENIED,
+    type: types.CART_USER_DENIED,
 })
 
 export const startCheckout = (transaction) =>({

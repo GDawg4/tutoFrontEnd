@@ -3,10 +3,13 @@ import { connect } from 'react-redux';
 import { Text, View, Image, TouchableOpacity } from 'react-native';
 
 import styles from "./styles";
-import * as selectors from '../../reducers';
 import * as bookActions from '../../actions/books';
 import * as constants from '../../resources/constants';
 
+
+// Componente de libro que se renderiza para mostrar la información de un libro
+// Se muestra el título, el autor y el precio
+// Al ser presionado redirige a la página del libro
 const Book = ({ book, press, navigation, urlComplete=true }) => (
     <View style={styles.bookContainer}>
         <TouchableOpacity onPress={press} style={styles.scrollView}>

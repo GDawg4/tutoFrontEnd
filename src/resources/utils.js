@@ -1,5 +1,4 @@
 import clamp from 'lodash/clamp'
-import {color} from "react-native-reanimated";
 
 export const PickRandom = array => {
     return array[Math.floor(Math.random() * array.length)];

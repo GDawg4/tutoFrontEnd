@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
-import { ActivityIndicator, Image, StyleSheet, KeyboardAvoidingView, View, Text, Alert } from 'react-native';
+import { ActivityIndicator, Image, KeyboardAvoidingView, View, Text, Alert } from 'react-native';
 import { Link, Redirect } from 'react-router-native';
 
 import Button from '../Button';
 import FormTextInput from '../FormTextInput';
 
+import styles from './styles';
 import * as authActions from '../../actions/auth';
 import * as userActions from '../../actions/users';
 import * as selectors from '../../reducers';
@@ -17,13 +18,17 @@ const ALERT = {
 	shown: false
 }
 
+// Función onsubmit que se realiza cuando los datos ingresados fueron verificados
+// comienza el login con los datos provistos por el usuario
 const onSubmit = (values, dispatch) => {
 	ALERT.shown = false
 	dispatch(authActions.startLogin(values.email, values.password))
 }
 
+// validación que revisa que el campo no esté vacío
 const required = value => value !== undefined ? undefined : 'Required';
 
+// login hecho con redux-form
 const LoginForm = props => {
 	
 	const { submitting, handleSubmit, isAuthenticated, isAuthenticating, authenticationFailed, success, clearSuccess } = props;
@@ -82,50 +87,6 @@ const LoginForm = props => {
 	);
 }
 			
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#FFFFFF',
-		alignItems: "center",
-		justifyContent: "space-between"
-	},
-	logo: {
-		flex: 1,
-		width: "100%",
-		resizeMode: "contain",
-		alignSelf: "center"
-	},
-	form: {
-		flex: 1,
-		justifyContent: "center",
-		width: "80%"
-	},
-	navItem: {
-		marginBottom: 72,
-	},
-	linkText: {
-		color: '#428AF8',
-	},
-	styledText: {
-		color: '#BEBEBE',
-	},
-	bottomText: {
-		flexDirection: 'row',
-		alignSelf: 'center'
-	},
-	spinner: {
-		position: 'absolute',
-		left: 0,
-		right: 0,
-		top: 0,
-		bottom: 0,
-		alignItems: 'center',
-		justifyContent: 'center'
-	},
-	authenticating: {
-		opacity: 0.5,
-	}
-});
 			
 export default reduxForm({
 	form: 'logIn',

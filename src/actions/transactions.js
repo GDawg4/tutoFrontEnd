@@ -65,3 +65,29 @@ export const selectTransaction = (id) => ({
 export const deselectTransaction = () => ({
     type: types.TRANSACTION_DESELECTED
 });
+
+export const startFetchingOwnedBooks = () =>({
+    type: types.OWN_BOOKS_FETCH_STARTED
+})
+
+export const completeFetchingOwnBooks = (entities, order) => ({
+    type: types.OWN_BOOKS_FETCH_COMPLETED,
+    payload: {
+        entities,
+        order,
+    },
+});
+
+export const failFetchingOwnBooks = error => ({
+    type: types.OWN_BOOKS_FETCH_FAILED,
+    payload: {
+        error,
+    },
+});
+
+export const readBook = book_src => ({
+    type: types.READ_BOOK,
+    payload: {
+        book_src
+    }
+})

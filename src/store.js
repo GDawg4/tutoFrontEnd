@@ -18,9 +18,9 @@ export const configureStore = () => {
 
     const persistedReducer = persistReducer(
         {
-            key:'root',
-            storage:AsyncStorage,
-            whitelist:['cart']
+            key: 'root',
+            storage: AsyncStorage,
+            whitelist: ['cart']
         },
         newReducer
     )

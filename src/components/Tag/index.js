@@ -1,11 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 
+import styles from './styles';
 import * as tagActions from '../../actions/tags';
-import * as utils from '../../resources/utils';
 
-
+// componente para un tag individual
+// se renderiza con un color aleatorio y el nombre
 const Tag = ({ vertical = false, info, handleOnPress }) => (
     <TouchableOpacity onPress={() => handleOnPress()}>
         <View style={[styles.tagcontainer, vertical ? styles.verticalTag : null]} >
@@ -15,24 +16,6 @@ const Tag = ({ vertical = false, info, handleOnPress }) => (
     
 )
 
-const styles = StyleSheet.create({
-    tagcontainer: {
-        width: 150,
-        height: 125,
-        borderRadius: 16,
-        backgroundColor: utils.getRandomColor(),
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginHorizontal: 4,
-    },
-    verticalTag: {
-        marginBottom: 16
-    },
-    title: {
-        fontSize: 18,
-        color: '#FFFFFF'
-    }
-})
 
 export default connect(
     undefined,

@@ -1,20 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
-import { StyleSheet, KeyboardAvoidingView, View, Text, ActivityIndicator, Alert } from 'react-native';
+import { KeyboardAvoidingView, View, Text, ActivityIndicator, Alert } from 'react-native';
 import { Link } from 'react-router-native';
 import { AntDesign } from '@expo/vector-icons';
 
 import Button from '../Button';
 import FormTextInput from '../FormTextInput';
 
+import styles from './styles';
 import * as userActions from '../../actions/users';
 import * as selectors from '../../reducers';
 
+// funcion de onsubmit
+// envia la informacion ingresada al API para crear un nuevo usuario
 const onSubmit = (values, dispatch) => {
 	dispatch(userActions.startAddingUser(values.name, values.lastname, values.email, values.password, values.username, values.age))
 }
 
+// funcion de validacion
+// realiza las validaciones necesarias para que la informacion que se envíe sea correcta
 const validate = values => {
     const errors = {};
 
@@ -161,60 +166,6 @@ const RegistryForm = props => {
         </KeyboardAvoidingView>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        alignItems: "center",
-        backgroundColor: '#FFFFFF',
-        flex: 1,
-        justifyContent: "space-between",
-      },
-    header: {
-        alignSelf: 'center',
-        color: '#428AF8',
-        fontSize: 24,
-        marginBottom: '10%',
-        textAlign: 'center',
-    },
-    form: {
-        flex: 1,
-        justifyContent: "center",
-        width: "80%",
-    },
-    linkText: {
-        color: '#428AF8',
-    },
-    styledText: {
-        color: '#BEBEBE',
-    },
-    bottomText: {
-        alignSelf: 'center',
-        flexDirection: 'row',
-    },
-    spinner: {
-		position: 'absolute',
-		left: 0,
-		right: 0,
-		top: 0,
-		bottom: 0,
-		alignItems: 'center',
-		justifyContent: 'center'
-	},
-	authenticating: {
-		opacity: 0.5,
-    },
-    successMessage: {
-        flex: 1, 
-        justifyContent: 'center', 
-        alignItems: 'center',
-    },
-    logo: {
-		flex: 1,
-		width: "100%",
-		resizeMode: "contain",
-		alignSelf: "center"
-	},
-});
 
 
 export default reduxForm({

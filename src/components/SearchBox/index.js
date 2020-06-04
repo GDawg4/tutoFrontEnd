@@ -1,7 +1,10 @@
 import React from 'react';
-import { TextInput, View, StyleSheet } from 'react-native';
+import { TextInput, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
+import styles from './styles';
+
+// componente de input para la búsqueda de libros, autores y editoriales
 const SearchBox = props => {
 	const { input, meta, handlePress, ...inputProps } = props;
 	
@@ -31,31 +34,5 @@ const SearchBox = props => {
 	);
 }
 	
-const styles = StyleSheet.create({
-	input: {
-		flex: 1,
-		height: 40,
-		marginBottom: 16,
-		paddingLeft: 0,
-    	paddingRight: 10,
-    	paddingTop: 16,
-	},
-	inputContainer: {
-		width: '90%',
-		borderRadius: 8,
-		borderWidth: 2,
-		flexDirection: 'row',
-		justifyContent: 'center',
-		alignItems: 'center',
-		borderColor: '#BEBEBE',
-		marginBottom: 10
-	},
-	searchIcon: {
-		paddingHorizontal: 10,
-	},
-	clearIcon: {
-		paddingHorizontal: 10,
-	},
-});
 	
 export default SearchBox;

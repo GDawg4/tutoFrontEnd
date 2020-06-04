@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 
+// Estilos para el elemento de autor
 const styles = StyleSheet.create({
     authorContainer: {
         height: 200,

@@ -6,6 +6,8 @@ import lowerCase from 'lodash/lowerCase';
 import styles from './styles';
 import Publisher from '../Publisher';
 
+// lista de editoriales
+// se mapean todas las editoriales resultantes de una busqueda y se muestra el componente editorial por cada una
 const PublisherList = ({ publishers, filter, navigation }) => (
     <ScrollView horizontal={true} style={styles.pubsContainer}>
         {

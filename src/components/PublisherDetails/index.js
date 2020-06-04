@@ -9,7 +9,8 @@ import styles from './styles';
 import * as selectors from '../../reducers';
 import * as publisherActions from '../../actions/publishers';
 
-
+// página de detalles de la editorial
+// muestra la información de la editorial, y los libros publicados por ella
 const PublisherDetails = ({ selectedPublisher, publisherBooks, onLoad, navigation }) => {
     useEffect(onLoad, [])
 

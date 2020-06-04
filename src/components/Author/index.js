@@ -5,6 +5,8 @@ import { Text, View, Image, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import * as authorActions from '../../actions/authors';
 
+// Elemento que se muestra en los resultados de búsqueda para autores
+// Redirige a la página del autor al ser presionado
 const Author = ({ author, press }) => (
     <View style={styles.authorContainer}>
         <TouchableOpacity onPress={press} style={styles.scrollView}>

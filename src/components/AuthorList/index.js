@@ -6,6 +6,8 @@ import lowerCase from 'lodash/lowerCase';
 import styles from './styles';
 import Author from '../Author';
 
+//Lista de autores
+// Muestra todos los autores resultantes de la búsqueda
 const AuthorList = ({ authors, filter, navigation }) => (
     <ScrollView horizontal={true} style={styles.authorsContainer}>
         {

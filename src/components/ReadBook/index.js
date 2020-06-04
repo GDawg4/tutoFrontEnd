@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, View, ActivityIndicator } from 'react-native';
+import { View, ActivityIndicator } from 'react-native';
 import { WebView } from 'react-native-webview';
 
+import styles from './styles';
+import * as selectors from '../../reducers';
+
+// componente que permite leer un pdf dentro de la aplicación
+// recibe como parámetro del uri donde se encuentra alojado el documento
 const ReadBook = ({ source }) => {    
     const [loading, changeLoading] = useState(true)
 
     return (
         <View style={styles.container}>
             <WebView
-                source={require("../../assets/test.pdf")}
+                source={{uri: `http://192.168.1.8:8000${source}`}}
                 onLoad={() => changeLoading(false)}
             />
             {
@@ -25,21 +30,8 @@ const ReadBook = ({ source }) => {
     )
 };
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    spinner: {
-        position: 'absolute', 
-        left: 0, 
-        right: 0, 
-        bottom: 0, 
-        top: 0
-    }
-})
-
 export default connect(
     state => ({
-        bookLoading: state
+        source: selectors.getReadingBook(state)
     })
 )(ReadBook);

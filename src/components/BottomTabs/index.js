@@ -8,8 +8,10 @@ import SearchStack from '../SearchStack';
 import LibraryStack from '../LibraryStack';
 import CartStack from "../CartStack";
 
+// Se crea el componente de navegación
 const Tab = createBottomTabNavigator()
 
+// Se indican las pantallas que se van a llamar en cada sección de la barra
 const BottomTabs = () => (
     <NavigationContainer>
         <Tab.Navigator

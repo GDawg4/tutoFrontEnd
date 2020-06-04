@@ -10,8 +10,11 @@ import NotePage from "../NotePage";
 import NewNote from "../NewNote";
 import NoteDetails from "../NoteDetails";
 
+// creamos el stack navigator
 const Stack = createStackNavigator();
 
+// agregamos las pantallas que estarán en el stack
+// el primer componente agregado será el componente por defecto al cargar el stack
 const HomeStack = () => (
     <Stack.Navigator>
         <Stack.Screen 
@@ -55,7 +58,7 @@ const HomeStack = () => (
             component={NotePage}
             options={{
                 headerBackTitle: 'Back',
-                headerTitle: null
+                headerTitle: 'Notes'
             }}
         />
         <Stack.Screen

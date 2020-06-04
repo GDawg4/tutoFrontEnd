@@ -1,5 +1,7 @@
-import React from 'react'
-import {StyleSheet, TextInput, View} from 'react-native'
+import React from 'react';
+import { TextInput, View } from 'react-native';
+
+import styles from './styles';
 
 const TitleBox = props =>{
     const { input, meta, handlePress, ...inputProps } = props;
@@ -21,26 +23,5 @@ const TitleBox = props =>{
     )
 }
 
-const styles = StyleSheet.create({
-    input: {
-        flex: 1,
-        height: 40,
-        marginBottom: 16,
-        paddingLeft: 0,
-        paddingRight: 10,
-        paddingTop: 16,
-    },
-    inputContainer: {
-        width: '90%',
-        borderRadius: 8,
-        borderWidth: 2,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderColor: '#BEBEBE',
-        paddingLeft: '5%',
-        marginBottom: 10
-    },
-});
 
 export default TitleBox

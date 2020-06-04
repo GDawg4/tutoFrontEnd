@@ -1,36 +1,36 @@
-import React, {useEffect} from 'react'
-import {connect} from 'react-redux'
-import {View, Text, ScrollView, StyleSheet} from 'react-native'
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { View, Text, ScrollView } from 'react-native';
 
-import * as selectors from '../../reducers'
-import * as notesActions from '../../actions/notes'
 import Note from "../Note";
 import Button from "../Button";
 
-const NotePage = ({navigation, selectedBook, allNotes, fetchNotes, addNote}) => {
+import styles from './styles';
+import * as selectors from '../../reducers';
+import * as notesActions from '../../actions/notes';
+
+// componente de página de nota
+const NotePage = ({ navigation, selectedBook, allNotes, fetchNotes, addNote }) => {
     useEffect(fetchNotes, [])
+
     return (
         <View style = {styles.container}>
-            <Text>Notes on {selectedBook.title}</Text>
             <ScrollView>
-                {allNotes.length === 0 ?
-                    <Text>No hay nada aquí...</Text>:
-                    allNotes.map(note => <Note key={note.id} note={note} navigation={navigation}/>)
+                {
+                    allNotes.length === 0 
+                    ?
+                        <Text style={styles.infoMessage}>No hay nada aquí...</Text>
+                    :
+                        allNotes.map(
+                            note => <Note key={note.id} note={note} navigation={navigation}/>
+                        )
                 }
             </ScrollView>
             <Button label={'New note'} onPress={addNote}/>
         </View>
     )
-}
+};
 
-const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        width:'90%',
-        marginLeft:'5%',
-        marginTop:'5%'
-    }
-})
 
 export default connect(
     (state) => ({

@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 
+// Estilos para la lista de autores
 const styles = StyleSheet.create({
     authorsContainer: {
         paddingLeft: 16,

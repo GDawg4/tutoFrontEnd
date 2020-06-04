@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 
+// Estilos para la página de autor
 const styles = StyleSheet.create({
     detailsContainer: {
         flex: 1,

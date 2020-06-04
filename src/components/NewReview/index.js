@@ -1,7 +1,7 @@
 import React from 'react'
-import {View, Text, StyleSheet} from 'react-native'
-import {connect} from 'react-redux'
-import {reduxForm, Field, formValueSelector, reset} from 'redux-form';
+import { View, Text, StyleSheet } from 'react-native'
+import { connect } from 'react-redux'
+import { reduxForm, Field, formValueSelector, reset } from 'redux-form';
 
 import TitleBox from "../TitleBox";
 import ReviewBox from "../ReviewBox";
@@ -12,15 +12,19 @@ import * as selectors from '../../reducers';
 import * as reviewActions from '../../actions/reviews';
 
 
+// Form para crear un review 
+// Recibe los valores de titulo, contenido y calificación para enviar esos datos al API
 const NewReview = ({ navigation, selectedBook, submitReview, currentScore })=>(
     <View style={styles.container}>
         <Text style={styles.header}>{selectedBook.title}</Text>
-        <Field
-            component={TitleBox}
-            name={'title'}
-            placeholder={'Give your review a title'}
-            autoCapitalize='words'
-            returnKeyType='done'/>
+        <View style={styles.titleBox}>
+            <Field
+                component={TitleBox}
+                name={'title'}
+                placeholder={'Give your review a title'}
+                autoCapitalize='words'
+                returnKeyType='done'/>
+        </View>
         <Text style={styles.headerTwo}>What did you think about the book?</Text>
         <Field
             component={ReviewBox}
@@ -39,7 +43,7 @@ const NewReview = ({ navigation, selectedBook, submitReview, currentScore })=>(
            <Button remove={false} label={'Submit'} disabled={false} onPress={submitReview}/>
         </View>
     </View>
-)
+);
 
 const styles = StyleSheet.create({
     container: {
@@ -100,6 +104,9 @@ const styles = StyleSheet.create({
         marginBottom: 32,
         marginTop: 16,
         textAlign: 'center',
+    },
+    titleBox: {
+        width: '90%'
     }
 });
 

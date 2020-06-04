@@ -9,8 +9,11 @@ import PublisherDetails from '../PublisherDetails';
 import NewReview from "../NewReview";
 import NewAnalysis from "../NewAnalysis";
 
+// se crea el stack de navegacion para la busqueda
 const Stack = createStackNavigator();
 
+// se indican los componentes incluidos en el stack
+// el primero componente ingresado es el componente por defecto del stack
 const SearchStack = () => (
     <Stack.Navigator>
         <Stack.Screen 

@@ -1,48 +1,48 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native'
+import React from 'react';
+import { connect } from 'react-redux';
+import { Text, View, TouchableOpacity } from 'react-native';
+import { AntDesign } from '@expo/vector-icons'
 
-import * as selectors from '../../reducers'
-import * as reviewActions from '../../actions/reviews'
+import styles from './styles';
+import * as selectors from '../../reducers';
+import * as reviewActions from '../../actions/reviews';
 
-const Review = ({review, deleteReview}) => (
-    <View>
-        <TouchableOpacity onLongPress={deleteReview}>
-            <View style = {styles.container}>
-                <Text>{review.title}</Text>
-                <Text>by: {review.reviewer}</Text>
+const Review = ({ review, deleteReview }) => (
+    <TouchableOpacity onLongPress={deleteReview}>
+        <View style = {styles.container}>
+            <Text style={styles.text}>{review.reviewer}</Text>
+            <View style={styles.rating}>
+                <AntDesign name={review.score >= 1 ? "star" : "staro"} size={20} color='#F9D71C'/>
+                <AntDesign name={review.score >= 2 ? "star" : "staro"} size={20} color='#F9D71C'/>
+                <AntDesign name={review.score >= 3 ? "star" : "staro"} size={20} color='#F9D71C'/>
+                <AntDesign name={review.score >= 4 ? "star" : "staro"} size={20} color='#F9D71C'/>
+                <AntDesign name={review.score >= 5 ? "star" : "staro"} size={20} color='#F9D71C'/>
+                <AntDesign name={review.score >= 6 ? "star" : "staro"} size={20} color='#F9D71C'/>
+                <AntDesign name={review.score >= 7 ? "star" : "staro"} size={20} color='#F9D71C'/>
+                <AntDesign name={review.score >= 8 ? "star" : "staro"} size={20} color='#F9D71C'/>
+                <AntDesign name={review.score >= 9 ? "star" : "staro"} size={20} color='#F9D71C'/>
+                <AntDesign name={review.score >= 10 ? "star" : "staro"} size={20} color='#F9D71C'/>
             </View>
-        </TouchableOpacity>
-    </View>
-)
+            <Text style={styles.title}>{review.title}</Text>
+            <Text style={styles.text}>{review.content}</Text>
+        </View>
+    </TouchableOpacity>
+);
 
-const styles = StyleSheet.create({
-    container:{
-        display:'flex',
-        flexDirection:'column',
-        height: 300,
-        width: 150,
-        borderRadius: 16,
-        flex: 1,
-        marginRight: 16,
-        maxWidth: 150,
-    }
-})
 
 export default connect (
-    (state, {review})=>({
-        currentUser:selectors.getAuthUsername(state),
-        canErase:selectors.getAuthUsername(state) === review.reviewer,
-        //Weird bug
-        review:review
+    (state, { review })=>({
+        currentUser: selectors.getAuthUsername(state),
+        canErase: selectors.getAuthUsername(state) === review.reviewer,
+        review: review
     }),
-    (dispatch, {review})=>({
+    (dispatch, { review })=>({
         deleteReview(){
             dispatch(reviewActions.startRemovingReview(review.id))
         }
     }),
     (stateProps, dispatchProps)=>({
-        review:stateProps.review,
+        review: stateProps.review,
         deleteReview(){
             if(stateProps.canErase){
                 dispatchProps.deleteReview()

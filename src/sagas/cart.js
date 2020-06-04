@@ -14,8 +14,8 @@ import * as types from '../types/cart'
 import * as cartActions from '../actions/cart'
 import * as selectors from '../reducers'
 import * as schemas from "../schemas/cart";
-import * as actions from "../actions/cart";
-import {API_BASE_URL_ANDROID} from "../resources/constants";
+
+import { API_BASE_URL_ANDROID } from "../resources/constants";
 
 function* checkUserName(action) {
     try{
@@ -211,10 +211,16 @@ function* addItemToCart(action){
     try{
         const userID = yield select(selectors.getAuthUserId)
         const token = yield select(selectors.getAuthToken)
+
+        console.log(userID)
+        console.log(action.payload.book.id)
+        console.log(token)
         console.log(JSON.stringify({
             book: action.payload.book.id,
-            user:userID
-        }))
+            user: userID
+        }));
+        
+
         const response = yield call(
             fetch,
             `${API_BASE_URL_ANDROID}/cart/`,
@@ -224,15 +230,13 @@ function* addItemToCart(action){
                     'Content-Type':'application/json',
                     'Authorization':`${token}`,
                 },
-                body:JSON.stringify({
+                body: JSON.stringify({
                     book: action.payload.book.id,
-                    user:userID
+                    user: userID
                 })
             }
         )
         if (response.status === 201){
-            console.log('yay')
-            /*console.log(action.payload)*/
             yield put(
                 cartActions.confirmAddToCart(action.payload.book)
             )
@@ -250,10 +254,10 @@ export function* watchAddToCart() {
 }
 
 function* deleteFromCart(action){
-    try{
-        console.log(action.payload.book.id)
+    try {
         const userID = yield select(selectors.getAuthUserId)
         const token = yield select(selectors.getAuthToken)
+        
         const response = yield call(
             fetch,
             `${API_BASE_URL_ANDROID}/reader/${userID}/delete-from-cart/`,

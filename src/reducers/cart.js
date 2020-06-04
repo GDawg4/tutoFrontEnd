@@ -1,8 +1,8 @@
-import {combineReducers} from "redux";
-import includes from 'lodash/includes'
-import filter from 'lodash/filter'
+import { combineReducers } from "redux";
+import includes from 'lodash/includes';
+import filter from 'lodash/filter';
+
 import * as types from '../types/cart'
-import actions from "redux-form/lib/actions";
 
 const cart = (state = [], action) => {
     switch (action.type) {
@@ -64,15 +64,48 @@ const isCheckingUser = (state = false, action) => {
     }
 }
 
+const isAddingItem = (state = false, action) => {
+    switch (action.type) {
+        case types.CART_ITEM_ADDED: {
+            return true;
+        }
+        case types.CART_ITEM_ADDED_CONFIRMED: {
+            return false;
+        }
+        default: {
+            return state;
+        }
+    }
+}
+
+const userCheckFailed = (state = false, action) => {
+    switch (action.type) {
+        case types.CART_USER_CHECK: {
+            return false;
+        }
+        case types.CART_USER_CONFIRMED: {
+            return false;
+        }
+        case types.CART_USER_DENIED: {
+            return true;
+        }
+        default: {
+            return state;
+        }
+    }
+}
+
 export default combineReducers({
     cart,
     userExists,
-    isCheckingUser
+    isCheckingUser,
+    isAddingItem,
+    userCheckFailed
 })
 
 export const getCart = state => state.cart;
 export const isBookInCart = (state, book) => includes(state.cart, book.id);
-
-export const getUserExists = state => state.userExists
-
-export const getIsCheckingUser = state => state.isCheckingUser
+export const getUserExists = state => state.userExists;
+export const getIsCheckingUser = state => state.isCheckingUser;
+export const isAddingCart = state => state.isAddingItem;
+export const getUserCheckFailed = state => state.userCheckFailed;

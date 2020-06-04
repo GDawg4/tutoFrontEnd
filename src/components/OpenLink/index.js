@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { Alert, Button, Linking } from "react-native";
 
+// componente custom que nos permite abrir links externos
 const OpenLink = ({ url, title }) => {
   const handlePress = useCallback(async () => {
     const supported = await Linking.canOpenURL(url);

@@ -1,7 +1,6 @@
 import { StyleSheet } from "react-native";
 
-const width = 100;
-
+// Estilos para el componente de libro
 const styles = StyleSheet.create({
     bookContainer: {
         height: 300,

@@ -1,47 +1,23 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {Text, View, StyleSheet} from 'react-native'
+import React from 'react';
+import { connect } from 'react-redux';
+import { Text, View } from 'react-native';
 
-import * as selectors from '../../reducers'
+import styles from './styles';
+import * as selectors from '../../reducers';
 
-const NoteDetails = ({selectedNote}) => {
+// se muestran los detalles de la nota selccionada
+const NoteDetails = ({ selectedNote }) => {
     return(
         <View style={styles.container}>
             <View style={styles.headerContainer}>
                 <Text style={styles.header}>{selectedNote.title}</Text>
                 <View style={{...styles.square, backgroundColor: selectedNote.color}}/>
             </View>
-            <Text>{selectedNote.content}</Text>
+            <Text style={styles.parragraph}>{selectedNote.content}</Text>
         </View>
     )
-}
+};
 
-const styles = StyleSheet.create({
-    container:{
-        width:'90%',
-        marginLeft:'5%',
-        marginTop:'5%',
-    },
-    header: {
-        alignSelf: 'flex-start',
-        color: '#428AF8',
-        fontSize: 20,
-        textAlign: 'center',
-        marginBottom: 8,
-    },
-    square:{
-        height:24,
-        width: 24,
-        opacity:0.7,
-        marginLeft: '10%',
-        borderWidth:2,
-        borderColor:'#000000',
-    },
-    headerContainer:{
-        display:'flex',
-        flexDirection:'row'
-    }
-})
 
 export default connect(
     state => ({

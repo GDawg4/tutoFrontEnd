@@ -5,6 +5,8 @@ import { Text, View, Image, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import * as publisherActions from '../../actions/publishers';
 
+// componente que muestra los datos de una editorial luego de una búsqueda
+// navega hacia la página de la editorial cuando es presionada
 const Publisher = ({ publisher, press }) => (
     <View style={styles.publisherContainer}>
         <TouchableOpacity onPress={press} style={styles.scrollView}>

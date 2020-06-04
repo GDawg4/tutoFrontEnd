@@ -1,16 +1,20 @@
 import React, { useEffect } from 'react';
-import { View, ScrollView, Text, StyleSheet, RefreshControl } from 'react-native';
+import { View, ScrollView, Text, RefreshControl } from 'react-native';
 import { connect } from 'react-redux';
 
 import Book from '../Book';
 import TagList from '../TagList';
 
+import styles from './styles';
 import * as selectors from '../../reducers';
 import * as bookActions from '../../actions/books';
 import * as authorActions from '../../actions/authors';
 import * as tagActions from '../../actions/tags';
-import * as cartActions from '../../actions/cart'
+import * as transActions from '../../actions/transactions';
 
+
+// Pantalla de inicio de la aplicacón
+// Se muestran al usuario los libros más nuevos, más vendidos y la oportunidad de buscar por género
 const Home = ({ navigation, onLoad, allBooks, allTags, isFetching }) => {
     useEffect(onLoad, [])
 
@@ -47,32 +51,6 @@ const Home = ({ navigation, onLoad, allBooks, allTags, isFetching }) => {
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'flex-start',
-        backgroundColor: '#FFFFFF'
-    },
-    homeContainer: {
-        width: '100%'
-    },
-    horizontalScroll: {
-        paddingLeft: 16,
-        flex: 1,
-        flexWrap: 'wrap'
-    },
-    header: {
-        alignSelf: 'flex-start',
-        color: '#428AF8',
-        fontSize: 20,
-        textAlign: 'center',
-        marginVertical: 8,
-        marginLeft: 16,
-        fontWeight: '700'
-    },
-})
-
 export default connect(
     state => ({
         allBooks: selectors.getAllBooks(state),
@@ -84,6 +62,8 @@ export default connect(
             dispatch(authorActions.startFetchingAuthor())
             dispatch(bookActions.startFetchingBook())
             dispatch(tagActions.startFetchingTags())
+            dispatch(transActions.startFetchingOwnedBooks())
+
         }
     })
 )(Home);

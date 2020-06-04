@@ -15,7 +15,10 @@ const ReadBook = ({ source }) => {
         <View style={styles.container}>
             <WebView
                 //source={{uri: `http://192.168.1.8:8000${source}`}}
-                source={{uri: 'https://docs.google.com/viewerng/viewer?url=http://192.168.1.10:8000/media/contents/test1.pdf'}}
+                source={{uri: 'http://mozilla.github.io/pdf.js/web/viewer.html?file=http://192.168.1.10:8000/media/contents/test1.pdf'}}
+                javaScriptEnabled={true}
+                domStorageEnabled={true}
+                startInLoadingState={true}
                 onLoad={() => changeLoading(false)}
             />
             {

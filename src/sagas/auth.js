@@ -12,7 +12,9 @@ import * as selectors from '../reducers';
   
   
 function* login(action) {
+    console.log('yay1')
     try {
+        console.log('yay2')
         const response = yield call(
             fetch,
             `${constants.API_BASE_URL_ANDROID}/token-auth/`,
@@ -29,6 +31,7 @@ function* login(action) {
             const { token } = yield response.json();
             yield put(actions.completeLogin(token));
         } else {
+            console.log('yay3')
             const { non_field_errors } = yield response.json();
             yield put(actions.failLogin(non_field_errors[0]));
         }
@@ -52,7 +55,7 @@ function* refreshToken(action) {
         try {
             const response = yield call(
                 fetch,
-                `${constants.API_BASE_URL_WEB}/token-refresh/`,
+                `${constants.API_BASE_URL_ANDROID}/token-refresh/`,
                 {
                     method: 'POST',
                     body: JSON.stringify(action.payload),

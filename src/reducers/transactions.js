@@ -1,4 +1,4 @@
-import {combineReducers} from 'redux'
+import { combineReducers } from 'redux'
 import omit from 'lodash/omit';
 import includes from 'lodash/includes'
 

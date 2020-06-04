@@ -17,7 +17,7 @@ function* addUser(action) {
     try {
         const response = yield call(
             fetch,
-            `${API_BASE_URL_ANDROID}/reader/`,
+            `${constants.API_BASE_URL_ANDROID}/reader/`,
             {
                 method: 'POST',
                 body: JSON.stringify(action.payload),

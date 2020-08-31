@@ -20,7 +20,7 @@ export const configureStore = () => {
         {
             key: 'root',
             storage: AsyncStorage,
-            whitelist: ['cart']
+            whitelist:['auth']
         },
         newReducer
     )

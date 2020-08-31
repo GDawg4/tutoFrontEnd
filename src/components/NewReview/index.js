@@ -11,7 +11,6 @@ import SliderBox from "../SliderBox";
 import * as selectors from '../../reducers';
 import * as reviewActions from '../../actions/reviews';
 
-
 // Form para crear un review 
 // Recibe los valores de titulo, contenido y calificación para enviar esos datos al API
 const NewReview = ({ navigation, selectedBook, submitReview, currentScore })=>(

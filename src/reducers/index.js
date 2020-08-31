@@ -1,20 +1,24 @@
 import { combineReducers } from "redux";
 
+import analysis, * as analysisSelectors from './analysis';
 import auth, * as authSelectors from './auth';
-import books, * as bookSelectors from './books';
-import users, * as userSelectors from './users';
 import authors, * as authorSelectors from "./authors";
+import books, * as bookSelectors from './books';
+import cart, * as cartSelectors from './cart';
+import courses, * as courseSelectors from './courses'
+import notes, * as notesSelectors from './notes';
+import publishers, * as publisherSelectors from './publishers';
+import reviews, * as reviewSelectors from './reviews';
 import tags, * as tagSelectors from './tags';
 import transactions, * as transactionsSelectors from "./transactions";
-import cart, * as cartSelectors from './cart';
-import reviews, * as reviewSelectors from './reviews';
-import analysis, * as analysisSelectors from './analysis';
-import publishers, * as publisherSelectors from './publishers';
-import notes, * as notesSelectors from './notes';
+import tutors,* as tutorSelectors from "./tutor";
+import users, * as userSelectors from './users';
 
 const reducer = combineReducers({
     auth,
     users,
+    courses,
+    tutors,
     books,
     authors,
     tags,
@@ -33,6 +37,18 @@ export const getBookOrder = (state) => bookSelectors.getBookOrder(state.reducer.
 export const getAllBooks = (state) => bookSelectors.getAllBooks(state.reducer.books);
 export const getSelectedBook = (state) => bookSelectors.getSelectedBook(state.reducer.books);
 export const getIsFetchingBooks = (state) => bookSelectors.getIsFetching(state.reducer.books);
+
+export const getCourseByID = (state, id) => courseSelectors.getCourseByID(state.reducer.courses, id);
+export const getCourseOrder = (state) => courseSelectors.getCourseOrder(state.reducer.courses);
+export const getAllCourses = (state) => courseSelectors.getAllCourses(state.reducer.courses);
+export const getSelectedCourse = (state) => courseSelectors.getSelectedCourse(state.reducer.courses);
+export const getIsFetchingCourses = (state) => courseSelectors.getIsFetching(state.reducer.books);
+
+export const getTutorByID = (state, id) => tutorSelectors.getTutorByID(state.reducer.tutors, id);
+export const getTutorOrder = (state) => tutorSelectors.getTutorOrder(state.reducer.tutors);
+export const getAllTutors = (state) => tutorSelectors.getAllTutors(state.reducer.tutors);
+export const getSelectedTutor = (state) => tutorSelectors.getSelectedTutor(state.reducer.tutors);
+export const getIsFetchingTutors = (state) => tutorSelectors.getIsFetching(state.reducer.books);
 
 export const getAuthToken = state => authSelectors.getAuthToken(state.reducer.auth);
 export const getIsAuthenticating = state => authSelectors.getIsAuthenticating(state.reducer.auth);

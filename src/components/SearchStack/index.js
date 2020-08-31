@@ -23,7 +23,7 @@ const SearchStack = () => (
                 headerShown: false
             }}
         />
-        <Stack.Screen 
+        {/*<Stack.Screen
             name="HomeDetails" 
             component={HomeDetails} 
             options={{
@@ -70,7 +70,7 @@ const SearchStack = () => (
                 headerBackTitle: 'Back',
                 headerTitle: null
             }}
-        />
+        />*/}
     </Stack.Navigator>
 )
 

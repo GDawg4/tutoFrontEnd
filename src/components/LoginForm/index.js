@@ -12,7 +12,7 @@ import * as authActions from '../../actions/auth';
 import * as userActions from '../../actions/users';
 import * as selectors from '../../reducers';
 
-import imageLogo from '../../assets/logo3.png';
+import imageLogo from '../../assets/logo005.png';
 
 const ALERT = {
 	shown: false

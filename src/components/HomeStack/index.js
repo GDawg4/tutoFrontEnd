@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Home from '../Home';
 import HomeDetails from '../HomeDetails';
+import CourseDetails from "../CourseDetails";
 import TagPage from '../TagPage';
 import NewReview from "../NewReview";
 import NewAnalysis from "../NewAnalysis";
@@ -17,19 +18,19 @@ const Stack = createStackNavigator();
 // el primer componente agregado será el componente por defecto al cargar el stack
 const HomeStack = () => (
     <Stack.Navigator>
-        <Stack.Screen 
+        <Stack.Screen
             name="Home" 
             component={Home}
         />
-        <Stack.Screen 
-            name="HomeDetails" 
-            component={HomeDetails} 
+        <Stack.Screen
+            name="CourseDetails"
+            component={CourseDetails}
             options={{
                 headerBackTitle: 'Back',
                 headerTitle: null
             }}
         />
-        <Stack.Screen
+        {/*<Stack.Screen
             name="TagPage"
             component={TagPage}
             options={{
@@ -76,7 +77,7 @@ const HomeStack = () => (
                 headerBackTitle: 'Back',
                 headerTitle: null
             }}
-        />
+        />*/}
     </Stack.Navigator>
 )
 

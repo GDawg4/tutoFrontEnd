@@ -10,6 +10,7 @@ import Tag from '../Tag';
 import Book from '../Book';
 import AuthorList from '../AuthorList';
 import PublisherList from '../PublisherList';
+import Course from '../Course'
 
 import styles from './styles';
 import * as selectors from '../../reducers';
@@ -17,10 +18,13 @@ import * as bookActions from '../../actions/books';
 import * as authorActions from '../../actions/authors';
 import * as tagActions from '../../actions/tags';
 import * as publisherActions from '../../actions/publishers';
+import * as courseActions from '../../actions/courses'
+import * as tutorActions from '../../actions/tutors'
+import TutorList from "../TutorList";
 
 // compoonente de búsqueda
 // muestra los resultados de libros, autores y editoriales
-const Search = ({ navigation, filter, allTags, allBooks, allAuthors, allPubs, handlePress, isFetching, onLoad }) => {
+const Search = ({ navigation, filter, allTags, allTutors, allPubs, handlePress, isFetching, onLoad, allCourses }) => {
     useEffect(onLoad, [])
 
     return (
@@ -29,7 +33,7 @@ const Search = ({ navigation, filter, allTags, allBooks, allAuthors, allPubs, ha
             <Field
                 name={'search'}
                 component={SearchBox}
-                placeholder={'Search books, authors or genres'}
+                placeholder={'Buscar tutorías'}
                 returnKeyType='done'
                 autoCapitalize='words'
                 handlePress={handlePress}
@@ -47,32 +51,32 @@ const Search = ({ navigation, filter, allTags, allBooks, allAuthors, allPubs, ha
                 {
                     filter === undefined ? 
                         <View style={styles.innerContainer}>
-                            <Text style={styles.headerTwo}>Explore</Text>
+                            <Text style={styles.headerTwo}>Explorar</Text>
                             <View style={styles.tagsContainer}>
                                 {
                                     allTags.map(genre => 
-                                        <Tag key={genre.id} info={genre} vertical={true} navigation={navigation}></Tag>
+                                        <Tag key={genre.id} info={genre} vertical={true} navigation={navigation}/>
                                     )
                                 }
                             </View>
                         </View> 
                         : 
                         <View style={styles.innerContainer}>
-                            <Text style={styles.headerTwo}>Books</Text>
+                            <Text style={styles.headerTwo}>Materias</Text>
                             <ScrollView horizontal={true} style={styles.booksContainer}>
                                 {
-                                    allBooks.filter(book => lowerCase(book.title).includes(lowerCase(filter))).length === 0
+                                    allCourses.filter(course => lowerCase(course.name).includes(lowerCase(filter))).length === 0
                                     ?
                                     <Text style={styles.infoMessage}>No hay resultados</Text>
                                     : 
-                                    allBooks.filter(book => lowerCase(book.title).includes(lowerCase(filter))).map(book =>
-                                        <Book key={book.id} book={book} navigation={navigation}/>
+                                    allCourses.filter(course => lowerCase(course.name).includes(lowerCase(filter))).map(course =>
+                                        <Course key={course.code} course={course} navigation={navigation}/>
                                     )
                                 }
                             </ScrollView>
-                            <Text style={styles.headerTwo}>Authors</Text>
-                            <AuthorList authors={allAuthors} filter={filter} navigation={navigation}/>
-                            <Text style={styles.headerTwo}>Publishers</Text>
+                            <Text style={styles.headerTwo}>Tutores</Text>
+                            <TutorList tutors={allTutors} filter={filter} navigation={navigation}/>
+                            <Text style={styles.headerTwo}>Materias</Text>
                             <PublisherList publishers={allPubs} filter={filter} navigation={navigation}/>
                         </View>
                 }
@@ -95,16 +99,21 @@ export default reduxForm({
         allAuthors: selectors.getAuthors(state),
         allPubs: selectors.getPublishers(state),
         isFetching: selectors.getIsFetchingBooks(state),
+        allCourses:selectors.getAllCourses(state),
+        allTutors:selectors.getAllTutors(state)
     }),
     dispatch => ({
         handlePress(){
             dispatch(clearFields('search', true, false, ['search']))
         },
         onLoad(){
-            dispatch(authorActions.startFetchingAuthor())
+            /*dispatch(authorActions.startFetchingAuthor())
             dispatch(bookActions.startFetchingBook())
             dispatch(tagActions.startFetchingTags())
-            dispatch(publisherActions.startFetchingPublisher())
+            dispatch(publisherActions.startFetchingPublisher())*/
+            dispatch(tutorActions.startFetchingTutor())
+            dispatch(courseActions.startFetchingCourse());
+            console.log('yay')
         }
     }),
 )(Search))

@@ -32,22 +32,20 @@ const Home = ({ navigation, onLoad, allBooks, allBooks2, allTags, isFetching }) 
                     />
                 }
             >
-                <Text style={styles.header}>New Releases</Text>
+                <Text style={styles.header}>Tutorías próximas</Text>
                 <ScrollView horizontal={true} style={styles.horizontalScroll}>
                     {
                         !isFetching && 
                         allBooks.map(book => <Book key={book.id} book={book} navigation={navigation}/>)
                     }
                 </ScrollView>
-                <Text style={styles.header}>Best Sellers</Text>
+                <Text style={styles.header}>Tutorías pasadas</Text>
                 <ScrollView horizontal={true} style={styles.horizontalScroll}>
                     {
                         !isFetching && 
                         allBooks2.map(book => <Book key={book.id} book={book} navigation={navigation}/>)
                     }
                 </ScrollView>
-                <Text style={styles.header}>Shop by Genre</Text>
-                <TagList allTags={allTags} navigation={navigation}/>
             </ScrollView>
         </View>
     );
@@ -62,11 +60,11 @@ export default connect(
     }),
     dispatch => ({
         onLoad(){
-            dispatch(authorActions.startFetchingAuthor())
+            /*dispatch(authorActions.startFetchingAuthor())
             dispatch(bookActions.startFetchingBook())
             dispatch(tagActions.startFetchingTags())
-            dispatch(transActions.startFetchingOwnedBooks())
-
+            dispatch(transActions.startFetchingOwnedBooks())*/
+            console.log('yay')
         }
     })
 )(Home);

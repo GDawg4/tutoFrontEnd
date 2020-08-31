@@ -10,6 +10,8 @@ import { watchPublishersFetch, watchPublisherBooksFetch } from './publishers';
 import { watchAddReview, watchFetchReview, watchFetchReviewForBook, watchRemoveReview} from "./reviews";
 import { watchCheckUserName, watchBuy, watchGift, watchCartFetch, watchClearCart, watchAddToCart, watchDeleteFromCart } from './cart';
 import { watchFetchNotes, watchRemoveNote, watchAddNote} from "./notes";
+import { watchCoursesFetch} from "./courses";
+import { watchTutorsFetch} from "./tutors";
 
 function* mainSaga() {
     yield all([
@@ -37,7 +39,9 @@ function* mainSaga() {
         fork(watchAddToCart),
         fork(watchDeleteFromCart),
         fork(watchFetchOwnedBooks),
-        fork(watchRefreshTokenStarted)
+        fork(watchRefreshTokenStarted),
+        fork(watchCoursesFetch),
+        fork(watchTutorsFetch),
     ])
 }
 

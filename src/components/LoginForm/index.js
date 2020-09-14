@@ -117,14 +117,12 @@ const styles = StyleSheet.create({
         backgroundColor:'#F5F5F5',
         borderWidth:1,
         borderRadius:10,
-        borderColor:'#000000',
         position:'relative',
         width: '80%',
         height: '60%',
         flexDirection:'column',
         alignSelf: 'center',
        // opacity: '0.9',
-		borderColor: 'white',
 		paddingTop: '10%',
 		marginTop: '10%'
         

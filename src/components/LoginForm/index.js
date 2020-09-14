@@ -117,7 +117,6 @@ const styles = StyleSheet.create({
         backgroundColor:'#F5F5F5',
         borderWidth:1,
         borderRadius:10,
-        borderColor:'#000000',
         position:'relative',
         width: '80%',
         height: '60%',

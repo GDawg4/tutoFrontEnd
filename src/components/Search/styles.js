@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     header: {
         alignSelf: 'flex-start',
         paddingLeft: 20,
-        color: '#428AF8',
+        color: '#078b45',
         fontSize: 20,
         fontWeight: '600',
         marginBottom: 12,
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     },
     headerTwo: {
         alignSelf: 'flex-start',
-        color: '#428AF8',
+        color: '#078b45',
         fontSize: 16,
         marginBottom: 12,
         textAlign: 'center',

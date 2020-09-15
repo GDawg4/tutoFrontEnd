@@ -18,7 +18,11 @@ const Stack = createStackNavigator()
 // el primer componente agregado será el componente por defecto al cargar el stack
 const HomeStack = () => (
   <Stack.Navigator>
-    <Stack.Screen name="Home" component={Home} />
+    <Stack.Screen name="Home" component={Home} options={{
+        // headerStyle: {
+        //     backgroundColor: '#078b45',
+        // },
+    }}/>
     <Stack.Screen
       name="CourseDetails"
       component={CourseDetails}

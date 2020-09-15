@@ -126,7 +126,7 @@ const RegistryForm = (props) => {
       behavior="padding"
     >
       <View style={styles.form}>
-        <Text style={styles.header}>Enter your data</Text>
+        <Text style={styles.header}>Ingrese sus Datos</Text>
         <Field
           name={'name'}
           component={FormTextInput}

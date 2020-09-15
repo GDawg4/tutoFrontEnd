@@ -17,14 +17,14 @@ const BottomTabs = () => (
     <Tab.Navigator
       initialRouteName="Home"
       tabBarOptions={{
-        activeTintColor: '#428AF8',
+        activeTintColor: '#078b45',
         labelStyle: {
           marginTop: -8,
         },
       }}
     >
       <Tab.Screen
-        name="Home"
+        name="Inicio"
         component={HomeStack}
         options={{
           tabBarIcon: ({ color }) => (
@@ -33,7 +33,7 @@ const BottomTabs = () => (
         }}
       />
       <Tab.Screen
-        name="Search"
+        name="Búsqueda"
         component={SearchStack}
         options={{
           tabBarIcon: ({ color }) => (
@@ -42,7 +42,7 @@ const BottomTabs = () => (
         }}
       />
       <Tab.Screen
-        name="Library"
+        name="Libreria"
         component={LibraryStack}
         options={{
           tabBarIcon: ({ color }) => (
@@ -51,7 +51,7 @@ const BottomTabs = () => (
         }}
       />
       <Tab.Screen
-        name="Cart"
+        name="Carrito"
         component={CartStack}
         options={{
           tabBarIcon: ({ color }) => (

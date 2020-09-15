@@ -101,19 +101,22 @@ const LoginForm = (props) => {
             backgroundColor: '#3B3A3C',
             alignItems: 'flex-start',
             justifyContent: 'center',
+            
           }}
         >
           <View
             style={{
               height: '100%',
               width: '30%',
-              overflow: 'visible',
+              display: 'flex',
+              justifyContent: 'center',
+              minHeight: '100%'
             }}
           >
             <Image
               style={{
-                height: '100%',
-                width: '100%',
+                height: '60%',
+                width: 'auto',
               }}
               source={logoUVG}
             />
@@ -161,8 +164,9 @@ const LoginForm = (props) => {
             />
             <Button
               onPress={handleSubmit}
+              color="#078b45"
               style={styles.buttonRegister}
-              label={'Log In'}
+              label={'Iniciar Sesión'}
               disabled={submitting}
             />
             <View style={styles.bottomText}>
@@ -256,6 +260,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     alignSelf: 'center',
     padding: 0,
+    backgroundColor: '#078b45'
   },
 
   bottomText: {

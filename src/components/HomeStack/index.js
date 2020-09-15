@@ -1,36 +1,33 @@
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react'
+import { createStackNavigator } from '@react-navigation/stack'
 
-import Home from '../Home';
-import HomeDetails from '../HomeDetails';
-import CourseDetails from "../CourseDetails";
-import TagPage from '../TagPage';
-import NewReview from "../NewReview";
-import NewAnalysis from "../NewAnalysis";
-import NotePage from "../NotePage";
-import NewNote from "../NewNote";
-import NoteDetails from "../NoteDetails";
+import Home from '../Home'
+import HomeDetails from '../HomeDetails'
+import CourseDetails from '../CourseDetails'
+import TagPage from '../TagPage'
+import NewReview from '../NewReview'
+import NewAnalysis from '../NewAnalysis'
+import NotePage from '../NotePage'
+import NewNote from '../NewNote'
+import NoteDetails from '../NoteDetails'
 
 // creamos el stack navigator
-const Stack = createStackNavigator();
+const Stack = createStackNavigator()
 
 // agregamos las pantallas que estarán en el stack
 // el primer componente agregado será el componente por defecto al cargar el stack
 const HomeStack = () => (
-    <Stack.Navigator>
-        <Stack.Screen
-            name="Home" 
-            component={Home}
-        />
-        <Stack.Screen
-            name="CourseDetails"
-            component={CourseDetails}
-            options={{
-                headerBackTitle: 'Back',
-                headerTitle: null
-            }}
-        />
-        {/*<Stack.Screen
+  <Stack.Navigator>
+    <Stack.Screen name="Home" component={Home} />
+    <Stack.Screen
+      name="CourseDetails"
+      component={CourseDetails}
+      options={{
+        headerBackTitle: 'Back',
+        headerTitle: null,
+      }}
+    />
+    {/*<Stack.Screen
             name="TagPage"
             component={TagPage}
             options={{
@@ -78,7 +75,7 @@ const HomeStack = () => (
                 headerTitle: null
             }}
         />*/}
-    </Stack.Navigator>
+  </Stack.Navigator>
 )
 
-export default HomeStack;
+export default HomeStack

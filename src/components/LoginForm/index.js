@@ -9,7 +9,6 @@ import {
   Text,
   Alert,
   StyleSheet,
-  Dimensions,
 } from 'react-native'
 import { Link, Redirect } from 'react-router-native'
 
@@ -21,7 +20,6 @@ import * as authActions from '../../actions/auth'
 import * as userActions from '../../actions/users'
 import * as selectors from '../../reducers'
 
-import imageLogo from '../../assets/logo005.png'
 import logoUVG from '../../assets/logo.png'
 import cafeteria from '../../assets/cafeteria.jpg'
 const ALERT = {
@@ -37,10 +35,6 @@ const onSubmit = (values, dispatch) => {
 
 // validación que revisa que el campo no esté vacío
 const required = (value) => (value !== undefined ? undefined : 'Required')
-
-const dimensions = Dimensions.get('screen')
-const dimensionX = dimensions.width
-const dimensionY = dimensions.height
 
 // login hecho con redux-form
 const LoginForm = (props) => {
@@ -138,104 +132,71 @@ const LoginForm = (props) => {
         <View style={styles.imageContainer}>
           <Image source={cafeteria} style={styles.image} />
         </View>
-      </View>
-
-      {/* 
-      <View style={styles.form}>
         <View
-          style={{
-            width: '100%',
-            height: '15%',
-            position: 'relative',
-            backgroundColor: '#454545',
-          }}
+          style={
+            isAuthenticating
+              ? [styles.container, styles.authenticating]
+              : styles.container
+          }
+          behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
         >
-          <View
-            style={{
-              width: '100%',
-              height: '18%',
-              backgroundColor: '#FFF',
-              position: 'absolute',
-            }}
-          />
-          <Image
-            style={{
-              width: '20%',
-              height: '100%',
-              position: 'absolute',
-              left: '2%',
-              top: '8%',
-            }}
-            source={logoUVG}
-          />
-        </View>
-
-        <View
-          style={{
-            width: '100%',
-            height: '4%',
-            position: 'relative',
-            backgroundColor: '#078b45',
-          }}
-        />
-
-        <View style={styles.bodyArea}>
-          <View style={styles.imageContainer}>
-            <Image source={cafeteria} style={styles.image} />
-          </View>
-
-          <View
-            style={
-              isAuthenticating
-                ? [styles.container, styles.authenticating]
-                : styles.container
-            }
-            behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
-          >
-            <View style={styles.textFieldArea}>
-              <Field
-                name={'email'}
-                component={FormTextInput}
-                keyboardType="email-address"
-                placeholder={'Email'}
-                autoCapitalize="none"
-                returnKeyType="next"
-                validate={required}
-              />
-              <Field
-                name={'password'}
-                component={FormTextInput}
-                autoCapitalize="none"
-                secureTextEntry={true}
-                placeholder={'Password'}
-                returnKeyType="done"
-                validate={required}
-              />
-              <Button
-                onPress={handleSubmit}
-                style={styles.buttonRegister}
-                label={'Log In'}
-                disabled={submitting}
-              />
-              <View style={styles.bottomText}>
-                <Text style={styles.styledText}>¿No tienes una cuenta? </Text>
-                <Link
-                  to="/registry"
-                  underlayColor="#f0f4f7"
-                  style={styles.navItem}
+          <View style={styles.textFieldArea}>
+            <Field
+              name={'email'}
+              component={FormTextInput}
+              keyboardType="email-address"
+              placeholder={'Email'}
+              autoCapitalize="none"
+              returnKeyType="next"
+              validate={required}
+            />
+            <Field
+              name={'password'}
+              component={FormTextInput}
+              autoCapitalize="none"
+              secureTextEntry={true}
+              placeholder={'Password'}
+              returnKeyType="done"
+              validate={required}
+            />
+            <Button
+              onPress={handleSubmit}
+              style={styles.buttonRegister}
+              label={'Log In'}
+              disabled={submitting}
+            />
+            <View style={styles.bottomText}>
+              <Text
+                style={{
+                  color: '#FFF',
+                  textAlign: 'center',
+                }}
+              >
+                ¿No tienes una cuenta?{' '}
+              </Text>
+              <Link
+                to="/registry"
+                underlayColor="#f0f4f7"
+                style={styles.navItem}
+              >
+                <Text
+                  style={{
+                    color: '#FFF',
+                    textAlign: 'center',
+                  }}
                 >
-                  <Text style={styles.linkText}>Haz clic aquí</Text>
-                </Link>
-              </View>
-              {isAuthenticating && (
-                <View style={styles.spinner}>
-                  <ActivityIndicator size="large" color="#428AF8" />
-                </View>
-              )}
+                  Haz clic aquí
+                </Text>
+              </Link>
             </View>
+            {isAuthenticating && (
+              <View style={styles.spinner}>
+                <ActivityIndicator size="large" color="#428AF8" />
+              </View>
+            )}
           </View>
         </View>
-      </View> */}
+      </View>
     </KeyboardAvoidingView>
   )
 }
@@ -248,17 +209,20 @@ const styles = StyleSheet.create({
     borderColor: '#000000',
     position: 'relative',
     width: '80%',
-    height: '60%',
+    height: 'auto',
     flexDirection: 'column',
     alignSelf: 'center',
-    // opacity: '0.9',
     borderColor: 'white',
     paddingTop: '10%',
     marginTop: '10%',
   },
   textFieldArea: {
     width: '80%',
+    height: '80%',
     alignSelf: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
   },
   bodyArea: {
     height: '81%',
@@ -266,11 +230,7 @@ const styles = StyleSheet.create({
   image: {
     height: '100%',
     width: '100%',
-    // top: '7.5%',
-    //  resizeMode: "cover",
     position: 'relative',
-    //  left:0
-    // overflow: 'hidden'*/
   },
   imageContainer: {
     width: '100%',
@@ -295,34 +255,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     position: 'relative',
     alignSelf: 'center',
-    paddingTop: '10%',
     padding: 0,
   },
-  /*,
 
-
-    elements:{
-        marginLeft:'10%',
-        marginRight:'10%',
-        marginTop:'10%',
-        flex: 1
-    },
-
-
-    inputTitle:{
-        fontWeight:'bold'
-    },
-    smallPrint:{
-        fontSize:'small',
-        fontColor:'blue',
-        textAlign:'center'
-    },
-    buttons: {
-        color: '#FF0000'
-    },
-    letters: {
-        fontColor: '#FFFFFF'
-    }*/
+  bottomText: {
+    backgroundColor: '#454545',
+    color: '#FFF',
+    width: '80%',
+    alignSelf: 'center',
+    height: 'auto',
+    borderRadius: 5,
+    padding: 10,
+  },
 })
 
 export default reduxForm({

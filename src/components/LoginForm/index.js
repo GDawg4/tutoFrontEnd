@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
 	}, 
 	textFieldArea: {
 		width: '80%',
-		alignSelf: 'center'
+		alig nSelf: 'center'
 		
 	},
 	bodyArea:{

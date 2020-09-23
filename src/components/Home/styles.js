@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        display: 'flex',
         alignItems: 'flex-start',
         backgroundColor: '#FFFFFF'
     },
@@ -17,13 +17,14 @@ const styles = StyleSheet.create({
     },
     header: {
         alignSelf: 'flex-start',
-        color: '#428AF8',
+        color: '#078b45',
         fontSize: 20,
-        textAlign: 'center',
+        fontWeight: '600',
+        // textAlign: 'center',
         marginVertical: 8,
-        marginLeft: 16,
-        fontWeight: '700',
-        width: '100%'
+        width: '100%',
+        // backgroundColor: '#454545',
+        left: '5%'
     },
 });
 

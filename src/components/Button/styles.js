@@ -25,6 +25,10 @@ const styles = StyleSheet.create({
   },
   remove: {
       backgroundColor: '#F55E64'
+  },
+  basicuvggreen: {
+    backgroundColor: '#078b45',
+    color: "#FFF"
   }
 });
 

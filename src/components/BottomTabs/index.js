@@ -7,6 +7,7 @@ import HomeStack from '../HomeStack'
 import SearchStack from '../SearchStack'
 import LibraryStack from '../LibraryStack'
 import CartStack from '../CartStack'
+import ProfileStack from '../ProfileStack'
 
 // Se crea el componente de navegación
 const Tab = createBottomTabNavigator()
@@ -59,6 +60,15 @@ const BottomTabs = () => (
           ),
         }}
       />
+      <Tab.Screen
+        name="perfil"
+        component={ProfileStack}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <AntDesign name="profile" size={24} color={color} />
+          ),
+        }}
+      />    
     </Tab.Navigator>
   </NavigationContainer>
 )

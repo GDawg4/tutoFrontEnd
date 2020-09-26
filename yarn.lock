@@ -6182,6 +6182,11 @@ react-native-screens@^2.8.0:
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-2.8.0.tgz#9f989096fc5ccf248e0dfa93a74f1a64057e15f1"
   integrity sha512-fUCIQLZX+5XB0ypWX038P3zso54IFFjTsQUZJWEsjC3pp5rPItAt5SzqtJn+uVjcJaczZ+dpIuvj6IFLqkWLZQ==
 
+react-native-table-component@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/react-native-table-component/-/react-native-table-component-1.2.1.tgz#5f1e0f159b1dff9df0d5601c4a5ab99d1aa99a25"
+  integrity sha512-sapwO0bONfQtpWg3GVMwP5D3lGEJlxPB3c7fb0soXBynvCa+SBktacVZ9OmYJnIbRJ3uW5pS4tzNc8GmE+UScw==
+
 react-native-unimodules@~0.9.0:
   version "0.9.1"
   resolved "https://registry.yarnpkg.com/react-native-unimodules/-/react-native-unimodules-0.9.1.tgz#72e145a344e1b86baf513e9bfd96bbac227302b3"
@@ -6211,6 +6216,11 @@ react-native-view-shot@3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/react-native-view-shot/-/react-native-view-shot-3.1.2.tgz#8c8e84c67a4bc8b603e697dbbd59dbc9b4f84825"
   integrity sha512-9u9fPtp6a52UMoZ/UCPrCjKZk8tnkI9To0Eh6yYnLKFEGkRZ7Chm6DqwDJbYJHeZrheCCopaD5oEOnRqhF4L2Q==
+
+react-native-viewport-units@0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-viewport-units/-/react-native-viewport-units-0.0.5.tgz#c86448ca6497e49a9255a48589f1609d6b73f503"
+  integrity sha1-yGRIymSX5JqSVaSFifFgnWtz9QM=
 
 react-native-web@~0.11.7:
   version "0.11.7"

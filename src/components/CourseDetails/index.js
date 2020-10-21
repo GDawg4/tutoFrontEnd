@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     },
     header: {
         alignSelf: 'flex-start',
-        color: '#428AF8',
+        color: '#078b45',
         fontSize: 20,
         textAlign: 'center',
         marginBottom: 8,
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
         color: 'red'
     },
     add: {
-        color: '#428AF8'
+        color: '#078b45'
     },
     notes:{
         color:'yellow'

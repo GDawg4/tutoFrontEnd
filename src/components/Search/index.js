@@ -29,7 +29,7 @@ const Search = ({ navigation, filter, allTags, allTutors, allPubs, handlePress, 
 
     return (
         <View style={styles.container}>
-            <Text style={styles.header}>Search</Text>
+            <Text style={styles.header}>Búsqueda</Text>
             <Field
                 name={'search'}
                 component={SearchBox}
@@ -44,7 +44,7 @@ const Search = ({ navigation, filter, allTags, allTutors, allPubs, handlePress, 
                     <RefreshControl
                         refreshing={isFetching}
                         onRefresh={() => onLoad()}
-                        tintColor='#428AF8'
+                        tintColor='#078b45'
                     />
                 }
             >

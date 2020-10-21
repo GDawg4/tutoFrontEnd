@@ -14,8 +14,9 @@ import * as transActions from '../../actions/transactions';
 import TokenRefresh from "../TokenRefresh";
 
 
-// Pantalla de inicio de la aplicacón
-// Se muestran al usuario los libros más nuevos, más vendidos y la oportunidad de buscar por género
+// Home screen of the app
+// Here you can navigate to your profile, finding a tutor, or look at your previous and future appointments
+
 const Home = ({ navigation, onLoad, allBooks, allBooks2, allTags, isFetching }) => {
     useEffect(onLoad, [])
 

@@ -1,17 +1,12 @@
 {
+  "orientation": "portrait",
   "name": "bookstorefrontend",
   "displayName": "bookstorefrontend",
   "expo": {
     "name": "bookstorefrontend",
     "slug": "bookstorefrontend",
     "version": "1.0.0",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "platforms": ["ios", "android", "web"],
+    "assetBundlePatterns": ["**/*"]
   }
 }

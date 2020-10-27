@@ -9,10 +9,7 @@ const Profile = () => {
     
     return (
         <View >
-            <Text>hellow</Text>
             <WeekScheduler />
-            {//<DaySchedule />
-            }
         </View>
     )
 };

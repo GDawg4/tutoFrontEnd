@@ -5,6 +5,8 @@ import DaySchedule from '../DaySchedule'
 import WeekScheduler from '../WeekScheduler';
 import styles from './styles';
 import Button from "../Button";
+import {Link, Redirect} from "react-router-native";
+import * as userActions from "../../actions/users";
 // Componente de librería
 // FlatList que renderiza los libros comprados por el usuario
 const Profile = (props) => {
@@ -27,11 +29,18 @@ const Profile = (props) => {
                 label={'Cambiar contraseña'}
                 disabled={changing}
             />
-            <Button
-                onPress={logOff}
-                label={'Cerrar sesión'}
-                disabled={changing}
-            />
+            <Link to="/">
+                <Text
+                    style={{
+                        textAlign: 'center',
+                        color: '#3b3b3b',
+                        textDecorationLine: 'underline',
+                        textDecorationColor: '#3b3b3b',
+                    }}
+                >
+                    Cerrar sesión
+                </Text>
+            </Link>
         </View>
     )
 };
@@ -42,5 +51,6 @@ export default connect(
 
     }),
     dispatch => ({
+
     })
 )(Profile);

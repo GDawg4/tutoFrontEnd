@@ -43,29 +43,11 @@ const BottomTabs = () => (
         }}
       />
       <Tab.Screen
-        name="Libreria"
-        component={LibraryStack}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <AntDesign name="book" size={24} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Carrito"
-        component={CartStack}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <AntDesign name="shoppingcart" size={24} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="perfil"
+        name="Perfil"
         component={ProfileStack}
         options={{
           tabBarIcon: ({ color }) => (
-            <AntDesign name="profile" size={24} color={color} />
+            <AntDesign name="user" size={24} color={color} />
           ),
         }}
       />    

@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap'
     },
     header: {
+        paddingTop: 10,
         paddingLeft: 0,
         alignSelf: 'flex-start',
         color: '#078b45',

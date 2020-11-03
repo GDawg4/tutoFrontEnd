@@ -5,7 +5,7 @@ import {
 } from 'redux-saga/effects';
 import omit from 'lodash/omit';
   
-import * as actio   ns from '../actions/users';
+import * as actions from '../actions/users';
 import * as types from '../types/users';
 import * as constants from '../resources/constants'
   

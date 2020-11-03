@@ -12,6 +12,10 @@ import * as authorActions from '../../actions/authors';
 import * as tagActions from '../../actions/tags';
 import * as transActions from '../../actions/transactions';
 import TokenRefresh from "../TokenRefresh";
+import {ImageBackground} from "react-native-web";
+import cit from '../../assets/CIT.jpg';
+import cafeteria from "../../assets/cafeteria.jpg";
+
 
 
 // Home screen of the app
@@ -22,28 +26,29 @@ const Home = ({ navigation, onLoad, allBooks, allBooks2, allTags, isFetching }) 
 
     return (
         <View style={styles.container}>
-            <TokenRefresh/>
-            <ScrollView 
+
+            <ScrollView
                 style={styles.homeContainer}
                 refreshControl={
                     <RefreshControl
                         refreshing={isFetching}
                         onRefresh={() => onLoad()}
                         tintColor='#428AF8'
+
                     />
                 }
             >
                 <Text style={styles.header}>Tutorías próximas</Text>
                 <ScrollView horizontal={true} style={styles.horizontalScroll}>
                     {
-                        !isFetching && 
+                        !isFetching &&
                         allBooks.map(book => <Book key={book.id} book={book} navigation={navigation}/>)
                     }
                 </ScrollView>
                 <Text style={styles.header}>Tutorías pasadas</Text>
                 <ScrollView horizontal={true} style={styles.horizontalScroll}>
                     {
-                        !isFetching && 
+                        !isFetching &&
                         allBooks2.map(book => <Book key={book.id} book={book} navigation={navigation}/>)
                     }
                 </ScrollView>

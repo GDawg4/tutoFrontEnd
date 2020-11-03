@@ -15,9 +15,9 @@ const App = () => (
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <NativeRouter>
-        <Route exact path="/" component={LoginForm} />
+        <Route exact path="/r" component={LoginForm} />
         <Route exact path="/registry" component={RegistryForm} />
-        <Route exact path="/r" component={BottomTabs} />
+        <Route exact path="/" component={BottomTabs} />
       </NativeRouter>
     </PersistGate>
   </Provider>

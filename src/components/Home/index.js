@@ -12,13 +12,11 @@ import * as authorActions from '../../actions/authors';
 import * as tagActions from '../../actions/tags';
 import * as transActions from '../../actions/transactions';
 import TokenRefresh from "../TokenRefresh";
-import * as authActions from '../../actions/auth'
-import auth from "../../reducers/auth";
 
 
 // Pantalla de inicio de la aplicacón
 // Se muestran al usuario los libros más nuevos, más vendidos y la oportunidad de buscar por género
-const Home = ({ navigation, onLoad, allBooks, allBooks2, allTags, isFetching, allSessions }) => {
+const Home = ({ navigation, onLoad, allBooks, allBooks2, allTags, isFetching }) => {
     useEffect(onLoad, [])
 
     return (

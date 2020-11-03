@@ -7,9 +7,11 @@ const DayScheduler = ({ArrayOfDay= [0,0,0,0,0,0,0,0,0,0,0,0,0,0], Day="L", Edita
   // event.length = 0
   // let cant = array.length
   const Buttons = ArrayOfDay.map( value => <Button label={value === 0 ? 'L' : 'O'}/>)
+  
+  const widths= ArrayOfDay.map(value => 30)
   return (
           <TableWrapper style={{flex:1}}>
-            <Cols data={[Buttons]} heightArr={ArrayOfDay.map(i => i+30)} widthArr={ArrayOfDay.map(i => i+30)} textStyle={styles.text}>
+            <Cols data={Editable ? [Buttons] : ArrayOfDay} heightArr={ArrayOfDay.map(i => i+30)} widthArr={widths} textStyle={styles.text}>
               
             </Cols>
           </TableWrapper>

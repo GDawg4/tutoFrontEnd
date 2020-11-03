@@ -16,15 +16,17 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap'
     },
     header: {
+        paddingTop: 10,
+        paddingLeft: 0,
         alignSelf: 'flex-start',
         color: '#078b45',
         fontSize: 20,
         fontWeight: '600',
-        // textAlign: 'center',
+        textAlign: 'center',
         marginVertical: 8,
         width: '100%',
         // backgroundColor: '#454545',
-        left: '5%'
+        left: '0%'
     },
 });
 

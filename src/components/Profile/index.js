@@ -8,13 +8,49 @@ import Button from "../Button";
 import Author from "../Author";
 import AuthorDetails from "../AuthorDetails";
 
+import WeekScheduler from '../WeekScheduler';
+import styles from './styles';
+import Button from "../Button";
+import {Link, Redirect} from "react-router-native";
+import * as userActions from "../../actions/users";
 // Componente de librería
 // FlatList que renderiza los libros comprados por el usuario
 const Profile = ({user, show}) => {
 
+const Profile = (props) => {
+    const {
+        changePassword,
+        changing,
+        logOff,
+        handleSubmit,
+        isAuthenticated,
+        isAuthenticating,
+        authenticationFailed,
+        success,
+        clearSuccess,
+    } = props
     return (
         <View>
             <AuthorDetails selectedAuthor={user}/>
+        <View>
+            <Button
+                onPress={changePassword}
+                color="#078b45"
+                label={'Cambiar contraseña'}
+                disabled={changing}
+            />
+            <Link to="/">
+                <Text
+                    style={{
+                        textAlign: 'center',
+                        color: '#3b3b3b',
+                        textDecorationLine: 'underline',
+                        textDecorationColor: '#3b3b3b',
+                    }}
+                >
+                    Cerrar sesión
+                </Text>
+            </Link>
         </View>
     )
 };
@@ -28,5 +64,6 @@ export default connect(
         }
     }),
     dispatch => ({
+
     })
 )(Profile);

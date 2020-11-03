@@ -27,13 +27,7 @@ const WeekScheduler = ({
                 <DaySchedule ArrayOfDay={day} Day={DaysOfWeek[i]} key={i}/>
                ) 
             })}
-            <DaySchedule />
-            <DaySchedule />
-            <DaySchedule />
-            <DaySchedule />
-            <DaySchedule />
-            <DaySchedule />
-            <DaySchedule />
+
             
         </Table>
         

@@ -19,7 +19,7 @@ const Stack = createStackNavigator()
 const HomeStack = () => (
     <Stack.Navigator>
         <Stack.Screen
-            name="Home" 
+            name="Home"
             component={Home}
         />
         <Stack.Screen

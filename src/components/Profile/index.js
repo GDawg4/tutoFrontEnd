@@ -2,9 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { View, FlatList, RefreshControl, Text } from 'react-native';
 import DaySchedule from '../DaySchedule'
-import WeekScheduler from '../WeekScheduler'
 import * as selectors from '../../reducers'
-import Button from "../Button";
 import Author from "../Author";
 import AuthorDetails from "../AuthorDetails";
 

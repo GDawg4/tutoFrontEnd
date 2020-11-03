@@ -22,7 +22,7 @@ export default connect(
   	undefined,
   	dispatch => ({
     	onRefresh() {
-      		dispatch(actions.startTokenRefresh());
+      		// dispatch(actions.startTokenRefresh());
     	},
   	}),
 )(TokenRefresh);

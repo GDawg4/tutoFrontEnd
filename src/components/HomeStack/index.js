@@ -17,21 +17,20 @@ const Stack = createStackNavigator()
 // agregamos las pantallas que estarán en el stack
 // el primer componente agregado será el componente por defecto al cargar el stack
 const HomeStack = () => (
-  <Stack.Navigator>
-    <Stack.Screen name="Home" component={Home} options={{
-        // headerStyle: {
-        //     backgroundColor: '#078b45',
-        // },
-    }}/>
-    <Stack.Screen
-      name="CourseDetails"
-      component={CourseDetails}
-      options={{
-        headerBackTitle: 'Back',
-        headerTitle: null,
-      }}
-    />
-    {/*<Stack.Screen
+    <Stack.Navigator>
+        <Stack.Screen
+            name="Home" 
+            component={Home}
+        />
+        <Stack.Screen
+            name="CourseDetails"
+            component={CourseDetails}
+            options={{
+                headerBackTitle: 'Back',
+                headerTitle: null
+            }}
+        />
+        {/*<Stack.Screen
             name="TagPage"
             component={TagPage}
             options={{

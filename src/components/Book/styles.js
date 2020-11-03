@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 // Estilos para el componente de libro
 const styles = StyleSheet.create({
     bookContainer: {
-        height: 300,
+        height: 500,
         width: 150,
         borderRadius: 16,
         flex: 1,
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     },
     cover: {
         width: '100%',
-        height: '85%',
+        height: '70%',
         borderRadius: 16,
         resizeMode: 'stretch'
     },

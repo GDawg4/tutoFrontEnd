@@ -1,9 +1,9 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux'
-import createSagaMiddleware from 'redux-saga'
-import { persistStore, persistReducer } from 'redux-persist'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import { AsyncStorage } from 'react-native'
-import { reducer as form } from 'redux-form'
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import { persistStore, persistReducer } from 'redux-persist';
+import { composeWithDevTools } from "redux-devtools-extension";
+import { AsyncStorage } from 'react-native';
+import { reducer as form } from 'redux-form';
 
 import reducer from './reducers'
 import mainSaga from './sagas'
@@ -16,14 +16,14 @@ export const configureStore = () => {
     form,
   })
 
-  const persistedReducer = persistReducer(
-    {
-      key: 'root',
-      storage: AsyncStorage,
-      whitelist: ['auth'],
-    },
-    newReducer
-  )
+    const persistedReducer = persistReducer(
+        {
+          key: 'root',
+          storage: AsyncStorage,
+          whitelist:['auth']
+        },
+        newReducer
+    )
 
   const composeEnhancers = composeWithDevTools({
     trace: true,

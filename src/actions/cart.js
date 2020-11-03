@@ -1,5 +1,4 @@
 import * as types from '../types/cart'
-import transactions from "../reducers/transactions";
 
 export const addItemToCart = (book) => ({
     type: types.CART_ITEM_ADDED,

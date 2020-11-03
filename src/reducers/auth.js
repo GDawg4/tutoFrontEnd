@@ -2,6 +2,7 @@ import jwtDecode from 'jwt-decode';
 import { combineReducers } from 'redux';
 
 import * as types from '../types/auth';
+import actions from "redux-form/lib/actions";
 
 
 const token = (state = null, action) => {
@@ -119,6 +120,17 @@ const refreshingError = (state = null, action) => {
   	}
 };
 
+const info = (state = null, action) => {
+	switch(action.type) {
+		case types.INFO_FETCH_COMPLETED: {
+			return action.payload.info;
+		}
+		default: {
+			return state;
+		}
+	}
+}
+
 const auth = combineReducers({
 	token,
 	decoded,
@@ -126,11 +138,10 @@ const auth = combineReducers({
 	isRefreshing,
 	authenticatingError,
 	refreshingError,
+	info
 });
 
-
 export default auth;
-
 
 export const getAuthToken = state => state.token;
 export const getIsAuthenticating = state => state.isAuthenticating;
@@ -141,3 +152,5 @@ export const getAuthUsername = state => state.decoded ? state.decoded.username :
 export const getAuthEmail = state => state.decoded ? state.decoded.email : null;
 export const getIsRefreshingToken = state => state.isRefreshing;
 export const getRefreshingError = state => state.refreshingError;
+export const getDecoded = state => state;
+export const getInfo = state => state.info

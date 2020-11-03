@@ -8,6 +8,8 @@ import AuthorDetails from '../AuthorDetails';
 import PublisherDetails from '../PublisherDetails';
 import NewReview from "../NewReview";
 import NewAnalysis from "../NewAnalysis";
+import CourseDetails from "../CourseDetails";
+import TutorDetails from "../TutorDetails";
 
 // se crea el stack de navegacion para la busqueda
 const Stack = createStackNavigator();
@@ -23,15 +25,23 @@ const SearchStack = () => (
                 headerShown: false
             }}
         />
-        {/*<Stack.Screen
-            name="HomeDetails" 
-            component={HomeDetails} 
+        <Stack.Screen
+            name="CourseDetails"
+            component={CourseDetails}
             options={{
                 headerBackTitle: 'Back',
                 headerTitle: null
             }}
         />
-        <Stack.Screen 
+        <Stack.Screen
+            name="TutorDetails"
+            component={TutorDetails}
+            options={{
+                headerBackTitle: 'Back',
+                headerTitle: null
+            }}
+        />
+       {/* <Stack.Screen
             name="AuthorDetails" 
             component={AuthorDetails} 
             options={{

@@ -22,9 +22,7 @@ const styles = StyleSheet.create({
         width: '80%'
     },
     bottomContainer:{
-        flex: 4,
-        marginTop: 32,
-        width: '90%'
+        width: '100%'
     },
     similiarBooks: {
         marginTop: 32,

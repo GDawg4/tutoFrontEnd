@@ -21,6 +21,7 @@ import * as publisherActions from '../../actions/publishers';
 import * as courseActions from '../../actions/courses'
 import * as tutorActions from '../../actions/tutors'
 import TutorList from "../TutorList";
+import Tutor from "../Tutor";
 
 // compoonente de búsqueda
 // muestra los resultados de libros, autores y editoriales
@@ -75,7 +76,19 @@ const Search = ({ navigation, filter, allTags, allTutors, allPubs, handlePress, 
                                 }
                             </ScrollView>
                             <Text style={styles.headerTwo}>Tutores</Text>
-                            <TutorList tutors={allTutors} filter={filter} navigation={navigation}/>
+                            {/*<TutorList tutors={allTutors} filter={filter} navigation={navigation}/>*/}
+                            <ScrollView horizontal={true} style={styles.booksContainer}>
+                                {
+                                    allTutors.filter(tutor => lowerCase(tutor.user.name).includes(lowerCase(filter))).length === 0
+                                        ?
+                                        <Text style={styles.infoMessage}>No hay resultados</Text>
+                                        :
+                                        // allTutors.filter(course => lowerCase(course.name).includes(lowerCase(filter))).map(course =>
+                                        //     <Tutor key={course.code} course={course} navigation={navigation}/>
+                                        // )
+                                    allTutors.map(tutor => <Tutor key = {tutor.id} info={tutor.user} navigation = {navigation}/>)
+                                }
+                            </ScrollView>
                             <Text style={styles.headerTwo}>Materias</Text>
                             <PublisherList publishers={allPubs} filter={filter} navigation={navigation}/>
                         </View>
@@ -111,7 +124,7 @@ export default reduxForm({
             dispatch(bookActions.startFetchingBook())
             dispatch(tagActions.startFetchingTags())
             dispatch(publisherActions.startFetchingPublisher())*/
-            dispatch(tutorActions.startFetchingTutor())
+            dispatch(tutorActions.startFetchingTutor());
             dispatch(courseActions.startFetchingCourse());
             console.log('yay')
         }

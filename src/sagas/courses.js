@@ -35,8 +35,6 @@ function* fetchCourses(action) {
                 result
             } = normalize(jsonResult, schemas.courseListSchema);
 
-            console.log(normalize(jsonResult, schemas.courseSchema))
-
             yield put(
                 actions.completeFetchingCourse(course, result)
             )

@@ -13,7 +13,7 @@ const TutorList = ({ tutors, filter, navigation }) => (
         {
             tutors.filter(tutor => lowerCase(tutor.name).includes(lowerCase(filter))).length === 0
                 ?
-                <Text style={styles.infoMessage}>No hay resultados</Text>
+                <Text style={styles.infoMessage}>{filter}</Text>
                 :
                 tutors.filter(tutor => lowerCase(tutor.name).includes(lowerCase(filter))).map(tutor =>
                     <Tutor key={tutor.id} tutor={tutor} navigation={navigation}/>

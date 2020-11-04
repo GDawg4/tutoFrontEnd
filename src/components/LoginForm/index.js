@@ -150,7 +150,7 @@ const LoginForm = (props) => {
             </KeyboardAvoidingView>
           </ImageBackground>
         </View>
-        <View style={styles.bottomBar}></View>
+        <View style={styles.bottomBar}/>
       </View>
     </SafeAreaView>
   )

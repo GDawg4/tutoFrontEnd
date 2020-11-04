@@ -2,7 +2,7 @@ import { fork, all } from 'redux-saga/effects'
 
 import { watchBooksFetch } from './books';
 import { watchAuthorsFetch, watchAuthorBooksFetch } from "./authors";
-import { watchLoginStarted, watchRefreshTokenStarted } from './auth';
+import { watchLoginStarted, watchRefreshTokenStarted, watchGetInfo } from './auth';
 import { watchTransactionsFetch, watchFetchOwnedBooks } from "./transactions";
 import { watchAddUser } from './users';
 import { watchTagsFetch } from './tags';
@@ -42,6 +42,7 @@ function* mainSaga() {
         fork(watchRefreshTokenStarted),
         fork(watchCoursesFetch),
         fork(watchTutorsFetch),
+        fork(watchGetInfo)
     ])
 }
 

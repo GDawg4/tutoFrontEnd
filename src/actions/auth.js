@@ -43,3 +43,21 @@ export const failTokenRefresh = error => ({
         error,
     },
 });
+
+export const startFetchingInfo = () => ({
+    type:types.INFO_FETCH_STARTED
+})
+
+export const completeFetchingInfo = info => ({
+    type:types.INFO_FETCH_COMPLETED,
+    payload:{
+        info
+    }
+})
+
+export const failFetchingInfo = (error) => ({
+    type:types.INFO_FETCH_FAILED,
+    payload:{
+        error
+    }
+})

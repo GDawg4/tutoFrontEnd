@@ -13,12 +13,14 @@ import tags, * as tagSelectors from './tags';
 import transactions, * as transactionsSelectors from "./transactions";
 import tutors,* as tutorSelectors from "./tutor";
 import users, * as userSelectors from './users';
+import sessions, * as sessionSelectors from "./sessions";
 
 const reducer = combineReducers({
     auth,
     users,
     courses,
     tutors,
+    sessions,
     books,
     authors,
     tags,
@@ -32,6 +34,8 @@ const reducer = combineReducers({
 
 export default reducer;
 
+export const getState = (state) => state.reducer;
+
 export const getBookByID = (state, id) => bookSelectors.getBookByID(state.reducer.books, id);
 export const getBookOrder = (state) => bookSelectors.getBookOrder(state.reducer.books);
 export const getAllBooks = (state) => bookSelectors.getAllBooks(state.reducer.books);
@@ -42,7 +46,13 @@ export const getCourseByID = (state, id) => courseSelectors.getCourseByID(state.
 export const getCourseOrder = (state) => courseSelectors.getCourseOrder(state.reducer.courses);
 export const getAllCourses = (state) => courseSelectors.getAllCourses(state.reducer.courses);
 export const getSelectedCourse = (state) => courseSelectors.getSelectedCourse(state.reducer.courses);
-export const getIsFetchingCourses = (state) => courseSelectors.getIsFetching(state.reducer.books);
+export const getIsFetchingCourses = (state) => courseSelectors.getIsFetching(state.reducer.courses);
+
+export const getSessionByID = (state, id) => sessionSelectors.getSessionByID(state.reducer.sessions, id);
+export const getSessionOrder = (state) => sessionSelectors.getSessionOrder(state.reducer.sessions);
+export const getAllSessions = (state) => sessionSelectors.getAllSessions(state.reducer.sessions);
+export const getSelectedSession = (state) => sessionSelectors.getSelectedSession(state.reducer.sessions);
+export const getIsFetchingSessions = (state) => sessionSelectors.getIsFetching(state.reducer.books);
 
 export const getTutorByID = (state, id) => tutorSelectors.getTutorByID(state.reducer.tutors, id);
 export const getTutorOrder = (state) => tutorSelectors.getTutorOrder(state.reducer.tutors);
@@ -57,6 +67,8 @@ export const getAuthUserId = state => authSelectors.getAuthUserId(state.reducer.
 export const getAuthExpiration = state => authSelectors.getAuthExpiration(state.reducer.auth);
 export const getAuthUsername = state => authSelectors.getAuthUsername(state.reducer.auth);
 export const getAuthEmail = state => authSelectors.getAuthEmail(state.reducer.auth);
+export const getDecoded = state => authSelectors.getDecoded(state.reducer.auth)
+export const getInfo = state => authSelectors.getInfo(state.reducer.auth)
 
 export const isSuccessful = state => authorSelectors.isSuccessful(state.reducer.authors);
 export const getAuthUserName = state => authSelectors.getAuthUserName(state.reducer.auth)

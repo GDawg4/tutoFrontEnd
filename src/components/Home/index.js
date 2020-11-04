@@ -11,13 +11,13 @@ import * as bookActions from '../../actions/books';
 import * as authorActions from '../../actions/authors';
 import * as tagActions from '../../actions/tags';
 import * as transActions from '../../actions/transactions';
+import * as authActions from '../../actions/auth'
 import TokenRefresh from "../TokenRefresh";
 
 
-// Home screen of the app
-// Here you can navigate to your profile, finding a tutor, or look at your previous and future appointments
-
-const Home = ({ navigation, onLoad, allBooks, allBooks2, allTags, isFetching }) => {
+// Pantalla de inicio de la aplicacón
+// Se muestran al usuario los libros más nuevos, más vendidos y la oportunidad de buscar por género
+const Home = ({ navigation, onLoad, allBooks, allBooks2, allTags, isFetching, allSessions }) => {
     useEffect(onLoad, [])
 
     return (
@@ -36,15 +36,8 @@ const Home = ({ navigation, onLoad, allBooks, allBooks2, allTags, isFetching }) 
                 <Text style={styles.header}>Tutorías próximas</Text>
                 <ScrollView horizontal={true} style={styles.horizontalScroll}>
                     {
-                        !isFetching && 
-                        allBooks.map(book => <Book key={book.id} book={book} navigation={navigation}/>)
-                    }
-                </ScrollView>
-                <Text style={styles.header}>Tutorías pasadas</Text>
-                <ScrollView horizontal={true} style={styles.horizontalScroll}>
-                    {
-                        !isFetching && 
-                        allBooks2.map(book => <Book key={book.id} book={book} navigation={navigation}/>)
+                        allSessions.length !== 0 &&
+                            allSessions.map(book => <Book key={book.id} book={book} navigation={navigation}/>)
                     }
                 </ScrollView>
             </ScrollView>
@@ -58,6 +51,7 @@ export default connect(
         allBooks2: selectors.getAllBooks(state),
         allTags: selectors.getTags(state),
         isFetching: selectors.getIsFetchingBooks(state),
+        allSessions:selectors.getAllSessions(state)
     }),
     dispatch => ({
         onLoad(){
@@ -66,6 +60,7 @@ export default connect(
             dispatch(tagActions.startFetchingTags())
             dispatch(transActions.startFetchingOwnedBooks())*/
             console.log('yay')
+            dispatch(authActions.startFetchingInfo())
         }
     })
 )(Home);

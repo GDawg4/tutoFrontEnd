@@ -1,16 +1,38 @@
 import React from 'react'
-import {StyleSheet, Text, View} from 'react-native'
+import {Image, RefreshControl, ScrollView, StyleSheet, Text, View} from 'react-native'
 import {connect} from "react-redux";
+import filter from 'lodash/filter'
 
 import Button from "../Button";
 
 import * as selectors from '../../reducers'
+import Book from "../Book";
+import Review from "../Review";
+import Tutor from "../Tutor";
 
-const CourseDetails = ({selectedCourse}) => (
+const CourseDetails = ({selectedCourse, isFetching, onLoad, navigation, allTutors}) => (
     <View style={styles.container}>
-        <Text style={styles.title}>{selectedCourse.name}</Text>
-        <Text style={styles.title}>{selectedCourse.code}</Text>
-        <Button label={'Pedir tutoría'} onPress={() => console.log('pedida')}/>
+        <View style={styles.topContainer}>
+            <View style={styles.bookInfo}>
+                <Text style={styles.header}>{selectedCourse.name}</Text>
+                <Text style={styles.header}>{selectedCourse.code}</Text>
+                <Text style={styles.parragraph}>Este curso se centra en el estudio de </Text>
+            </View>
+        </View>
+        <ScrollView style={styles.bottomContainer}>
+            <Text style={styles.header}>Tutores disponibles</Text>
+            <ScrollView horizontal={false} contentContainerStyle={styles.horizontalScroll}>
+                <View>
+                    {
+                        allTutors.length === 0 ?
+                            <Text>
+                                No hay tutores disponibles en esta clase
+                            </Text> :
+                        allTutors.map(tutor => <Tutor info={tutor} navigation={navigation}/>)
+                    }
+                </View>
+            </ScrollView>
+        </ScrollView>
     </View>
 )
 
@@ -23,11 +45,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFFFFF'
     },
     topContainer: {
-        paddingTop: 16,
         flex: 0.5,
         justifyContent: 'center',
         alignItems: 'center',
-        flexDirection: 'row',
+        flexDirection: 'column',
         width: '95%'
     },
     middleContainer:{
@@ -47,10 +68,11 @@ const styles = StyleSheet.create({
     header: {
         alignSelf: 'flex-start',
         color: '#078b45',
+        alignSelf: 'center',
+        color: '#428AF8',
         fontSize: 20,
         textAlign: 'center',
-        marginBottom: 8,
-        marginTop: 16
+        marginBottom: 8
     },
     bookImage: {
         height: 200,
@@ -66,7 +88,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 14,
         fontWeight: '600',
-        marginBottom: 4
+        marginBottom: 4,
     },
     price: {
         fontSize: 12,
@@ -75,13 +97,13 @@ const styles = StyleSheet.create({
     parragraph: {
         fontSize: 14,
         textAlign: 'justify',
-        marginBottom: 16
+        marginBottom: 16,
+        width:'100%'
     },
     bookInfo: {
         paddingLeft: 16,
         width: '60%',
-        justifyContent: 'flex-start',
-        paddingTop: 32
+        justifyContent: 'center'
     },
     remove: {
         color: 'red'
@@ -93,8 +115,8 @@ const styles = StyleSheet.create({
         color:'yellow'
     },
     horizontalScroll: {
-        flex: 1,
-        flexWrap: 'wrap'
+        flexGrow: 1,
+        justifyContent: 'center'
     },
     infoMessage: {
         alignSelf: 'center',
@@ -111,7 +133,13 @@ const styles = StyleSheet.create({
 
 export default connect(
     (state)=>({
-        selectedCourse:selectors.getSelectedCourse(state)
+        selectedCourse:selectors.getSelectedCourse(state),
+        isFetching:selectors.getIsFetchingCourses(state),
+        allTutors:selectors.getAllTutors(state).filter(tutor => tutor.course === selectors.getSelectedCourse(state).id)
     }),
-    undefined
+    (dispatch)=>({
+        onLoad(){
+            console.log('yay')
+        }
+    })
 ) (CourseDetails)

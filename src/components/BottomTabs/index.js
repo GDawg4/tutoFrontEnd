@@ -51,17 +51,17 @@ const BottomTabs = () => (
           ),
         }}
       />
+      {/*<Tab.Screen*/}
+      {/*  name="Carrito"*/}
+      {/*  component={CartStack}*/}
+      {/*  options={{*/}
+      {/*    tabBarIcon: ({ color }) => (*/}
+      {/*      <AntDesign name="shoppingcart" size={24} color={color} />*/}
+      {/*    ),*/}
+      {/*  }}*/}
+      {/*/>*/}
       <Tab.Screen
-        name="Carrito"
-        component={CartStack}
-        options={{
-          tabBarIcon: ({ color }) => (
-            <AntDesign name="shoppingcart" size={24} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="perfil"
+        name="Perfil"
         component={ProfileStack}
         options={{
           tabBarIcon: ({ color }) => (

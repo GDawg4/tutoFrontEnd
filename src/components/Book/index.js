@@ -6,6 +6,8 @@ import styles from "./styles";
 import * as bookActions from '../../actions/books';
 import * as constants from '../../resources/constants';
 
+import source from '../../assets/logo005.png'
+
 
 // Componente de libro que se renderiza para mostrar la información de un libro
 // Se muestra el título, el autor y el precio
@@ -13,16 +15,16 @@ import * as constants from '../../resources/constants';
 const Book = ({ book, press, navigation, urlComplete=true }) => (
     <View style={styles.bookContainer}>
         <TouchableOpacity onPress={press} style={styles.scrollView}>
-            <Image source={{uri: urlComplete ? book.cover_pic : constants.MEDIA_BASE_URL+book.cover_pic}} style={styles.cover}/>
+            <Image source={source} style={styles.cover}/>
             <View style={styles.bookInfo}>
                 <Text numberOfLines={2} style={styles.title}>
-                    {book.title}
+                    {book.tutor}
                 </Text>
                 <Text style={styles.author}>
-                    {book.author}
+                    {book.clase}
                 </Text>
-                <Text style={styles.extra}>
-                    {`Q${book.price}`}
+                <Text style={styles.author}>
+                    {book.hora}
                 </Text>
             </View>
         </TouchableOpacity>

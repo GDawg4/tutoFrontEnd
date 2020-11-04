@@ -122,6 +122,7 @@ export default connect(
             dispatch(cartActions.startFetchingCart())
         },
         logOut(){
+            console.log('out')
             dispatch(authActions.logout())
         }
     })

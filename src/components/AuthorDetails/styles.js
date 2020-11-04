@@ -3,9 +3,10 @@ import { StyleSheet } from 'react-native';
 // Estilos para la página de autor
 const styles = StyleSheet.create({
     detailsContainer: {
+        marginTop: '10%',
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
         backgroundColor: '#FFFFFF'
     },
     topContainer: {
@@ -18,8 +19,8 @@ const styles = StyleSheet.create({
     },
     middleContainer: {
         flex: 3,
-        width: '90%',
-        marginTop: 32
+        width: '100%',
+        marginTop: '50%'
     },
     authorInfo: {
         flex: 2,

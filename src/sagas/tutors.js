@@ -31,14 +31,16 @@ function* fetchTutors(action) {
             console.log('yay2')
             const jsonResult = yield response.json();
             const{
-                entities: { tutor },
+                entities: { tutors },
                 result
             } = normalize(jsonResult, schemas.tutorListSchema);
-
-            console.log(normalize(jsonResult, schemas.tutorListSchema))
+            /*console.log('NORMALIZED3')
+            console.log(tutors)
+            console.log('NORMALIZED4')
+            console.log(result)*/
 
             yield put(
-                actions.completeFetchingTutor(tutor, result)
+                actions.completeFetchingTutor(tutors, result)
             )
 
         }else{

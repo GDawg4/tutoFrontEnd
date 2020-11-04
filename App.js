@@ -12,12 +12,12 @@ import BottomTabs from './src/components/BottomTabs'
 const { store, persistor } = configureStore()
 
 const App = () => (
-  <Provider store={store}>
+  <Provider store={store} >
     <PersistGate loading={null} persistor={persistor}>
       <NativeRouter>
         <Route exact path="/" component={LoginForm} />
         <Route exact path="/registry" component={RegistryForm} />
-        <Route exact path="/r" component={BottomTabs} />
+        <Route exact path="/app" component={BottomTabs} />
       </NativeRouter>
     </PersistGate>
   </Provider>

@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import React from 'react'
 import { View, FlatList, RefreshControl, Text } from 'react-native';
 import DaySchedule from '../DaySchedule'
 import WeekScheduler from '../WeekScheduler'
@@ -7,54 +6,20 @@ import * as selectors from '../../reducers'
 import Button from "../Button";
 import Author from "../Author";
 import AuthorDetails from "../AuthorDetails";
+import {connect} from "react-redux";
 
-import WeekScheduler from '../WeekScheduler';
-import styles from './styles';
-import Button from "../Button";
-import {Link, Redirect} from "react-router-native";
-import * as userActions from "../../actions/users";
 // Componente de librería
 // FlatList que renderiza los libros comprados por el usuario
-const Profile = ({user, show}) => {
 
-const Profile = (props) => {
-    const {
-        changePassword,
-        changing,
-        logOff,
-        handleSubmit,
-        isAuthenticated,
-        isAuthenticating,
-        authenticationFailed,
-        success,
-        clearSuccess,
-    } = props
+const Profile = ({user, show}) => {
     return (
-        <View>
-            <AuthorDetails selectedAuthor={user}/>
-        <View>
-            <Button
-                onPress={changePassword}
-                color="#078b45"
-                label={'Cambiar contraseña'}
-                disabled={changing}
-            />
-            <Link to="/">
-                <Text
-                    style={{
-                        textAlign: 'center',
-                        color: '#3b3b3b',
-                        textDecorationLine: 'underline',
-                        textDecorationColor: '#3b3b3b',
-                    }}
-                >
-                    Cerrar sesión
-                </Text>
-            </Link>
-        </View>
+            <View >
+                <Text>hellow</Text>
+                {/*<WeekScheduler />*/}
+                <AuthorDetails selectedAuthor={user}/>
+            </View>
     )
 };
-
 
 export default connect(
     state => ({
@@ -62,8 +27,4 @@ export default connect(
         show(){
             console.log(state)
         }
-    }),
-    dispatch => ({
-
-    })
-)(Profile);
+    }),undefined)(Profile)

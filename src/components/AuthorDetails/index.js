@@ -24,17 +24,17 @@ const AuthorDetails = ({ selectedAuthor, authorBooks, onLoad, navigation }) => {
                     <Text style={styles.name}>{selectedAuthor ? selectedAuthor.lastname : ''}</Text>
                 </View>
                 <View style={styles.middleContainer}>
-                    {/*{*/}
-                    {/*    selectedAuthor.type === 'tutor' ?*/}
-                    {/*        <Text>*/}
-                    {/*            Usted es tutor*/}
-                    {/*        </Text>:*/}
-                    {/*        <Text>*/}
-                    {/*            No tiene tutorías asignadas, favor dirigirse a la autoridad correspondiente para solicitarlas*/}
-                    {/*        </Text>*/}
+                    {
+                        selectedAuthor.type === 'tutor' ?
+                            <Text>
+                                Usted es tutor
+                            </Text>:
+                            <Text>
+                                No tiene tutorías asignadas, favor dirigirse a la autoridad correspondiente para solicitarlas
+                            </Text>
 
-                    {/*}*/}
-                    <WeekScheduler/>
+                    }
+                    {/*<WeekScheduler/>*/}
                 </View>
             </View>
             {/*<View style={styles.middleContainer}>*/}

@@ -5,31 +5,31 @@ import { Table, TableWrapper,Col, Cols, Cell } from 'react-native-table-componen
 import DaySchedule from '../DaySchedule/index'
 
 const WeekScheduler = ({
-    ArrayOfWeek=[[1,1,1,1,0,0,0,0,0,0,0,0,0,0],
-                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0],   
-                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0],   
-                 [0,0,0,0,0,0,0,0,0,0,0,0,0,0]], 
-    DaysOfWeek = ["L", "M", "M", "J", "V", "S", "D"] ,
-    Editable = false
-                                  
+//     ArrayOfWeek=[[1,1,1,1,0,0,0,0,0,0,0,0,0,0],
+//                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+//                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+//                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+//                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+//                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+//                  [0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+//     DaysOfWeek = ["L", "M", "M", "J", "V", "S", "D"] ,
+//     Editable = false
+
                 }) => {
   // event.length = 0
   // let cant = array.length
   return (
     <Fragment>
-        {console.log(ArrayOfWeek)}
-        <Table style={{flexDirection: 'row'}} >
-            {ArrayOfWeek.map( (day, i) => {
-               return(
-                <DaySchedule ArrayOfDay={day} Day={DaysOfWeek[i]} key={i}/>
-               ) 
-            })}
+        {/*{console.log(ArrayOfWeek)}*/}
+        {/*<Table style={{flexDirection: 'row'}} >*/}
+        {/*    {ArrayOfWeek.map( (day, i) => {*/}
+        {/*       return(*/}
+        {/*        <DaySchedule ArrayOfDay={day} Day={DaysOfWeek[i]} key={i}/>*/}
+        {/*       ) */}
+        {/*    })}*/}
 
-            
-        </Table>
+        {/*    */}
+        {/*</Table>*/}
         
         {/*
         <table>

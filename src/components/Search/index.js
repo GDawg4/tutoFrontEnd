@@ -82,7 +82,14 @@ const Search = ({ navigation, filter, allTags, allTutors, allPubs, handlePress, 
                                 {
                                     allTutors.filter(
                                         tutor =>
-                                            lowerCase(tutor.user.name).includes(lowerCase(filter))
+                                            (
+                                                lowerCase(tutor.user.name).includes(lowerCase(filter)) ||
+                                                lowerCase(tutor.user.lastname).includes(lowerCase(filter))
+                                            ) &&
+                                            (
+                                                lowerCase(tutor.user.name) !== lowerCase(ownInfo.name) ||
+                                                lowerCase(tutor.user.lastname) !== lowerCase(ownInfo.lastname)
+                                            )
                                     ).length === 0 ?
                                         <Text style={styles.infoMessage}>No hay resultados</Text>
                                         :
@@ -91,7 +98,14 @@ const Search = ({ navigation, filter, allTags, allTutors, allPubs, handlePress, 
                                         // )
                                     allTutors.filter(
                                         tutor =>
-                                            lowerCase(tutor.user.name).includes(lowerCase(filter))
+                                            (
+                                                lowerCase(tutor.user.name).includes(lowerCase(filter)) ||
+                                                lowerCase(tutor.user.lastname).includes(lowerCase(filter))
+                                            ) &&
+                                            (
+                                                lowerCase(tutor.user.name) !== lowerCase(ownInfo.name) ||
+                                                lowerCase(tutor.user.lastname) !== lowerCase(ownInfo.lastname)
+                                            )
                                     ).map(tutor => <Tutor key = {tutor.id} info={tutor.user} navigation = {navigation}/>)
                                 }
                             </ScrollView>

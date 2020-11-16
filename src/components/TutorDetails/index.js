@@ -111,11 +111,7 @@ export default reduxForm({
     form:'date'
 })(connect (
     state=>({
-        // selectedTutor:selectors.getSelectedTutor(state),
-        // selectedDate:dateSelector(state, 'DayPicker'),
-        // showState(){
-        //     // console.log(state.form.date.values)
-        // }
+        selectedTutor:selectors.getSelectedTutor(state)
     }),
     (dispatch, {navigation})=>({
         onClick({selectedTutor, selectedClass}){

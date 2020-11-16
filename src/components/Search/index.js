@@ -106,7 +106,7 @@ const Search = ({ navigation, filter, allTags, allTutors, allPubs, handlePress, 
                                                 lowerCase(tutor.user.name) !== lowerCase(ownInfo.name) ||
                                                 lowerCase(tutor.user.lastname) !== lowerCase(ownInfo.lastname)
                                             )
-                                    ).map(tutor => <Tutor key = {tutor.id} info={tutor.user} navigation = {navigation}/>)
+                                    ).map(tutor => <Tutor key = {tutor.id} info={tutor} navigation = {navigation}/>)
                                 }
                             </ScrollView>
                             <Text style={styles.headerTwo}>Materias</Text>

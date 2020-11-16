@@ -22,10 +22,11 @@ import * as courseActions from '../../actions/courses'
 import * as tutorActions from '../../actions/tutors'
 import TutorList from "../TutorList";
 import Tutor from "../Tutor";
+import Button from "../Button";
 
 // compoonente de búsqueda
 // muestra los resultados de libros, autores y editoriales
-const Search = ({ navigation, filter, allTags, allTutors, allPubs, handlePress, isFetching, onLoad, allCourses }) => {
+const Search = ({ navigation, filter, allTags, allTutors, allPubs, handlePress, isFetching, onLoad, allCourses, ownInfo, seeState }) => {
     useEffect(onLoad, [])
 
     return (
@@ -79,20 +80,26 @@ const Search = ({ navigation, filter, allTags, allTutors, allPubs, handlePress, 
                             {/*<TutorList tutors={allTutors} filter={filter} navigation={navigation}/>*/}
                             <ScrollView horizontal={true} style={styles.booksContainer}>
                                 {
-                                    allTutors.filter(tutor => lowerCase(tutor.user.name).includes(lowerCase(filter))).length === 0
-                                        ?
+                                    allTutors.filter(
+                                        tutor =>
+                                            lowerCase(tutor.user.name).includes(lowerCase(filter))
+                                    ).length === 0 ?
                                         <Text style={styles.infoMessage}>No hay resultados</Text>
                                         :
                                         // allTutors.filter(course => lowerCase(course.name).includes(lowerCase(filter))).map(course =>
                                         //     <Tutor key={course.code} course={course} navigation={navigation}/>
                                         // )
-                                    allTutors.map(tutor => <Tutor key = {tutor.id} info={tutor.user} navigation = {navigation}/>)
+                                    allTutors.filter(
+                                        tutor =>
+                                            lowerCase(tutor.user.name).includes(lowerCase(filter))
+                                    ).map(tutor => <Tutor key = {tutor.id} info={tutor.user} navigation = {navigation}/>)
                                 }
                             </ScrollView>
                             <Text style={styles.headerTwo}>Materias</Text>
                             <PublisherList publishers={allPubs} filter={filter} navigation={navigation}/>
                         </View>
                 }
+                <Button onPress={seeState} label={'state'}/>
             </ScrollView>
         </View>
     );
@@ -113,7 +120,11 @@ export default reduxForm({
         allPubs: selectors.getPublishers(state),
         isFetching: selectors.getIsFetchingBooks(state),
         allCourses:selectors.getAllCourses(state),
-        allTutors:selectors.getAllTutors(state)
+        allTutors:selectors.getAllTutors(state),
+        ownInfo:selectors.getInfo(state),
+        seeState(){
+            console.log(state)
+        }
     }),
     dispatch => ({
         handlePress(){

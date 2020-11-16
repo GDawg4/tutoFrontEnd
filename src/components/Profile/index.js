@@ -12,7 +12,6 @@ import {connect} from "react-redux";
 const Profile = ({user, show}) => {
     return (
             <View >
-                <Text>hellow</Text>
                 {/*<WeekScheduler />*/}
                 <AuthorDetails selectedAuthor={user}/>
             </View>

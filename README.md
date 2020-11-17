@@ -25,7 +25,7 @@ $ yarn install
 ```
 4. Correr la aplicación con 
 ```bash
-$ expo start
+$ yarn web
 ```
 5. Escanear el código QR que aparecerá en la terminal con la cámara (iOS) o un lector QR (Android)
 6. Abrir link con app de Expo

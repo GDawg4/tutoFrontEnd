@@ -33,16 +33,18 @@ const Home = ({ navigation, onLoad, allBooks, allBooks2, allTags, isFetching, al
                     />
                 }>
                 {
-                    ownInfo.type === 'tutor' ?
-                        <View>
-                            <Text style={styles.header}>Tutorías a dar</Text>
-                            <ScrollView horizontal={true} style={styles.horizontalScroll}>
-                                {
-                                    allSessions.length !== 0 &&
-                                    allSessions.map(book => <Book key={book.id} book={book} navigation={navigation}/>)
-                                }
-                            </ScrollView>
-                        </View>:
+                    ownInfo ?
+                        ownInfo.type === 'tutor' ?
+                            <View>
+                                <Text style={styles.header}>Tutorías a dar</Text>
+                                <ScrollView horizontal={true} style={styles.horizontalScroll}>
+                                    {
+                                        allSessions.length !== 0 &&
+                                        allSessions.map(book => <Book key={book.id} book={book} navigation={navigation}/>)
+                                    }
+                                </ScrollView>
+                            </View>:
+                            <View/>:
                         <View/>
                 }
                 <Text style={styles.header}>Tutorías próximas</Text>

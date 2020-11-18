@@ -1,13 +1,9 @@
 import React from 'react'
 import {Image, RefreshControl, ScrollView, StyleSheet, Text, View} from 'react-native'
 import {connect} from "react-redux";
-import filter from 'lodash/filter'
 
-import Button from "../Button";
 
 import * as selectors from '../../reducers'
-import Book from "../Book";
-import Review from "../Review";
 import Tutor from "../Tutor";
 
 const CourseDetails = ({selectedCourse, isFetching, onLoad, navigation, allTutors}) => (
@@ -68,8 +64,6 @@ const styles = StyleSheet.create({
     header: {
         alignSelf: 'flex-start',
         color: '#078b45',
-        alignSelf: 'center',
-        color: '#428AF8',
         fontSize: 20,
         textAlign: 'center',
         marginBottom: 8

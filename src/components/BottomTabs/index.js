@@ -6,7 +6,6 @@ import { AntDesign } from '@expo/vector-icons'
 import HomeStack from '../HomeStack'
 import SearchStack from '../SearchStack'
 import LibraryStack from '../LibraryStack'
-import CartStack from '../CartStack'
 import ProfileStack from '../ProfileStack'
 
 // Se crea el componente de navegación

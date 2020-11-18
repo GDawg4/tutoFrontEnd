@@ -4,7 +4,6 @@ import { Text, View, Image, TouchableOpacity } from 'react-native';
 
 import styles from "./styles";
 import * as bookActions from '../../actions/books';
-import * as constants from '../../resources/constants';
 
 import source from '../../assets/logo005.png'
 

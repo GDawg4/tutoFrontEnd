@@ -2,12 +2,10 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Text, View, Image, ScrollView } from 'react-native';
 
-import Book from '../Book';
 
 import styles from './styles';
 import * as selectors from '../../reducers';
 import * as authorActions from '../../actions/authors';
-import WeekScheduler from "../WeekScheduler";
 
 
 // Pantalla donde se muestran los detalles del autor.

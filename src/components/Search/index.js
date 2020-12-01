@@ -109,8 +109,7 @@ const Search = ({ navigation, filter, allTags, allTutors, allPubs, handlePress, 
                                     ).map(tutor => <Tutor key = {tutor.id} info={tutor} navigation = {navigation}/>)
                                 }
                             </ScrollView>
-                            <Text style={styles.headerTwo}>Materias</Text>
-                            <PublisherList publishers={allPubs} filter={filter} navigation={navigation}/>
+
                         </View>
                 }
                 <Button onPress={seeState} label={'state'}/>

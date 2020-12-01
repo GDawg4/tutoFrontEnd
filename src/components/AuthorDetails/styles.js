@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
         height: 150,
         width: 150,
         borderRadius: 75,
+        marginLeft: 20,
         resizeMode: 'cover'
     },
     name: {

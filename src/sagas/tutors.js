@@ -28,8 +28,10 @@ function* fetchTutors(action) {
             }
         );
         if (response.status === 200){
+            
             console.log('yay2')
             const jsonResult = yield response.json();
+            console.log(jsonResult)
             const{
                 entities: { tutors },
                 result

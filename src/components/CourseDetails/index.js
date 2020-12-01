@@ -9,9 +9,11 @@ import * as selectors from '../../reducers'
 import Book from "../Book";
 import Review from "../Review";
 import Tutor from "../Tutor";
-
+import includes from 'lodash/includes'
 const CourseDetails = ({selectedCourse, isFetching, onLoad, navigation, allTutors}) => (
+
     <View style={styles.container}>
+        
         <View style={styles.topContainer}>
             <View style={styles.bookInfo}>
                 <Text style={styles.header}>{selectedCourse.name}</Text>
@@ -28,12 +30,16 @@ const CourseDetails = ({selectedCourse, isFetching, onLoad, navigation, allTutor
                             <Text>
                                 No hay tutores disponibles en esta clase
                             </Text> :
-                        allTutors.map(tutor => <Tutor info={tutor} navigation={navigation}/>)
+                        allTutors.map(tutor=> <Tutor info={tutor} navigation={navigation}/>)
                     }
+                    {console.log(allTutors)}
                 </View>
             </ScrollView>
         </ScrollView>
     </View>
+
+
+
 )
 
 const styles = StyleSheet.create({
@@ -130,12 +136,15 @@ const styles = StyleSheet.create({
         paddingTop: 16
     }
 });
-
+const a = (state) => {
+    selectors.getAllTutors(state).filter(tutor => tutor.course === selectors.getSelectedCourse(state).id)
+    console.log(state)
+}
 export default connect(
     (state)=>({
         selectedCourse:selectors.getSelectedCourse(state),
         isFetching:selectors.getIsFetchingCourses(state),
-        allTutors:selectors.getAllTutors(state).filter(tutor => tutor.course === selectors.getSelectedCourse(state).id)
+        allTutors:selectors.getAllTutors(state).filter(tutor => includes(tutor.course, selectors.getSelectedCourse(state).id))
     }),
     (dispatch)=>({
         onLoad(){

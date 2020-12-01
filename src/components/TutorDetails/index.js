@@ -11,8 +11,10 @@ import * as selectors from '../../reducers'
 import Button from "../Button";
 import * as sessionActions from '../../actions/sessions'
 import FormDateTimePicker from '../FormDateTimePicker'
+const TutorDetails = (info) => {
+    const infoUser = info.route.params.userInfo
 
-const TutorDetails = ({ selectedTutor, authorBooks, navigation, onClick, showState, selectedDate }) => {
+//const TutorDetails = (info= { selectedTutor, authorBooks, navigation, onClick, showState, selectedDate}, route) => {
     const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
 
     const toggleShow = () => {
@@ -33,11 +35,15 @@ const TutorDetails = ({ selectedTutor, authorBooks, navigation, onClick, showSta
     };
     return(
         <View style={styles.detailsContainer}>
+            {console.log('hoalaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')}
+            {console.log(infoUser)}
+            {/*console.log(info)*/}
+            {console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')}
             <View style={styles.topContainer}>
                 <Image source={require('../../assets/default_pp.png')} style={styles.authorPic}/>
                 <View style={styles.authorInfo}>
-                    <Text style={styles.name}>{selectedTutor ? selectedTutor.user.name : 'Nombre'}</Text>
-                    <Text style={styles.bio}>{selectedTutor ? selectedTutor.user.lastname: 'Info'}</Text>
+                  <Text style={styles.name}> Nombre: {infoUser.name} {infoUser.lastname}</Text>
+                  <Text style={styles.bio}> correo: {infoUser.email}</Text>
                 </View>
             </View>
             {
@@ -117,7 +123,8 @@ export default reduxForm({
     form:'date'
 })(connect (
     state=>({
-        // selectedTutor:selectors.getSelectedTutor(state),
+        //user:selectors.getUser(state, id ),
+        //allTutors:selectors.getAllTutors(state)
         // selectedDate:dateSelector(state, 'DayPicker'),
         // showState(){
         //     // console.log(state.form.date.values)

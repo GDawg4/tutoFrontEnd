@@ -10,8 +10,7 @@ const courseSchema = new schema.Entity(
 
 export const tutorSchema = new schema.Entity(
     'tutors',{
-        student: studentSchema,
-        course: courseSchema
+        student: studentSchema
     }
 );
 

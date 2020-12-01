@@ -17,25 +17,29 @@ const AuthorDetails = ({ selectedAuthor, authorBooks, onLoad, navigation }) => {
 
     return(
         <SafeAreaView style={styles.mainContainer}>
+
             <ImageBackground
                 source={cit}
                 blurRadius={3}
                 style={{ flex: 1, justifyContent: 'center' }}
             >
+                <View style={{flex: 1, flexDirection: 'row'}}>
+                    <Image source={require('../../assets/default_pp.png')} style={styles.authorPic}/>
+                    <View style={styles.authorInfo}>
+                        <Text style={styles.name}>{selectedAuthor ? selectedAuthor.name : ''}</Text>
+                        <Text style={styles.name}>{selectedAuthor ? selectedAuthor.lastname : ''}</Text>
+                    </View>
+                </View>
                 <View style={styles.detailsContainer}>
 
                     <View style={styles.topContainer}>
 
-                        <Image source={require('../../assets/default_pp.png')} style={styles.authorPic}/>
 
-                        <View style={styles.authorInfo}>
-                            <Text style={styles.name}>{selectedAuthor ? selectedAuthor.name : ''}</Text>
-                            <Text style={styles.name}>{selectedAuthor ? selectedAuthor.lastname : ''}</Text>
-                        </View>
+
                         <View style={styles.middleContainer}>
                             {
                                 selectedAuthor.type === 'tutor' ?
-                                    <Text>
+                                    <Text style={{fontSize: 20, fontWeight: '500'}}>
                                         Usted es tutor
                                     </Text>:
                                     <Text>

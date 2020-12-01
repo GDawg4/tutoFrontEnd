@@ -52,8 +52,7 @@ const Profile = ({user, show, logOut, loggedOut, navigation}) => {
         )
     }
     return (
-        <View style={{flex: 1}}>
-
+        <View style={{flex: 1, backgroundColor: "#FFF"}}>
             {/*<WeekScheduler />*/}
             <AuthorDetails selectedAuthor={user}/>
         </View>

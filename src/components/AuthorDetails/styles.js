@@ -8,9 +8,9 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     detailsContainer: {
-        flex: 1,
+        flex: 3,
         justifyContent: 'flex-start',
-        alignItems: 'flex-start'
+        alignItems: 'flex-start',
     },
     mainProgram: {
         flex: 1
@@ -18,23 +18,22 @@ const styles = StyleSheet.create({
 
     topContainer: {
         flex: 1,
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
-        width: '90%',
+        width: "100%",
         paddingTop: 16,
-        flexDirection: 'row',
+        backgroundColor: "#FFF",
+        opacity: 0.9
     },
     middleContainer: {
-        flex: 1,
-        width: '100%',
-        marginTop: '50%'
+        flex: 8,
+        alignItems: 'center',
     },
     authorInfo: {
         flex: 2,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     authorPic: {
+        flex: 1,
         height: 150,
         width: 150,
         borderRadius: 75,

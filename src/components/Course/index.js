@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         width: 150,
         height: 125,
         borderRadius: 16,
-        backgroundColor: utils.getRandomColor(),
+        backgroundColor: '#4dbfdd',
         alignItems: 'center',
         justifyContent: 'center',
         marginHorizontal: 4,
@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 18,
-        color: '#FFFFFF'
+        color: '#FFFFFF',
+        textAlign: 'center'
     }
 });
 

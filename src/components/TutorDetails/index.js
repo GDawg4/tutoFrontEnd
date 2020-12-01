@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {View, Text, StyleSheet, Image, ScrollView, Alert, Platform} from "react-native";
+import {View, Text, StyleSheet, Image, ScrollView, Alert, Platform, Linking} from "react-native";
 import {connect} from 'react-redux'
 import {Field, Form, reduxForm, formValueSelector} from "redux-form";
 import {v4 as uuidv4} from 'uuid'
@@ -35,10 +35,8 @@ const TutorDetails = (info) => {
     };
     return(
         <View style={styles.detailsContainer}>
-            {console.log('hoalaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')}
             {console.log(infoUser)}
             {/*console.log(info)*/}
-            {console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')}
             <View style={styles.topContainer}>
                 <Image source={require('../../assets/default_pp.png')} style={styles.authorPic}/>
                 <View style={styles.authorInfo}>
@@ -47,13 +45,20 @@ const TutorDetails = (info) => {
                 </View>
             </View>
             <View style={styles.middleContainer}>
-                <Text style={styles.header}>Horarios disponibles</Text>
+                <Text style={styles.header}>Acciones disponibles</Text>
+
                 <Button
-                    onPress={() => toggleShow()}
-                    label={'Elegir horario'}/>
+                    color="#078b45"
+                    label={'   Solicitar Tutoría   '}
+                    onPress={() => {
+                        Linking.openURL(`mailto:${infoUser.email}?subject=${'Solicitud de tutorías '}&body=Deseo agendar una tutoría`)
+                    }}
+                />
                 <Button
-                    onPress={() => console.log('yay')}
-                    label={'Mostrar'}/>
+                    onPress={() => {
+                        Linking.openURL('https://calendar.google.com')
+                    }}
+                    label={'   Calendario  '}/>
             </View>
         </View>
     )};

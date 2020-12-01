@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
     topContainer: {
         flex: 1,
         width: "100%",
-        paddingTop: 16,
         backgroundColor: "#FFF",
         opacity: 0.9
     },
@@ -40,7 +39,7 @@ const styles = StyleSheet.create({
         resizeMode: 'cover'
     },
     name: {
-        fontSize: 18,
+        fontSize: 25,
         fontWeight: '600'
     },
     bio: {
@@ -57,7 +56,7 @@ const styles = StyleSheet.create({
         color: '#428AF8',
         fontSize: 20,
         marginBottom: 16
-    },
+    }
 });
 
 export default styles;

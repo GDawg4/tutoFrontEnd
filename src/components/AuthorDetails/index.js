@@ -8,6 +8,8 @@ import * as selectors from '../../reducers';
 import * as authorActions from '../../actions/authors';
 import {SafeAreaView} from "react-navigation";
 import cit from "../../assets/CIT.jpg";
+import Button from "../Button";
+import {Alert} from "react-native";
 
 
 // Pantalla donde se muestran los detalles del autor.
@@ -37,14 +39,104 @@ const AuthorDetails = ({ selectedAuthor, authorBooks, onLoad, navigation }) => {
 
 
                         <View style={styles.middleContainer}>
+
                             {
                                 selectedAuthor.type === 'tutor' ?
-                                    <Text style={{fontSize: 20, fontWeight: '500'}}>
-                                        Usted es tutor
-                                    </Text>:
-                                    <Text>
-                                        No tiene tutorías asignadas, favor dirigirse a la autoridad correspondiente para solicitarlas
-                                    </Text>
+                                    <View style={{alignItems: 'center', width: '100%'}}>
+                                        <View style={{backgroundColor: "#3a3b3a", width: '100%'}}>
+                                            <Text style={{fontSize: 20, fontWeight: 'bold', textAlign: 'center', color: "#FFF", padding: 3}}>
+                                                Usted es tutor
+                                            </Text>
+                                        </View>
+                                        <View style={{marginTop: 30}}>
+                                            <Button
+                                                color="#078b45"
+                                                label={'   Cambiar Contraseña   '}
+                                                onPress={() => {
+                                                    Alert.alert('Atención',
+                                                        '¿Desea cambiar la contraseña?',
+                                                        [
+                                                            {
+                                                                text: 'Cancelar',
+                                                                style: 'cancel'
+                                                            },
+                                                            {
+                                                                text: 'Confirmar',
+                                                                style: 'confirm'
+                                                            }
+                                                        ], {cancelable: true})
+                                                }}
+                                            />
+                                        </View>
+                                        <View style={{marginTop: 30}}>
+                                            <Button
+                                                color="#078b45"
+                                                label={'   Cambiar Horarios   '}
+                                                onPress={() => {
+                                                    Alert.alert('Atención',
+                                                        '¿Desea cambiar sus horarios?',
+                                                        [
+                                                            {
+                                                                text: 'Cancelar',
+                                                                style: 'cancel'
+                                                            },
+                                                            {
+                                                                text: 'Cambiar',
+                                                                style: 'confirm'
+                                                            }
+                                                        ], {cancelable: true})
+                                                }}
+                                            />
+                                        </View>
+                                    </View>:
+                                    <View style={{alignItems: 'center', width: '100%'}}>
+                                        <View style={{backgroundColor: "#3a3b3a", width: '100%'}}>
+                                            <Text style={{fontSize: 20, fontWeight: 'bold', textAlign: 'center', color: "#FFF", padding: 3}}>
+                                                Usted no es tutor
+                                            </Text>
+                                        </View>
+                                        <View style={{marginTop: 30}}>
+                                            <Button
+                                                color="#078b45"
+                                                label={'   Cambiar Contraseña   '}
+                                                onPress={() => {
+                                                    Alert.alert('Atención',
+                                                        '¿Desea cambiar la contraseña?',
+                                                        [
+                                                            {
+                                                                text: 'Cancelar',
+                                                                style: 'cancel'
+                                                            },
+                                                            {
+                                                                text: 'Confirmar',
+                                                                style: 'confirm'
+                                                            }
+                                                        ], {cancelable: true})
+                                                }}
+
+                                            />
+                                        </View>
+                                        <View style={{marginTop: 30}}>
+                                            <Button
+                                                color="#078b45"
+                                                label={'   Solicitar Ser Tutor   '}
+                                                onPress={() => {
+                                                    Alert.alert('Atención',
+                                                        'Para ser tutor usted debe tener un promedio en el curso respectivo mayor o igual a 85 puntos',
+                                                        [
+                                                            {
+                                                                text: 'Cancelar',
+                                                                style: 'cancel'
+                                                            },
+                                                            {
+                                                                text: 'Confirmar',
+                                                                style: 'confirm'
+                                                            }
+                                                        ], {cancelable: true})
+                                                }}
+                                            />
+                                        </View>
+                                    </View>
 
                             }
                             {/*<WeekScheduler/>*/}

@@ -83,13 +83,13 @@ const AuthorDetails = ({ selectedAuthor, authorBooks, onLoad, navigation }) => {
                                                         [
                                                             {
                                                                 text: 'Cancelar',
-                                                                onPress: () => {
-                                                                    Linking.openURL('https://calendar.google.com')
-                                                                },
                                                                 style: 'cancel'
                                                             },
                                                             {
                                                                 text: 'Cambiar',
+                                                                onPress: () => {
+                                                                    Linking.openURL('https://calendar.google.com')
+                                                                },
                                                                 style: 'confirm'
                                                             }
                                                         ], {cancelable: true})

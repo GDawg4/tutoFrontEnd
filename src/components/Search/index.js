@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm, formValueSelector, clearFields } from 'redux-form';
-import { Text, View, ScrollView, RefreshControl } from 'react-native';
+import {Text, View, ScrollView, RefreshControl, Linking} from 'react-native';
 
 import lowerCase from 'lodash/lowerCase';
 
@@ -112,7 +112,9 @@ const Search = ({ navigation, filter, allTags, allTutors, allPubs, handlePress, 
 
                         </View>
                 }
-                <Button onPress={seeState} label={'state'}/>
+                <Button onPress={()=> Linking.openURL('https://noticias.uvg.edu.gt')}
+                        label={'   Noticias UVG   '}
+                        color="#078b45"/>
             </ScrollView>
         </View>
     );

@@ -1,5 +1,5 @@
 import React, {useLayoutEffect} from 'react'
-import { View, FlatList, RefreshControl, Text, Alert } from 'react-native';
+import {View, FlatList, RefreshControl, Text, Alert, ImageBackground} from 'react-native';
 import DaySchedule from '../DaySchedule'
 import * as selectors from '../../reducers'
 import Author from "../Author";
@@ -8,6 +8,7 @@ import {connect} from "react-redux";
 import * as authActions from '../../actions/auth'
 import {Redirect} from 'react-router-dom'
 import { AntDesign } from '@expo/vector-icons';
+import cafeteria from "../../assets/cafeteria.jpg";
 
 // Componente de librería
 // FlatList que renderiza los libros comprados por el usuario
@@ -23,15 +24,15 @@ const Profile = ({user, show, logOut, loggedOut, navigation}) => {
                     style={{ marginRight: 16 }}
                     onPress={() =>
                         Alert.alert(
-                            'Log Out?',
-                            'You´re about to exit the app.',
+                            '¿Cerrar Sesión?',
+                            'Está a punto de cerrar sesión.',
                             [
                                 {
-                                    text: 'Stay',
+                                    text: 'Cancelar',
                                     style: 'cancel'
                                 },
                                 {
-                                    text: 'Log Out',
+                                    text: 'Cerrar Sesión',
                                     onPress: () => logOut(),
                                     style: 'destructive'
                                 }
@@ -51,10 +52,11 @@ const Profile = ({user, show, logOut, loggedOut, navigation}) => {
         )
     }
     return (
-            <View >
-                {/*<WeekScheduler />*/}
-                <AuthorDetails selectedAuthor={user}/>
-            </View>
+        <View style={{flex: 1}}>
+
+            {/*<WeekScheduler />*/}
+            <AuthorDetails selectedAuthor={user}/>
+        </View>
     )
 };
 

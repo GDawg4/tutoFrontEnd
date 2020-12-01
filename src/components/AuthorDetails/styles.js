@@ -19,12 +19,11 @@ const styles = StyleSheet.create({
     topContainer: {
         flex: 1,
         width: "100%",
-        backgroundColor: "#FFF",
         opacity: 0.9
     },
     middleContainer: {
         flex: 8,
-        alignItems: 'center',
+        alignItems: 'center'
     },
     authorInfo: {
         flex: 2,

@@ -50,7 +50,7 @@ const AuthorDetails = ({ selectedAuthor, authorBooks, onLoad, navigation }) => {
                                                 Usted es tutor
                                             </Text>
                                         </View>
-                                        <View style={{marginTop: 30}}>
+                                        <View style={{marginTop: '30%'}}>
                                             <Button
                                                 color="#078b45"
                                                 label={'   Cambiar Contraseña   '}
@@ -73,7 +73,7 @@ const AuthorDetails = ({ selectedAuthor, authorBooks, onLoad, navigation }) => {
                                                 }}
                                             />
                                         </View>
-                                        <View style={{marginTop: 30}}>
+                                        <View style={{marginTop: '10%'}}>
                                             <Button
                                                 color="#078b45"
                                                 label={'   Cambiar Horarios   '}
@@ -103,7 +103,7 @@ const AuthorDetails = ({ selectedAuthor, authorBooks, onLoad, navigation }) => {
                                                 Usted no es tutor
                                             </Text>
                                         </View>
-                                        <View style={{marginTop: 30}}>
+                                        <View style={{marginTop: '30%'}}>
                                             <Button
                                                 color="#078b45"
                                                 label={'   Cambiar Contraseña   '}
@@ -127,7 +127,7 @@ const AuthorDetails = ({ selectedAuthor, authorBooks, onLoad, navigation }) => {
 
                                             />
                                         </View>
-                                        <View style={{marginTop: 30}}>
+                                        <View style={{marginTop: '10%'}}>
                                             <Button
                                                 color="#078b45"
                                                 label={'   Solicitar Ser Tutor   '}

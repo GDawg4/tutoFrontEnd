@@ -42,11 +42,11 @@ const BottomTabs = () => (
         }}
       />
       <Tab.Screen
-        name="Libreria"
+        name="Reseñas"
         component={LibraryStack}
         options={{
           tabBarIcon: ({ color }) => (
-            <AntDesign name="book" size={24} color={color} />
+            <AntDesign name="star" size={24} color={color} />
           ),
         }}
       />

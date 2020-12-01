@@ -9,8 +9,13 @@ import { getSelectedTutor } from '../../reducers/tutor';
 const Tutor = ({vertical = false, info, handleOnPress, navigation, selectTutor, test}) => (
     <TouchableOpacity onPress={selectTutor}>
         <View style={[styles.tagContainer, vertical ? styles.verticalTag : null]} >
+<<<<<<< HEAD
             {console.log(info)} 
             <Text style={styles.title}>{info.user.name} {info.user.lastname}</Text>
+=======
+            <Text style={styles.title}>{info.user.name}</Text>
+            <Text style={styles.title}>{info.user.lastname}</Text>
+>>>>>>> a126aa9263dbc08adeaaaffb1756fae209bffcb9
         </View>
     </TouchableOpacity>
 )

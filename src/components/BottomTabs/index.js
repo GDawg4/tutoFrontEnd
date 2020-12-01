@@ -6,7 +6,6 @@ import { AntDesign } from '@expo/vector-icons'
 import HomeStack from '../HomeStack'
 import SearchStack from '../SearchStack'
 import LibraryStack from '../LibraryStack'
-import CartStack from '../CartStack'
 import ProfileStack from '../ProfileStack'
 
 // Se crea el componente de navegación
@@ -43,11 +42,11 @@ const BottomTabs = () => (
         }}
       />
       <Tab.Screen
-        name="Libreria"
+        name="Reseñas"
         component={LibraryStack}
         options={{
           tabBarIcon: ({ color }) => (
-            <AntDesign name="book" size={24} color={color} />
+            <AntDesign name="star" size={24} color={color} />
           ),
         }}
       />

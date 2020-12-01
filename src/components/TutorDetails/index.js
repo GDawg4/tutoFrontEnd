@@ -46,20 +46,14 @@ const TutorDetails = (info) => {
                   <Text style={styles.bio}> correo: {infoUser.email}</Text>
                 </View>
             </View>
-            {
-                // <Field
-                // name={'DayPicker'}
-                // component={FormDateTimePicker}
-                // isDatePickerVisible={isDatePickerVisible}
-                // onConfirm={handleConfirm}
-                // onCancel={hideDatePicker}
-                // />
-            }
             <View style={styles.middleContainer}>
                 <Text style={styles.header}>Horarios disponibles</Text>
-                <Button onPress={() => toggleShow()} label={'Elegir horario'}/>
-                <Button onPress={() => showState()} label={'Mostrar'}/>
-                {/*<Text>{(selectedDate && selectedDate.nativeEvent) ? moment(selectedDate.nativeEvent.timestamp).format('L') : 'Elija una fecha'}</Text>*/}
+                <Button
+                    onPress={() => toggleShow()}
+                    label={'Elegir horario'}/>
+                <Button
+                    onPress={() => console.log('yay')}
+                    label={'Mostrar'}/>
             </View>
         </View>
     )};

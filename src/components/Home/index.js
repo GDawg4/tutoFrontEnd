@@ -17,7 +17,7 @@ import TokenRefresh from "../TokenRefresh";
 
 // Pantalla de inicio de la aplicacón
 // Se muestran al usuario los libros más nuevos, más vendidos y la oportunidad de buscar por género
-const Home = ({ navigation, onLoad, allBooks, allBooks2, allTags, isFetching, allSessions }) => {
+const Home = ({ navigation, onLoad, allBooks, allBooks2, allTags, isFetching, allSessions, ownInfo }) => {
     useEffect(onLoad, [])
 
     return (
@@ -31,8 +31,22 @@ const Home = ({ navigation, onLoad, allBooks, allBooks2, allTags, isFetching, al
                         onRefresh={() => onLoad()}
                         tintColor='#428AF8'
                     />
+                }>
+                {
+                    ownInfo ?
+                        ownInfo.type === 'tutor' ?
+                            <View>
+                                <Text style={styles.header}>Tutorías a dar</Text>
+                                <ScrollView horizontal={true} style={styles.horizontalScroll}>
+                                    {
+                                        allSessions.length !== 0 &&
+                                        allSessions.map(book => <Book key={book.id} book={book} navigation={navigation}/>)
+                                    }
+                                </ScrollView>
+                            </View>:
+                            <View/>:
+                        <View/>
                 }
-            >
                 <Text style={styles.header}>Tutorías próximas</Text>
                 <ScrollView horizontal={true} style={styles.horizontalScroll}>
                     {
@@ -51,7 +65,8 @@ export default connect(
         allBooks2: selectors.getAllBooks(state),
         allTags: selectors.getTags(state),
         isFetching: selectors.getIsFetchingBooks(state),
-        allSessions:selectors.getAllSessions(state)
+        allSessions:selectors.getAllSessions(state),
+        ownInfo:selectors.getInfo(state)
     }),
     dispatch => ({
         onLoad(){

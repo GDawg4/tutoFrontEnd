@@ -10,10 +10,12 @@ import {SafeAreaView} from "react-navigation";
 import cit from "../../assets/CIT.jpg";
 import Button from "../Button";
 import {Alert} from "react-native";
+import {Linking} from "react-native";
+const body = 'Buenas tardes, me gustaría ser tutor del curso: '
 
 
-// Pantalla donde se muestran los detalles del autor.
-// Nombre, biografía y los libors escritos por el/ella
+// User/tutor screen
+// Details of the tutor or user
 const AuthorDetails = ({ selectedAuthor, authorBooks, onLoad, navigation }) => {
     useEffect(onLoad, [])
 
@@ -62,6 +64,9 @@ const AuthorDetails = ({ selectedAuthor, authorBooks, onLoad, navigation }) => {
                                                             },
                                                             {
                                                                 text: 'Confirmar',
+                                                                onPress: () => {
+                                                                    Linking.openURL(`mailto:soporte@uvg.edu.gt?subject=${'Cambio de contraseña ' + selectedAuthor.name + ' ' + selectedAuthor.lastname}&body=Deseo cambiar mi contraseña por favor.`)
+                                                                },
                                                                 style: 'confirm'
                                                             }
                                                         ], {cancelable: true})
@@ -78,6 +83,9 @@ const AuthorDetails = ({ selectedAuthor, authorBooks, onLoad, navigation }) => {
                                                         [
                                                             {
                                                                 text: 'Cancelar',
+                                                                onPress: () => {
+                                                                    Linking.openURL('https://calendar.google.com')
+                                                                },
                                                                 style: 'cancel'
                                                             },
                                                             {
@@ -109,6 +117,9 @@ const AuthorDetails = ({ selectedAuthor, authorBooks, onLoad, navigation }) => {
                                                             },
                                                             {
                                                                 text: 'Confirmar',
+                                                                onPress: () => {
+                                                                    Linking.openURL(`mailto:soporte@uvg.edu.gt?subject=${'Cambio de contraseña ' + selectedAuthor.name + ' ' + selectedAuthor.lastname}&body=Deseo cambiar mi contraseña por favor.`)
+                                                                },
                                                                 style: 'confirm'
                                                             }
                                                         ], {cancelable: true})
@@ -130,6 +141,9 @@ const AuthorDetails = ({ selectedAuthor, authorBooks, onLoad, navigation }) => {
                                                             },
                                                             {
                                                                 text: 'Confirmar',
+                                                                onPress: () => {
+                                                                    Linking.openURL(`mailto:tutorias@uvg.edu.gt?subject=${'Solicitud tutor ' + selectedAuthor.name}&body=${body}`)
+                                                                },
                                                                 style: 'confirm'
                                                             }
                                                         ], {cancelable: true})

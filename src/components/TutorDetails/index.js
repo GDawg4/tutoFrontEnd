@@ -98,10 +98,11 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: '600',
         textAlign: 'justify',
+        paddingTop: '20%'
     },
     bio: {
-        textAlign: 'justify',
-        width: '90%'
+        textAlign: 'center',
+        width: '100%'
     },
     horizontalScroll: {
         paddingLeft: 16,
@@ -110,7 +111,7 @@ const styles = StyleSheet.create({
     },
     header: {
         alignSelf: 'flex-start',
-        color: '#428AF8',
+        color: '#000',
         fontSize: 20,
         marginBottom: 16
     },

@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     header: {
-        alignSelf: 'flex-start',
         color: '#078b45',
         fontSize: 20,
         textAlign: 'center',
@@ -86,9 +85,10 @@ const styles = StyleSheet.create({
         marginBottom: 4
     },
     title: {
-        fontSize: 14,
+        fontSize: 20,
         fontWeight: '600',
         marginBottom: 4,
+        textAlign: 'center'
     },
     price: {
         fontSize: 12,
@@ -96,20 +96,21 @@ const styles = StyleSheet.create({
     },
     parragraph: {
         fontSize: 14,
-        textAlign: 'justify',
+        textAlign: 'center',
+        marginTop: '10%',
         marginBottom: 16,
         width:'100%'
     },
     bookInfo: {
         paddingLeft: 16,
-        width: '60%',
+        width: '100%',
         justifyContent: 'center'
     },
     remove: {
         color: 'red'
     },
     add: {
-        color: '#078b45'
+        color: '#4dbfdd'
     },
     notes:{
         color:'yellow'

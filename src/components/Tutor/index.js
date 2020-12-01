@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 70,
         borderRadius: 16,
-        backgroundColor: utils.getRandomColor(),
+        backgroundColor: "#0072AB",
         alignItems: 'center',
         justifyContent: 'center',
         marginHorizontal: 4,

@@ -16,10 +16,11 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap'
     },
     header: {
-        paddingTop: 10,
+        padding: 10,
+        backgroundColor: "#3a3b3a",
         paddingLeft: 0,
         alignSelf: 'flex-start',
-        color: '#078b45',
+        color: '#FFF',
         fontSize: 20,
         fontWeight: '600',
         textAlign: 'center',

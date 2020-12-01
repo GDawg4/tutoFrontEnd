@@ -17,6 +17,7 @@ import {
 } from 'react-native'
 import { Link } from 'react-router-native'
 import { AntDesign } from '@expo/vector-icons'
+import SuccessScreen from "../SuccessScreen";
 
 import Button from '../Button'
 import FormTextInput from '../FormTextInput'
@@ -30,14 +31,14 @@ import { Platform } from 'react-native'
 // envia la informacion ingresada al API para crear un nuevo usuario
 const onSubmit = (values, dispatch) => {
   dispatch(
-    userActions.startAddingUser(
-      values.name,
-      values.lastname,
-      values.email,
-      values.password,
-      values.username,
-      values.age
-    )
+      userActions.startAddingUser(
+          values.name,
+          values.lastname,
+          values.email,
+          values.password,
+          values.username,
+          values.age
+      )
   )
 }
 
@@ -59,14 +60,15 @@ const validate = (values) => {
   }
 
   if (!values.age) {
-    errors.age = 'Requerido'
+    errors.age = 'Requerida'
+  } else if (values.age && !/^\d+$/.test(values.age)){
+    errors.age = 'Solo se aceptan dígitos'
   }
-
   if (!values.email) {
     errors.email = 'Requerido'
   } else if (
-    values.email &&
-    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+      values.email &&
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
   ) {
     errors.email = 'Correo Electrónico No Válido'
   }
@@ -75,7 +77,7 @@ const validate = (values) => {
     errors.password = 'Requerida'
   } else if (values.password.length < 8) {
     errors.password =
-      'La contraseña debe de tener un largo mayor a 8 caractéres'
+        'La contraseña debe de tener un largo mayor a 8 caractéres'
   }
 
   if (!values.confirmpassword) {
@@ -98,22 +100,13 @@ const RegistryForm = (props) => {
   } = props
 
   if (success) {
-    return (
-      <View style={styles.successMessage}>
-        <AntDesign
-          name="checkcircle"
-          size={64}
-          color={'#428AF8'}
-          style={{ marginBottom: 64 }}
-        />
-        <Text>Cuenta creada con exito</Text>
-        <Link to="/">
-          <Text style={{ color: '#078b45' }}>
-            Haz clic aquí para iniciar sesión
-          </Text>
-        </Link>
-      </View>
-    )
+    return SuccessScreen(
+        'checkcircle',
+        125,
+        '#078B45',
+        '¡Cuenta creada con éxito!',
+        '/',
+        'Haz click aquí para iniciar sesión.')
   }
 
   if (addingError !== null) {
@@ -128,117 +121,117 @@ const RegistryForm = (props) => {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      {/* <View style={{ flex: 1 }}> */}
-      <View style={styles.headers}>
-        {/* <Image style={{ flex: 1, height: '100%' }} source={logoUVG} /> */}
-        <View
-          style={{
-            flex: 3,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <View>
-            <Text
+      <SafeAreaView style={styles.container}>
+        {/* <View style={{ flex: 1 }}> */}
+        <View style={styles.headers}>
+          {/* <Image style={{ flex: 1, height: '100%' }} source={logoUVG} /> */}
+          <View
               style={{
-                fontSize: 35,
-                color: '#fff',
+                flex: 3,
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
-            >
-              Registro
-            </Text>
+          >
+            <View>
+              <Text
+                  style={{
+                    fontSize: 35,
+                    color: '#fff',
+                  }}
+              >
+                Registro
+              </Text>
+            </View>
           </View>
         </View>
-      </View>
-      <View style={styles.greenBar} />
-      <View style={{ flex: 29 }}>
-        <ScrollView style={{ flex: 1 }}>
-          <View style={styles.appPaddingCol} />
-          <View style={styles.mainContainer}>
-            <View style={styles.paddingSide} />
-            <View style={styles.scrollViewStyles}>
-              {/* <Text style={styles.header}>Ingrese sus Datos</Text> */}
-              <Field
-                name={'name'}
-                component={FormTextInput}
-                placeholder={'Nombre(s)'}
-                returnKeyType="next"
-                autoCapitalize="words"
-              />
-              <Field
-                name={'lastname'}
-                component={FormTextInput}
-                placeholder={'Apellido(s)'}
-                returnKeyType="next"
-                autoCapitalize="words"
-              />
-              <Field
-                name={'email'}
-                component={FormTextInput}
-                keyboardType="email-address"
-                placeholder={'Correo'}
-                autoCapitalize="none"
-                returnKeyType="next"
-                autoCompleteType="email"
-              />
-              <Field
-                name={'username'}
-                component={FormTextInput}
-                placeholder={'Nombre de Usuario'}
-                autoCapitalize="none"
-                returnKeyType="next"
-              />
-              <Field
-                name={'age'}
-                component={FormTextInput}
-                placeholder={'Edad'}
-                keyboardType="numeric"
-                maxLength={2}
-                returnKeyType="next"
-              />
-              <Field
-                name={'password'}
-                component={FormTextInput}
-                autoCapitalize="none"
-                secureTextEntry={true}
-                placeholder={'Contraseña'}
-                returnKeyType="next"
-              />
-              <Field
-                name={'confirmpassword'}
-                component={FormTextInput}
-                autoCapitalize="none"
-                secureTextEntry={true}
-                placeholder={'Confirmar contraseña'}
-                returnKeyType="done"
-              />
-              <Button
-                onPress={handleSubmit}
-                label={'Registrarse'}
-                color="#078b45"
-                disabled={submitting}
-              />
-              <View style={styles.bottomText}>
-                <Text style={styles.styledText}>¿Ya tienes una cuenta? </Text>
-                <Link to="/" underlayColor="#078b45" style={styles.navItem}>
-                  <Text style={styles.linkText}>Inicia sesión</Text>
-                </Link>
-              </View>
-              {isAdding && (
-                <View style={styles.spinner}>
-                  <ActivityIndicator size="large" color="#428AF8" />
+        <View style={styles.greenBar} />
+        <View style={{ flex: 29 }}>
+          <ScrollView style={{ flex: 1 }}>
+            <View style={styles.appPaddingCol} />
+            <View style={styles.mainContainer}>
+              <View style={styles.paddingSide} />
+              <View style={styles.scrollViewStyles}>
+                {/* <Text style={styles.header}>Ingrese sus Datos</Text> */}
+                <Field
+                    name={'name'}
+                    component={FormTextInput}
+                    placeholder={'Nombre(s)'}
+                    returnKeyType="next"
+                    autoCapitalize="words"
+                />
+                <Field
+                    name={'lastname'}
+                    component={FormTextInput}
+                    placeholder={'Apellido(s)'}
+                    returnKeyType="next"
+                    autoCapitalize="words"
+                />
+                <Field
+                    name={'email'}
+                    component={FormTextInput}
+                    keyboardType="email-address"
+                    placeholder={'Correo'}
+                    autoCapitalize="none"
+                    returnKeyType="next"
+                    autoCompleteType="email"
+                />
+                <Field
+                    name={'username'}
+                    component={FormTextInput}
+                    placeholder={'Nombre de Usuario'}
+                    autoCapitalize="none"
+                    returnKeyType="next"
+                />
+                <Field
+                    name={'age'}
+                    component={FormTextInput}
+                    placeholder={'Edad'}
+                    keyboardType="numeric"
+                    maxLength={2}
+                    returnKeyType="next"
+                />
+                <Field
+                    name={'password'}
+                    component={FormTextInput}
+                    autoCapitalize="none"
+                    secureTextEntry={true}
+                    placeholder={'Contraseña'}
+                    returnKeyType="next"
+                />
+                <Field
+                    name={'confirmpassword'}
+                    component={FormTextInput}
+                    autoCapitalize="none"
+                    secureTextEntry={true}
+                    placeholder={'Confirmar contraseña'}
+                    returnKeyType="done"
+                />
+                <Button
+                    onPress={handleSubmit}
+                    label={'Registrarse'}
+                    color="#078b45"
+                    disabled={submitting}
+                />
+                <View style={styles.bottomText}>
+                  <Text style={styles.styledText}>¿Ya tienes una cuenta? </Text>
+                  <Link to="/" underlayColor="#078b45" style={styles.navItem}>
+                    <Text style={styles.linkText}>Inicia sesión</Text>
+                  </Link>
                 </View>
-              )}
+                {isAdding && (
+                    <View style={styles.spinner}>
+                      <ActivityIndicator size="large" color="#428AF8" />
+                    </View>
+                )}
+              </View>
+              <View style={styles.paddingSide} />
             </View>
-            <View style={styles.paddingSide} />
-          </View>
-          <View style={styles.appPaddingCol} />
-        </ScrollView>
-      </View>
+            <View style={styles.appPaddingCol} />
+          </ScrollView>
+        </View>
 
-      {/* </View> */}
-    </SafeAreaView>
+        {/* </View> */}
+      </SafeAreaView>
   )
 }
 
@@ -290,21 +283,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#078B45',
   },
 })
+
 export default reduxForm({
   form: 'signUp',
   validate,
   onSubmit,
 })(
-  connect(
-    (state) => ({
-      isAdding: selectors.getIsAddingUser(state),
-      addingError: selectors.getAddingErrorUser(state),
-      success: selectors.isSuccessfulUser(state),
-    }),
-    (dispatch) => ({
-      clearError() {
-        dispatch(userActions.clearUserError())
-      },
-    })
-  )(RegistryForm)
+    connect(
+        (state) => ({
+          isAdding: selectors.getIsAddingUser(state),
+          addingError: selectors.getAddingErrorUser(state),
+          success: selectors.isSuccessfulUser(state),
+        }),
+        (dispatch) => ({
+          clearError() {
+            dispatch(userActions.clearUserError())
+          },
+        })
+    )(RegistryForm)
 )

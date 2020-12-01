@@ -61,7 +61,7 @@ const validate = (values) => {
 
   if (!values.age) {
     errors.age = 'Requerida'
-  } else if (values.age && !/^\d+$/.test(values.age)){
+  } else if (!/^\d+$/.test(values.age)){
     errors.age = 'Solo se aceptan dígitos'
   }
   if (!values.email) {
